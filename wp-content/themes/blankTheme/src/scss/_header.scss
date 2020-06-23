@@ -1,0 +1,78 @@
+@import "utilities";
+header {
+    position: fixed;
+    top: -250px;
+    width: 100%;
+    background: white;
+    z-index: 15;
+    left: 0px;
+    transition: 0.3s;
+    .active {
+	    box-shadow: 0px 2px 3px #00000014;
+	}
+    .left_logo {
+    	width: 320px;
+    	img {
+		    display: block;
+		    max-width: 220px;
+		    transition: 0.3s;
+		}
+    }
+    &:hover {
+    	.left_logo {
+	    	img {
+			    display: block;
+			    max-width: 320px;
+			    transition: 0.3s;
+			}
+	    }
+    }
+	.right_content {
+	    flex: 1;
+		.searchItem {
+		    flex: 50%;
+		}
+		.menuItem {
+		    width: 100%;
+		    ul {
+			    display: flex;
+			    align-items: center;
+			    li {
+				    flex: 1;
+				    a {
+					    display: block;
+					    font-size: 13px;
+					    font-family: 'ralewaymedium';
+					    color: #212322;
+					    margin: 0px 20px;
+					    font-weight: 700;
+					}
+				}
+			}
+		}
+		.iconsItem {
+		    display: flex;
+		}
+		.user_min {
+		    margin-right: 20px;
+		}
+	}
+}
+.dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier {
+    position: absolute;
+    right: 20px !important;
+    left: auto !important;
+}
+.dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
+	font-family: 'ralewayregular';
+    font-style: normal;
+    background: #E7E7E7 !important;
+    border: none !important;
+    border-bottom: solid 1px black !important;
+    border-radius: 12px !important;
+    padding-left: 15px !important;
+}
+.dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input::placeholder {
+    font-family: 'ralewayregular';
+    font-style: normal;
+}
