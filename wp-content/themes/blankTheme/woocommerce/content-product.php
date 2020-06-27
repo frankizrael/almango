@@ -26,42 +26,65 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
 	<?php
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
-
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
+		$marcaTitle = 'Honda'
 	?>
+	<div class="myloopWooProducts">
+		<a href="<?php echo get_permalink(); ?>">
+			<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png"> Motos de la marca</div>
+			<div class="myMoto">
+				<div class="myMoto__img" style="background: transparent radial-gradient(closest-side at 50% 50%, #F9F1E8 0%, #FF9F32 100%) 0% 0% no-repeat padding-box;">										
+					<div class="myMoto__title">
+						<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
+					</div>
+					<img src="<?php echo get_the_post_thumbnail_url(); ?>">
+				</div>
+				<div class="myMoto__content">
+					<div class="myMoto__tags">
+						<?php 
+							$tags = get_terms( 'product_tag');
+							if ($tags) {
+								foreach ($tags as $ta) {
+									?>
+									<div class="myTag">
+										<?php echo $ta->name; ?>
+									</div>
+									<?php		
+								}
+							}
+						?>
+					</div>
+					<div class="myMoto__title">
+						<h3><?php the_title(); ?></h3>
+						<p><?php the_field('modelo'); ?></p>
+					</div>
+					<div class="myMoto_final">
+						<div class="flex align-items-center">
+							<div class="myMoto__colors">
+								<?php				
+									$colors = get_terms( 'pa_color');
+									if ($colors) {
+										foreach ($colors as $c) {
+											?>
+											<div class="color">
+												<?php $background =  
+												get_field('color','pa_color_'.$c->term_id); ?>
+												<span style="background: <?php echo $background;?>"></span>
+											</div>
+											<?php		
+										}
+									}
+								?>
+							</div>
+							<div class="myMoto__price">
+								<?php
+									$product = wc_get_product( get_the_ID() );
+									echo $product->get_price_html();
+								?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
 </li>

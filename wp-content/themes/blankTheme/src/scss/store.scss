@@ -1,2 +1,389 @@
 @import "variables";
 @import "utilities";
+
+#core {
+	margin-top: 90px !important;
+	.bredcrumpb {
+	    background: #C10A0A;
+	    padding: 20px 0px;
+	    margin-bottom: 20px;
+	    nav {
+		    margin-bottom: 0px !important;
+		    a {
+			    color: white !important;
+			}
+		}
+	}
+	.flex-r {
+		display: flex;
+    	justify-content: space-between;
+		.right {
+		    width: calc(100% - 450px);
+		    flex: none;
+		}
+		.left {
+		    width: 375px;
+		    flex: none;
+		    margin-bottom: 20px;
+		}
+	}
+}
+
+.widget_price_filter {
+	margin-bottom: 20px;
+	h2 {
+	    font-size: 12px;
+	    background: #FF9F32;
+	    padding: 12px 10px;
+	    margin-bottom: 20px;
+	    border-radius: 12px;
+	    font-weight: 700;
+	    font-family: 'ralewayregular';
+	}
+	form {
+	    padding: 20px;
+	}
+}
+.widget-title {
+	font-size: 12px;
+    background: #FF9F32;
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: 'ralewayregular';
+}
+
+.woocommerce .widget_price_filter .price_slider_amount .button {
+    background: #435bff;
+    color: white;
+}
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+	background: url('../assets/img/money.png');
+	background-size: cover;
+    width: 30px !important;
+    height: 30px !important;
+    top: -15px !important;
+}
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
+    background: #ff9f32;
+}
+
+.titleLink {
+	font-size: 12px;
+	background: #FF9F32;
+	padding: 12px 10px;
+	margin-bottom: 5px;
+	border-radius: 12px;
+	font-weight: 700;
+	font-family: 'ralewayregular';
+	display: block;
+    color: black;
+    text-transform: uppercase;
+}
+
+ul.product-categories .children {
+    display: flex;
+    flex-wrap: wrap;
+}
+ul.product-categories .children li {
+    width: 25%;
+}
+ul.product-categories .children li span {
+    display: block;
+    box-shadow: 3px 3px 3px #000000B5;
+    border: 1px solid #95959526;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px;
+    width: 40px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+ul.product-categories .children li a {
+    text-align: center;
+    display: block;
+    color: black;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+.content_flex form select {
+    font-family: 'ralewayregular';
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+.content_flex form {
+    margin-bottom: 0px !important;
+}
+.content_flex {
+    display: flex;
+    background: #4B5AFC;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    color: white;
+}
+ul.product-categories .children li span img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+li.cat-item.cat-item-15 {
+    margin-bottom: 40px;
+}
+section#woocommerce_layered_nav-3 {
+    margin-top: 40px;
+}
+section#woocommerce_layered_nav-3 ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+section#woocommerce_layered_nav-3 ul li {
+    width: 25%;
+}
+section#woocommerce_layered_nav-3 ul li a {
+    text-align: center;
+    display: block;
+    color: black;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px 3px;
+}
+section#woocommerce_layered_nav-3 ul li a span {
+    display: block;
+    box-shadow: 3px 3px 3px #000000B5;
+    border: 1px solid #95959526;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px;
+    width: 40px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+section#woocommerce_layered_nav-3 ul li a span img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+section#woocommerce_layered_nav-3 ul li span.count {
+    display: none;
+}
+
+.myloopWooProducts {
+    padding: 10px;
+    a {
+    	color: black;
+    }
+    .decorative {
+	    display: flex;
+	    align-items: center;
+	    font-size: 20px;
+	    margin-bottom: 5px;
+	    img {
+		    width: 30px !important;
+		    margin-bottom: 0px !important;
+		}
+	}
+	.myMoto {
+	    width: 350px;
+	    box-shadow: 3px 3px 3px #00000066;
+	    border-top-left-radius: 25px;
+	    border-top-right-radius: 25px;
+	    &__img {
+		    position: relative;
+		    border-top-left-radius: 25px;
+		    border-top-right-radius: 25px;
+		    z-index: 1;
+		    img {
+			    width: calc(100% + 50px) !important;
+			    margin-bottom: 0px !important;
+			    max-width: calc(100% + 50px) !important;
+			}
+		}
+		&__title {
+		    overflow: hidden;
+		    position: relative;
+		    z-index: 2;
+		    h4 {
+			    color: white;
+			    font-size: 34px;
+			    text-align: center;
+			    padding: 20px 0px;
+			    padding-bottom: 40px;
+			    &:before {
+				    content: attr(data);
+				    color: #b7b7b7;
+				    font-size: 65px;
+				    position: absolute;
+				    z-index: -1;
+				    top: 23px;
+				    white-space: nowrap;
+				    left: 50%;
+				    transform: translateX(-50%);
+				    opacity: 0.2;
+				}
+			}
+			h3 {
+			    text-align: center;
+			    padding: 10px 0px !important;
+			    font-size: 22px !important;
+			}
+			p {
+			    text-align: center;
+			    color: #9F9F9F;
+			    text-transform: uppercase;
+			    font-size: 14px;
+			}
+		}
+		&__content {
+		    padding: 20px;
+		}
+		.myMoto_final {
+		    margin-top: 20px;
+		}
+		&__colors {
+		    flex: 1;
+		    position: relative;
+		    padding-top: 20px;
+		    &:before {
+			    content: 'Colores';
+			    position: absolute;
+			    top: 0px;
+			    text-transform: uppercase;
+			    font-size: 12px;
+			    font-weight: 700;
+			    color: #000000;
+			}
+			.color {
+			    display: inline-block;
+			    span {
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    border-radius: 50%;
+				}
+			}
+		}
+		&__price {
+		    flex: 1;
+		    del {
+			    display: block;
+			    color: #FF0000;
+			    text-align: right;
+			}
+			ins {
+			    color: #001A23;
+			    text-decoration: none;
+			    text-align: right;
+			    display: block;
+			    font-size: 28px;
+			    font-weight: 700;
+			}
+		}
+	}
+}
+
+.single-product {
+	.init {
+	    background-size: cover;
+	    background-position: center;
+	}
+	.barent {
+	    background: rgba(0, 26, 35, 0.8);
+	    position: absolute;
+	    height: 100%;
+	    z-index: 0;
+	    padding: 100px 30px;
+	    box-sizing: border-box;
+	    width: 350px;
+	    right: 0px;
+	    .imagen_cat {
+		    text-align: center;
+		}
+		.title_barent {
+			h1 {
+			    color: white;
+			    font-size: 35px;
+			    text-align: center;
+			}
+			p {
+			    text-align: center;
+			    color: white;
+			    font-size: 20px;
+			}
+		}
+		.functss {
+		    display: flex;
+		    justify-content: center;
+		    margin: 20px 0px;
+		    a {
+			    color: white;
+			    font-size: 12px;
+			    text-align: center;
+			    margin: 0px 10px;
+			}
+		}
+		.resumen_s {
+		    text-align: justify;
+		    margin-bottom: 20px;
+		    color: white;
+		}
+		.prices {
+		    text-align: right;
+		    color: white;
+		    .prices_html {
+			    margin-bottom: 10px;
+			    del {
+				    font-size: 20px;
+				    display: block;
+				    opacity: 0.7;
+				}
+				ins {
+				    text-decoration: none;
+				    font-size: 40px;
+				    font-weight: 700;
+				    margin-bottom: 10px;
+				    display: block;
+				}
+			}
+			p {
+			    font-weight: 700;
+			    font-size: 12px;
+			}
+		}
+	}
+	.presents {
+	    position: absolute;
+	    bottom: 0px;
+	    width: 100%;
+	    background: #ffb785;
+	    padding: 10px 0px;
+	    z-index: 1;
+	    &__content {
+		    display: flex;
+		    justify-content: space-between;
+		    .item_presnts {
+			    display: flex;
+			    align-items: center;
+			    img {
+				    max-width: 45px;
+				    margin-right: 5px;
+				}
+				p {
+				    font-weight: 700;
+				    font-size: 20px;
+				}
+			}
+		}
+	}
+	.tags_ponted {
+	    position: absolute;
+	    width: 100%;
+	    top: 110px;
+	    z-index: 1;
+	}	
+}

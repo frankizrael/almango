@@ -1,0 +1,289 @@
+@import "utilities";
+@import "variables";
+.init {
+	position: relative;
+    z-index: 1;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    .content-x {
+	    position: absolute;
+	    bottom: 0px;
+	    padding: 60px 0px;
+	    background: #000000;
+		.desc {
+		    padding: 0px 30px;
+		    color: white;
+		    margin-right: 40px;
+		    font-size: 18px;
+		    line-height: 22px;
+		}
+		.title-x {
+		    position: absolute;
+		    left: 0px;
+		    top: -165px;
+		    h1 {
+			    color: white;
+			    font-size: 130px;
+			    position: relative;
+			    z-index: 1;
+			    &:before {
+				    content: attr(data);
+				    color: #4F4D4D;
+				    position: absolute;
+				    font-size: 210px;
+				    white-space: nowrap;
+				    z-index: -1;
+				    top: -125px;
+				    left: 50%;
+				    transform: translateX(-40%);
+				    font-weight: 700;
+				    opacity: 0.5;
+				}
+			}
+		}
+	}
+	.alignBottom:before {
+	    content: '';
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    background: black;
+	    opacity: 0.3;
+	}
+}
+.banner {
+	.initCore {
+	    background-size: cover;
+	    background-position: center;
+	    position: relative;
+	    &:before {
+		    content: '';
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    background: black;
+		    opacity: 0.3;
+		}
+
+	}
+	.bottom-banner {
+	    bottom: 50px;
+	    right: 200px;
+	    z-index: 2;
+		.swiper-pagination {
+		    margin-top: 0px !important;
+		    .swiper-pagination-bullet {
+			    width: 30px;
+			    border-radius: 0px;
+			    height: 0px;
+			    border: solid 2px white;
+			    margin-left: 10px;
+			    &.swiper-pagination-bullet-active {
+			    	width: 100px;
+			    	border: solid 2px $morado;
+			    }
+			    i {
+				    position: absolute;
+				    color: white;
+				    font-style: normal;
+				    top: -37px;
+				    left: 0px;
+				    font-size: 25px;
+				    font-weight: 700;
+				}
+			    &:before {
+			    	display: none;
+			    }
+			}
+		}
+	}
+}
+.absPost {
+    position: absolute;
+    bottom: 150px;
+    width: 100%;
+    a {
+	    color: white;
+	    h2 {
+		    font-size: 80px;
+		    text-transform: uppercase;
+		    margin-bottom: 20px;
+		}
+		p {
+		    font-size: 40px;
+		    display: flex;
+		    align-items: center;
+		    img {
+			    margin-left: 20px;
+			}
+		}
+	}
+}
+.banner-lineal {
+    height: 350px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.allModels {
+    padding: 60px 0px;
+	.modelsChange {
+	    display: flex;
+	    align-items: center;
+	    right: 0px;
+	    p {
+		    font-size: 20px;
+		    margin-right: 10px;
+		}
+		.icons {
+		    display: flex;
+		    text-align: center;
+		    .icons_item {
+			    margin-left: 20px;
+			    width: 55px;
+			    cursor: pointer;
+			    transition: 0.3s;
+			    &:hover {
+			    	transform: scale(1.05);
+			    }
+			    img {
+				    height: 30px;
+				    margin-bottom: 5px;
+				    box-shadow: 0px 3px 3px #000000A6;
+    				padding: 10px;
+				} 
+				p {
+				    font-size: 14px;
+				    text-align: center;
+				    margin-right: 0px;
+				}
+			}
+		}
+	}
+}
+.backImagen {
+    position: absolute;
+    width: 100%;
+    max-width: 750px;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    top: 50%;
+    opacity: 0.2;
+    img {
+	    width: 100%;
+	}
+}
+.contentModels {
+    padding: 80px 0px;
+}
+
+
+.myloopWooProducts {
+    padding: 10px;
+    .decorative {
+	    display: flex;
+	    align-items: center;
+	    font-size: 20px;
+	    margin-bottom: 5px;
+	    img {
+		    width: 30px;
+		}
+	}
+	.myMoto {
+	    width: 350px;
+	    box-shadow: 3px 3px 3px #00000066;
+	    border-top-left-radius: 25px;
+	    border-top-right-radius: 25px;
+	    &__img {
+		    position: relative;
+		    border-top-left-radius: 25px;
+		    border-top-right-radius: 25px;
+		    z-index: 1;
+		    img {
+			    width: calc(100% + 50px);
+			}
+		}
+		&__title {
+		    overflow: hidden;
+		    position: relative;
+		    z-index: 2;
+		    h4 {
+			    color: white;
+			    font-size: 34px;
+			    text-align: center;
+			    padding: 20px 0px;
+			    padding-bottom: 40px;
+			    &:before {
+				    content: attr(data);
+				    color: #b7b7b7;
+				    font-size: 65px;
+				    position: absolute;
+				    z-index: -1;
+				    top: 23px;
+				    white-space: nowrap;
+				    left: 50%;
+				    transform: translateX(-50%);
+				    opacity: 0.2;
+				}
+			}
+			h3 {
+			    text-align: center;
+			    padding: 10px 0px;
+			    font-size: 22px;
+			}
+			p {
+			    text-align: center;
+			    color: #9F9F9F;
+			    text-transform: uppercase;
+			    font-size: 14px;
+			}
+		}
+		&__content {
+		    padding: 20px;
+		}
+		.myMoto_final {
+		    margin-top: 20px;
+		}
+		&__colors {
+		    flex: 1;
+		    position: relative;
+		    padding-top: 20px;
+		    &:before {
+			    content: 'Colores';
+			    position: absolute;
+			    top: 0px;
+			    text-transform: uppercase;
+			    font-size: 12px;
+			    font-weight: 700;
+			    color: #000000;
+			}
+			.color {
+			    display: inline-block;
+			    span {
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    border-radius: 50%;
+				}
+			}
+		}
+		&__price {
+		    flex: 1;
+		    del {
+			    display: block;
+			    color: #FF0000;
+			    text-align: right;
+			}
+			ins {
+			    color: #001A23;
+			    text-decoration: none;
+			    text-align: right;
+			    display: block;
+			    font-size: 28px;
+			    font-weight: 700;
+			}
+		}
+	}
+}

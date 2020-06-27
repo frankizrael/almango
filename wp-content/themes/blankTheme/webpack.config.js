@@ -8,6 +8,7 @@ module.exports = function(env) {
             main: "./src/app.js",
             page: "./src/entries/page.js",
             home: "./src/entries/home.js",
+            brands: "./src/entries/brands.js",
             store: "./src/entries/store.js"
         },
         target: "web",

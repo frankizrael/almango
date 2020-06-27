@@ -123,7 +123,7 @@ get_header();
 		                    ?> 
 		                    <div class="swiper-slide">                           
 			                    <div class="marcas_list__item">
-			                        <a href="<?php echo get_term_link($pterm); ?>">
+			                        <a href="<?php echo get_field('page',$pterm); ?>">
 			                            <img src="<?php echo $thumbnail_id; ?>">
 			                        </a>    
 			                    </div>                            

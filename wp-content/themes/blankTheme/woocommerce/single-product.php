@@ -1,5 +1,5 @@
 <?php
-set_query_var('ENTRY', 'proyectos');
+set_query_var('ENTRY', 'store');
 /**
  * The Template for displaying all single products
  *
@@ -22,30 +22,100 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
-
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
+<section class="init fullheight" style="background-image: url(<?php echo get_field('imagen_background'); ?>);">
+	<div class="fullheight posRelative">		
+		<div class="tags_ponted">
+			<div class="x-container">
+				<div class="tagsC">
+					<?php 
+						$tags = get_terms( 'product_tag');
+						if ($tags) {
+							foreach ($tags as $ta) {
+								?>
+								<div class="myTag">
+									<?php echo $ta->name; ?>
+								</div>
+								<?php		
+							}
+						}
+					?>
+				</div>
+			</div>
+		</div>
+		<div class="presents">
+			<div class="x-container">
+				<div class="presents__content">
+				<?php
+					$presents = get_field('presents');
+					if ($presents) {
+						foreach ($presents as $pp) {
+					?>
+				<div class="item_presnts">
+					<img src="<?php echo $pp['imagen']; ?>">
+					<p><?php echo $pp['text']; ?></p>
+				</div>
+					<?php
+						}
+					}
+				?>
+				</div>
+			</div>
+		</div>
+		<div class="barent">
+			<?php
+				$cat = get_terms( 'product_cat');
+				if ($tags) {
+					foreach ($tags as $ta) {
+						?>
+						<div class="imagen_cat">
+							<?php 
+								$thumbnail_id = wp_get_attachment_url(get_term_meta( 25, 'thumbnail_id', true ));						
+							?>
+							<img src="<?php echo $thumbnail_id; ?>">
+						</div>
+						<?php
+						}
+					}
+				?>
+				<div class="title_barent">
+					<h1><?php the_title(); ?></h1>
+					<p><?php the_field('modelo'); ?></p>
+				</div>
+				<div class="functss">
+					<a href="javascript:void(0)">
+						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/compare.png">
+						<p>Compara</p>
+					</a>
+					<a href="javascript:void(0)">
+						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/heart.png">
+						<p>Me gusta</p>
+					</a>
+					<a href="javascript:void(0)">
+						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
+						<p>Descargas</p>
+					</a>
+				</div>
+				<div class="resumen_s">
+					<?php the_field('resumen'); ?>
+				</div>
+				<div class="prices">
+					<div class="prices_html">
+						<?php
+                			$_my_product = wc_get_product( get_the_ID() );
+                			echo $_my_product->get_price_html(); 
+                		?>
+					</div>
+					<p>TIPO DE CAMBIO DEL DÍA S/. 3.41</p>
+				</div>
+				<div class="buttonAdd">
+					<?php
+						$id = get_the_ID();						
+						echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
+					?>
+				</div>
+		</div>
+	</div>
+</section>
 
 
 <?php get_footer( 'shop' );
