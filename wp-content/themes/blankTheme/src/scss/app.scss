@@ -80,6 +80,8 @@ input {
     text-align: center;
     right: -10px;
     top: -10px;
+    font-size: 12px;
+    line-height: 17px;
 }
 .swiper-button-next {
     right: -60px;
@@ -184,8 +186,8 @@ a.dgwt-wcas-details-post-title, a.dgwt-wcas-details-product-title {
 	}
 }
 .left-container {
-	margin-left: 300px !important;
-	max-width: calc(100% - 300px) !important;
+	margin-left: 200px !important;
+	max-width: calc(100% - 200px) !important;
 	@include maxw(mypc) {
 		margin-left: 150px !important;
 		max-width: calc(100% - 150px) !important;

@@ -83,7 +83,7 @@ get_header();
 	</div>
 </section>
 <section class="section">
-	<div class="x-container">
+	<div class="left-container">
 		<div class="section-a posRelative">
 			<div class="swiper-container ">
 				<div class="swiper-wrapper">
@@ -100,9 +100,7 @@ get_header();
 						}
 					?>
 				</div>	
-			</div>		
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			</div>
 		</div>
 	</div>
 </section>

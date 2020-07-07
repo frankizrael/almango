@@ -74,6 +74,7 @@
 			    }
 			    i {
 				    position: absolute;
+				    font-family: 'heebo';
 				    color: white;
 				    font-style: normal;
 				    top: -37px;
@@ -124,6 +125,15 @@
 	    font-size: 12px;
 	    color: #082630;
 	    text-transform: uppercase;
+	}
+}
+.section-a {
+	.swiper-slide {
+		width: 40%;
+		margin-right: 20px;
+		img {
+		    width: 100%;
+		}
 	}
 }
 .marcas_list__item {
@@ -190,6 +200,7 @@
 				    font-size: 30px;
 				    color: #001A23;
 				    font-weight: 700;
+				    font-family: 'heebo';
 				}
 				p {
 				    font-size: 20px;
@@ -206,7 +217,7 @@
 				    color: $orange;
 				    opacity: 0.8;
 				    font-size: 20px;
-				    font-family: sans-serif;
+				    font-family: 'heebo';
 				    span {
 					    color: $orange;
 					}
@@ -214,7 +225,7 @@
 				ins {
 				    text-decoration: none;
 				    font-size: 35px;
-				    font-family: sans-serif;
+				    font-family: 'heebo';
 				    font-weight: 700;
 				    color: white;
 				}

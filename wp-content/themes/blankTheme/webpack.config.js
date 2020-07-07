@@ -9,7 +9,8 @@ module.exports = function(env) {
             page: "./src/entries/page.js",
             home: "./src/entries/home.js",
             brands: "./src/entries/brands.js",
-            store: "./src/entries/store.js"
+            store: "./src/entries/store.js",
+            myaccount: "./src/entries/myaccount.js"
         },
         target: "web",
         mode: env.NODE_ENV,

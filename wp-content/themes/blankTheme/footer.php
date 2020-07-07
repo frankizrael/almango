@@ -31,6 +31,9 @@
         </a>
         <h2>Métodos de pago</h2>
         <div class="metodos-s"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/all-logos-payment-options.png"></div>
+        <p class="extraff">Copyright 2020 - ALMANGO.PE. TODOS LOS DERECHOS RESERVADOS</p>
+      </div>
+      <div class="group" style="flex: none;">        
         <h2>Síguenos</h2>
         <div class="list-social">
           <ul>
@@ -48,7 +51,6 @@
             ?>
           </ul>
         </div>
-        <p class="extraff">Copyright 2020 - ALMANGO.PE. TODOS LOS DERECHOS RESERVADOS</p>
       </div>
       <div class="group">
         <div class="desc">

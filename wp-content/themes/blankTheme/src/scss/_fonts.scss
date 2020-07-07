@@ -23,3 +23,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'heebo';
+  src: url('../assets/fonts/Heebo-Regular.woff2') format('woff2'),
+      url('../assets/fonts/Heebo-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

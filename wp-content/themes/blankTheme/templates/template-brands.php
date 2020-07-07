@@ -1,7 +1,7 @@
 <?php /* Template Name: brands */
 set_query_var('ENTRY', 'brands');
 get_header();
-echo $marcaTitle = get_the_title();
+$marcaTitle = get_the_title();
 ?>
 <section class="init fullheight" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
 	<div class="fullheight flex alignBottom posRelative">		

@@ -1,0 +1,8 @@
+2020-07-01T07:06:12+00:00 CRITICAL syntax error, unexpected ';' in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\single-product.php on line 357
+
+2020-07-01T07:06:28+00:00 CRITICAL syntax error, unexpected ';' in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\single-product.php on line 553
+
+2020-07-01T17:47:17+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\almango\wp-includes\Requests\Transport\cURL.php on line 441
+
+2020-07-01T22:03:56+00:00 CRITICAL Allowed memory size of 268435456 bytes exhausted (tried to allocate 49152 bytes) in C:\xampp\htdocs\almango\wp-includes\class-wp-image-editor-gd.php on line 96
+

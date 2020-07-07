@@ -25,6 +25,7 @@ var swiperBanner = new Swiper(".banner .swiper-container", {
 
 var swiperNews = new Swiper(".style_motos .swiper-container", {
   slidesPerView: 8,
+  loop: true,
   navigation: {
       nextEl: '.style_motos .swiper-button-next',
       prevEl: '.style_motos .swiper-button-prev',
@@ -32,7 +33,7 @@ var swiperNews = new Swiper(".style_motos .swiper-container", {
 });
 
 var swiperA = new Swiper(".section-a .swiper-container", {
-  slidesPerView: 2,
+  slidesPerView: 'auto',
   navigation: {
       nextEl: '.section-a .swiper-button-next',
       prevEl: '.section-a .swiper-button-prev',

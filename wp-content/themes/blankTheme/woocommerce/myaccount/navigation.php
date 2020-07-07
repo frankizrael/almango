@@ -18,18 +18,125 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+$user = wp_get_current_user();
 do_action( 'woocommerce_before_account_navigation' );
 ?>
-
-<nav class="woocommerce-MyAccount-navigation">
-	<ul>
-		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
-			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
-				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
+<nav class="myaccount-navigation">
+	<div class="flex">
+		<div class="image-people">
+			<?php
+				$imagenPerfil = get_field('imagen_perfil','user_'.get_current_user_id());
+			?>
+			<img src="<?php echo $imagenPerfil; ?>">
+		</div>
+		<ul class="flex">
+			<li class="link_list">
+				<a href="<?php echo site_url(); ?>/my-account/edit-account/">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/avatar.png">
+					Mis datos personales
+				</a>
 			</li>
-		<?php endforeach; ?>
-	</ul>
+			<li class="link_list">
+				<a href="<?php echo site_url(); ?>/my-account/edit-address/billing/">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/home.png">
+					Mis Direcciones
+				</a>
+			</li>
+			<li class="link_list">
+				<a href="<?php echo site_url(); ?>/my-account/edit-address/shipping/">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/file-storage.png">
+					Mis Direcciones de Facturaciones
+				</a>
+			</li>
+			<li class="link_list">
+				<a href="<?php echo site_url(); ?>/my-account/orders/">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/shopping-bags.png">
+					Mis pedidos
+				</a>
+			</li>
+			<li class="link_list">
+				<a href="<?php echo site_url(); ?>/my-account/downloads/">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/business.png">
+					Mis comprobantes
+				</a>
+			</li>		
+		</ul>	
+	</div>
 </nav>
 
+<div class="flex-account">
+	<div class="flex-sidebar">
+		<div class="names">
+			<h3><?php echo esc_attr( $user->first_name ); ?> <?php echo esc_attr( $user->last_name ); ?></h3>
+			<p><?php echo esc_attr( $user->user_email ); ?></p>
+		</div>
+		<div class="lines-advance">
+			<div class="flex flex-advnce">
+				<div class="line">
+					<i></i>
+				</div>
+				<div class="number">
+					50%
+				</div>
+			</div>
+			<div class="simple-mss"><a href="<?php echo site_url(); ?>/my-account/edit-account/">Completa tu perfil</a></div>
+		</div>
+		<div class="lists flex">
+			<div class="lists-it">
+				<a>
+					<div class="img">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/heart.png">
+					</div>
+					<div class="text">
+						Mis elegidas
+					</div>
+				</a>
+			</div>
+			<div class="lists-it">
+				<a>
+					<div class="img">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/heart.png">
+					</div>
+					<div class="text">
+						Mis versus
+					</div>
+				</a>
+			</div>
+			<div class="lists-it">
+				<a>
+					<div class="img">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/commerce.png">
+					</div>
+					<div class="text">
+						Mis cupones
+					</div>
+				</a>
+			</div>
+			<div class="lists-it">
+				<a>
+					<div class="img">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/bell.png">
+					</div>
+					<div class="text">
+						Mis notificaciones
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="onlist-s">
+			<a href="javascript:void(0)">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/interface.png">
+				Centro de ayuda
+			</a>
+			<a href="javascript:void(0)">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/communications.png">
+				Contactar a Excelencia al cliente
+			</a>
+		</div>
+		<div class="closessesion">
+			<a href="<?php echo wp_logout_url( home_url().'/my-account/' ); ?>">
+				Centro de ayuda
+			</a>
+		</div>
+	</div>	
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>

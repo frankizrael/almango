@@ -101,11 +101,16 @@ footer {
 		.list-social {
 		    margin-bottom: 20px;
 		    ul {
-			    display: flex;
+		    	li {
+		    		display: block;
+		    		text-align: center;
+		    	}
 			    a {
 				    display: block;
-				    margin-right: 20px;
+				    margin-bottom: 10px;
+				    text-align: center;
 				    img {
+				    	display: inline-block;
 					    height: 35px;
 					}
 				}
@@ -137,7 +142,7 @@ footer {
 		    text-align: center;
 		    margin-top: 70px;
 		    img {
-			    max-width: 50px;
+			    max-width: 100px;
 			}
 			p {
 			    font-size: 12px;

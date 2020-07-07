@@ -109,6 +109,7 @@
 		    font-size: 80px;
 		    text-transform: uppercase;
 		    margin-bottom: 20px;
+		    font-family: 'heebo';
 		}
 		p {
 		    font-size: 40px;
@@ -182,6 +183,9 @@
 
 .myloopWooProducts {
     padding: 10px;
+    a {
+    	color: black;
+    }
     .decorative {
 	    display: flex;
 	    align-items: center;
@@ -232,6 +236,7 @@
 			    text-align: center;
 			    padding: 10px 0px;
 			    font-size: 22px;
+			    font-family: 'heebo';
 			}
 			p {
 			    text-align: center;
@@ -242,6 +247,7 @@
 		}
 		&__content {
 		    padding: 20px;
+		    background: white;
 		}
 		.myMoto_final {
 		    margin-top: 20px;
@@ -271,6 +277,7 @@
 		}
 		&__price {
 		    flex: 1;
+		    font-family: 'heebo';
 		    del {
 			    display: block;
 			    color: #FF0000;
