@@ -10,6 +10,54 @@
 	    height: 45px;
 	    margin-right: 10px;
 	}
+	&.rockTitleAnimation {
+		img {
+			animation: rockAnimation linear 2s;
+		  	animation-iteration-count: infinite;
+		  	transform-origin: bottom;
+		}
+	}	
+	&.fireTitleAnimation {
+		position: relative;
+		&:before {
+		    content: '';
+		    position: absolute;
+		    width: 15px;
+		    height: 55px;
+		    background: white;
+		    transform: rotate(-45deg);
+		    top: 20px;
+		    opacity: .5;
+		    left: 15px;
+		    z-index: 2;
+		    transition: 0.36s;
+		    animation: fireAnimation linear 0.8s;
+		  	animation-iteration-count: infinite;
+		  	transform-origin: bottom;
+		}
+	}
+}
+@keyframes rockAnimation{
+  0% {
+    transform:  rotate(-5deg);
+  }
+  10% {
+  	transform:  rotate(0deg);
+  }
+  20% {
+    transform:  rotate(5deg);
+  }
+  100% {
+    transform:  rotate(-5deg) ;
+  }
+}
+@keyframes fireAnimation{
+  0% {
+    transform:  rotate(-45deg);
+  }
+  100% {
+  	transform:  rotate(-45deg)translateX(70px)translateY(-20px);
+  }
 }
 .title-center {
     margin-bottom: 20px;

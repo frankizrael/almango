@@ -1,5 +1,7 @@
 import '../scss/store.scss';
 import ThreeSixty from '@mladenilic/threesixty.js';
+$('header').addClass('active2');
+
 
 $('.woocommerce .widget_price_filter .price_slider_amount .button').html('Filtrar');
 $('.content_lead__tab li').on('click',function(){

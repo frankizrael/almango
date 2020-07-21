@@ -6,6 +6,7 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    overflow: hidden;
     .content-x {
 	    position: absolute;
 	    bottom: 0px;
@@ -17,6 +18,8 @@
 		    margin-right: 40px;
 		    font-size: 18px;
 		    line-height: 22px;
+		    transform: translateY(-5px);
+		    opacity: 0;
 		}
 		.title-x {
 		    position: absolute;
@@ -27,6 +30,8 @@
 			    font-size: 130px;
 			    position: relative;
 			    z-index: 1;
+			    transform: translateY(-5px);
+			    opacity: 0;
 			    &:before {
 				    content: attr(data);
 				    color: #4F4D4D;
@@ -118,9 +123,32 @@
 		    img {
 			    margin-left: 20px;
 			}
+			i {
+				width: 44px;
+			    height: 44px;
+			    margin-left: 20px;
+			    transition: 0.3s;
+			    animation: animationArrow linear 1s;
+			  	animation-iteration-count: infinite;
+			  	transform-origin: bottom;
+			}
 		}
 	}
 }
+@keyframes animationArrow{
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 44px;
+  }
+}
+.contentModels {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
 .banner-lineal {
     height: 350px;
     margin-bottom: 20px;
@@ -160,6 +188,13 @@
 				    text-align: center;
 				    margin-right: 0px;
 				}
+				&.active {
+					img {
+						background-color: #b4a503;
+						filter: invert(1);
+				    	box-shadow: 0px 3px 3px white;
+					}
+				}
 			}
 		}
 	}
@@ -180,9 +215,13 @@
     padding: 80px 0px;
 }
 
-
+.swiper-slide-next .myloopWooProducts {
+    margin-top: 0px;
+}
 .myloopWooProducts {
     padding: 10px;
+    margin-top: 60px;
+    transition: 0.3s;
     a {
     	color: black;
     }
@@ -207,6 +246,7 @@
 		    z-index: 1;
 		    img {
 			    width: calc(100% + 50px);
+			    margin-top: -40px;
 			}
 		}
 		&__title {
@@ -233,24 +273,26 @@
 				}
 			}
 			h3 {
-			    text-align: center;
+				text-align: center;
 			    padding: 10px 0px;
-			    font-size: 22px;
+			    font-size: 24px;
 			    font-family: 'heebo';
+			    padding-bottom: 0px;
 			}
 			p {
 			    text-align: center;
 			    color: #9F9F9F;
 			    text-transform: uppercase;
 			    font-size: 14px;
+			    font-family: 'heebo';
 			}
 		}
 		&__content {
-		    padding: 20px;
+		    padding: 10px 15px;
 		    background: white;
 		}
 		.myMoto_final {
-		    margin-top: 20px;
+		    margin-top: 10px;
 		}
 		&__colors {
 		    flex: 1;
@@ -275,21 +317,73 @@
 				}
 			}
 		}
+		&__mPrice {
+		    display: flex;
+		    justify-content: space-between;
+		    margin: 10px 0px;
+		    width: 100%;
+		    font-family: 'heebo';
+		    font-size: 14px;
+		    font-weight: 700;
+		}
 		&__price {
 		    flex: 1;
 		    font-family: 'heebo';
 		    del {
 			    display: block;
-			    color: #FF0000;
-			    text-align: right;
+			    color: #c1c1c1;
+			    text-decoration: none;
+			    font-size: 14px;
+			    &:before {
+			    	content: 'Antes ';
+    				margin-right: 5px;
+			    }
 			}
 			ins {
-			    color: #001A23;
+			    z-index: 1;
+			    color: white;
 			    text-decoration: none;
-			    text-align: right;
-			    display: block;
-			    font-size: 28px;
+			    font-size: 26px;
 			    font-weight: 700;
+			    display: flex;
+			    margin: 7px 0px;
+			    justify-content: space-between;
+			    position: relative;
+			    line-height: 40px;
+			    &:before {
+			    	content: 'PRECIO Transferencia';
+				    font-size: 16px;
+				    line-height: 18px;
+				    display: block;
+				    max-width: 120px;
+				    color: $morado;				    
+				    font-family: 'ralewayregular';
+				    font-weight: 700;
+				    -webkit-text-stroke: 0.5px $morado;
+			    }
+			    .woocommerce-Price-amount {
+			    	&:before {
+			    		content: '';
+			    		background: url('../assets/img/money.png');
+						width: 30px;
+					    height: 30px;
+					    position: absolute;
+					    background-size: cover;
+					    right: 140px;
+					    top: 4px;
+			    	}
+			    }			    
+			    &:after {
+			    	content: '';
+				    position: absolute;
+				    width: 170px;
+				    height: 50px;
+				    right: -15px;
+				    top: -5px;
+				    background: $morado;
+				    z-index: -1;
+				    border-bottom-left-radius: 20px;
+			    }
 			}
 		}
 	}

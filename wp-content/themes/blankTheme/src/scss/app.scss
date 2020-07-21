@@ -26,6 +26,12 @@ input {outline:none;}
 		min-height: 550px;
 	}
 }
+.fullheight_min {
+	height: calc(100vh - 90px);
+	@include maxw(table_min) {
+		min-height: 550px;
+	}	
+}
 .posFixed {
 	position: fixed;
 }
@@ -134,6 +140,7 @@ a.dgwt-wcas-details-post-title, a.dgwt-wcas-details-product-title {
     display: inline-block;
     font-size: 16px;
     padding: 5px 8px;
+    border-radius: 5px;
 }
 .x-container {
 	margin: auto;

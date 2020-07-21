@@ -22,8 +22,8 @@ get_header();
 		</div>
 	</div>
 </section>
-<section class="banner fullheight">
-	<div class="swiper-container fullheight">
+<section class="banner fullheight_min">
+	<div class="swiper-container fullheight_min">
 		<div class="swiper-wrapper">
 			<?php
 				$banner = get_field('banner');
@@ -32,7 +32,7 @@ get_header();
 						foreach($banner as $ban) {
 			?>
 				<div class="swiper-slide" data="0<?php echo $a; ?>">
-					<div class="fullheight initCore" style="background-image: url('<?php echo $ban['img']; ?>');">
+					<div class="fullheight_min initCore" style="background-image: url('<?php echo $ban['img']; ?>');">
 					</div>
 				</div>
 			<?php
@@ -51,7 +51,7 @@ get_header();
 </section>
 <section id="estilos" class="sectionpadd">
 	<div class="x-container">
-		<div class="title">
+		<div class="title rockTitleAnimation">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png">
 			<h2><?php the_field('title_estilos'); ?></h2>
 		</div>
@@ -61,11 +61,12 @@ get_header();
 					<?php
 		                $taxonomyName = "product_cat"; 
 		                $parent_terms = get_terms( $taxonomyName, array( 'parent' => 15, 'orderby' => 'slug', 'hide_empty' => false ) );
+		                $a = 0;
 		                foreach ( $parent_terms as $pterm ) {
 		                    $thumbnail_id = wp_get_attachment_url(get_term_meta( $pterm->term_id, 'thumbnail_id', true ));
 		                    ?>  
 		                    <div class="swiper-slide">                          
-			                    <div class="style_motos__moto">
+			                    <div class="style_motos__moto" style="transition-delay: 0.<?php echo $a; ?>s;">
 			                        <a href="<?php echo get_term_link($pterm); ?>">
 			                            <img src="<?php echo $thumbnail_id; ?>">
 			                            <p><?php echo $pterm->name; ?></p>
@@ -73,6 +74,7 @@ get_header();
 			                    </div>                            
 		                    </div>   
 		                    <?php
+		                    $a++;
 		                }
 		            ?>
             	</div>
@@ -82,8 +84,8 @@ get_header();
 		</div>
 	</div>
 </section>
-<section class="section">
-	<div class="left-container">
+<section class="section" id="bannner">
+	<div class="x-container">
 		<div class="section-a posRelative">
 			<div class="swiper-container ">
 				<div class="swiper-wrapper">
@@ -106,7 +108,7 @@ get_header();
 </section>
 <section id="marcas" class="sectionpadd">
 	<div class="x-container">
-		<div class="title">
+		<div class="title rockTitleAnimation">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png">
 			<h2><?php the_field('title_marcas'); ?></h2>
 		</div>
@@ -116,17 +118,19 @@ get_header();
 					<?php
 		                $taxonomyName = "product_cat"; 
 		                $parent_terms = get_terms( $taxonomyName, array( 'parent' => 24, 'orderby' => 'slug', 'hide_empty' => false ) );
+		                $a = 0;
 		                foreach ( $parent_terms as $pterm ) {
 		                    $thumbnail_id = wp_get_attachment_url(get_term_meta( $pterm->term_id, 'thumbnail_id', true ));
 		                    ?> 
 		                    <div class="swiper-slide">                           
-			                    <div class="marcas_list__item">
+			                    <div class="marcas_list__item" style="transition-delay: 0.<?php echo $a; ?>s;">
 			                        <a href="<?php echo get_field('page',$pterm); ?>">
 			                            <img src="<?php echo $thumbnail_id; ?>">
 			                        </a>    
 			                    </div>                            
 		                    </div>   
 		                    <?php
+		                $a++;
 		                }
 		            ?>
 				</div>
@@ -138,7 +142,7 @@ get_header();
 </section>
 <section id="destacados">
 	<div class="x-container">
-		<div class="title">
+		<div class="title fireTitleAnimation">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png">
 			<h2><?php the_field('title_destacados'); ?></h2>
 		</div>
@@ -200,28 +204,31 @@ get_header();
 		</div>
 	</div>
 </section>
-<section class="bannerMoon" style="background-image: url('<?php the_field('banner_publicitario_num_one'); ?>');">
+<section class="bannerMoonM">
+	<div class="x-container">
+		<div class="bannerMoon" style="background-image: url('<?php the_field('banner_publicitario_num_one'); ?>');"></div>
+	</div>
 </section>
-<section class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
+<section id="dsct" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
 	<div class="decorative_left">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_0.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_1.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_2.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_3.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_4.svg">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_0.svg" style="transition-delay: 0s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_1.svg" style="transition-delay: 0.2s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_2.svg" style="transition-delay: 0.4s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_3.svg" style="transition-delay: 0.6s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_4.svg" style="transition-delay: 0.8s;">
 	</div>
 	<div class="x-container">
 		<h2><?php the_field('descuentos_title'); ?></h2>
 		<p><?php the_field('descuentos_subtitle'); ?></p>
 	</div>
 	<div class="decorative_right">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-1.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-2.svg">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-3.svg">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount.svg" style="transition-delay: 1s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-1.svg" style="transition-delay: 1.2s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-2.svg" style="transition-delay: 1.4s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-3.svg" style="transition-delay: 1.6s;">
 	</div>
 </section>
-<section class="prometemos">
+<section class="prometemos" id="prometemos">
 	<div class="x-container">
 		<div class="simple-title">
 			<h2><?php the_field('prometemos_title'); ?></h2>
@@ -230,27 +237,30 @@ get_header();
 			<?php
 				$promesas = get_field('promesas_list');
 				if ($promesas) {
+				$a = 0;
 					foreach ($promesas as $pro) {
 						?>
-				<div class="promesas_li">
+				<div class="promesas_li" style="transition-delay: 0.<?php echo $a;?>s">
 					<img src="<?php echo $pro['imagen']; ?>">
 					<h3><?php echo $pro['title']; ?></h3>
 					<div><?php echo $pro['text']; ?></div>
 				</div>
 						<?php
+				$a = $a + 2;
 					}
 				}
 			?>
 		</div>
 	</div>
 </section>
-<section class="aceptamos">
+<section class="aceptamos" id="aceptamos">
 	<div class="x-container">
 		<div class="simple-title">
 			<h2><?php the_field('aceptamos_title'); ?></h2>
 		</div>
 		<div class="paymenthds">			
-			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/all-logos-payment-options.png">
+			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/visaimg.png" style="transition-delay: 0s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pagoefectivo-logo-1.png" style="transition-delay: 0.2s;">
 		</div>
 	</div>
 </section>

@@ -51,7 +51,7 @@ $marcaTitle = get_the_title();
 		</div>
 	</div>
 </section>
-<section class="banner fullheight">
+<section class="banner fullheight_min">
 	<div class="swiper-container fullheight">
 		<div class="swiper-wrapper">
 			<?php
@@ -66,7 +66,7 @@ $marcaTitle = get_the_title();
 							<div class="x-container">
 								<a href="<?php echo get_permalink($moto['id']); ?>">
 									<h2><?php echo get_the_title($moto['id']); ?></h2>
-									<p>Descúbrela<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/flecha-derecha.png"></p>
+									<p>Descúbrela<i style="background-image: url(<?php echo get_template_directory_uri(); ?>/src/assets/img/flecha-derecha.png);"></i></p>
 								</a>
 							</div>
 						</div>
@@ -157,29 +157,39 @@ $marcaTitle = get_the_title();
 															<p><?php the_field('modelo'); ?></p>
 														</div>
 														<div class="myMoto_final">
-															<div class="flex align-items-center">
-																<div class="myMoto__colors">
-																	<?php				
-																		$colors = get_terms( 'pa_color');
-																		if ($colors) {
-																			foreach ($colors as $c) {
-																				?>
-																				<div class="color">
-																					<?php $background =  
-																					get_field('color','pa_color_'.$c->term_id); ?>
-																					<span style="background: <?php echo $background;?>"></span>
-																				</div>
-																				<?php		
-																			}
-																		}
-																	?>
-																</div>
-																<div class="myMoto__price">
+															<div class="myMoto__price">
+																<?php
+																	$product = wc_get_product( get_the_ID() );
+																	echo $product->get_price_html();
+																?>
+															</div>
+															<div class="myMoto__mPrice">
+																<span class="pp">Otro medio de pago</span>
+																<span class="bb">
 																	<?php
-																		$product = wc_get_product( get_the_ID() );
-																		echo $product->get_price_html();
+																		$porcentaje = get_field('porcentaje_conversion','options');
+																		$price = $product->get_price();
+																		$price_new = $porcentaje*$price;
+																		echo get_woocommerce_currency_symbol();
+																		echo $price_new;
 																	?>
-																</div>
+																</span>
+															</div>
+															<div class="myMoto__colors">
+																<?php				
+																	$colors = get_terms( 'pa_color');
+																	if ($colors) {
+																		foreach ($colors as $c) {
+																			?>
+																			<div class="color">
+																				<?php $background =  
+																				get_field('color','pa_color_'.$c->term_id); ?>
+																				<span style="background: <?php echo $background;?>"></span>
+																			</div>
+																			<?php		
+																		}
+																	}
+																?>
 															</div>
 														</div>
 													</div>
@@ -192,8 +202,10 @@ $marcaTitle = get_the_title();
 							}
 							wp_reset_query();
 						?>
-					</div>
-				</div>
+					</div>	
+				</div>	
+				<div class="swiper-button-prev"></div>
+			    <div class="swiper-button-next"></div>			
 			</div>
 		</div>
 	</div>

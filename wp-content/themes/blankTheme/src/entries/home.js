@@ -56,12 +56,46 @@ var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-con
     },
 });
 
-
-
-
-
 let $sw = $('.banner .swiper-slide');
 for (let i=0;i<$sw.length;i++){
 	let data = $sw.eq(i).attr('data');
 	$('.banner .swiper-pagination-bullet').eq(i).append('<i>'+data+'</i>');
 }
+
+let wind = $(window).width();
+let controller = new ScrollMagic.Controller();
+let scene_1 = new ScrollMagic.Scene({
+triggerElement: "#estilos"
+})
+.setClassToggle('#estilos', 'animation')
+.addTo(controller);
+let scene_2 = new ScrollMagic.Scene({
+triggerElement: "#bannner"
+})
+.setClassToggle('#bannner', 'animation')
+.addTo(controller);
+let scene_3 = new ScrollMagic.Scene({
+triggerElement: "#marcas"
+})
+.setClassToggle('#marcas', 'animation')
+.addTo(controller);
+let scene_4 = new ScrollMagic.Scene({
+triggerElement: "#destacados"
+})
+.setClassToggle('#destacados', 'animation')
+.addTo(controller);
+let scene_5 = new ScrollMagic.Scene({
+triggerElement: "#dsct"
+})
+.setClassToggle('#dsct', 'animation')
+.addTo(controller);
+let scene_6 = new ScrollMagic.Scene({
+triggerElement: "#prometemos"
+})
+.setClassToggle('#prometemos', 'animation')
+.addTo(controller);
+let scene_7 = new ScrollMagic.Scene({
+triggerElement: "#aceptamos"
+})
+.setClassToggle('#aceptamos', 'animation')
+.addTo(controller);
