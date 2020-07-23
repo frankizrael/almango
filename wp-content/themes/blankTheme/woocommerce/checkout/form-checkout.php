@@ -29,55 +29,143 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
-<div class="indicator-list">
-	<ul>
-		<li class="active">
-			<i>1</i>
-			<span>Cesta</span>			
-		</li>
-		<li>
-			<i>2</i>
-			<span>Envío</span>			
-		</li>
-		<li>
-			<i>3</i>
-			<span>Pago</span>			
-		</li>
-	</ul>
-</div>
-
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
-
-	<?php if ( $checkout->get_checkout_fields() ) : ?>
-
-		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-
-		<div class="col2-set__c" id="customer_details">
-			<div class="col-1__r">
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
+	<div class="flex-content flex">
+		<?php if ( $checkout->get_checkout_fields() ) : ?>
+			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+			<div class="flex-item">
+				<div class="boxFlex">
+					<div class="checkoutTitle">
+						<h3>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Selecciona tu color favorito
+						</h3>
+					</div>
+					<div class="simple-verifydata">
+						<h4>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/user.png"> Datos personales
+						</h4>
+						<div class="editData">
+							<a href="javascript:void(0)" class="edit">
+								Editar datos <img src="<?php echo get_template_directory_uri(); ?>/img/pen.png">	
+							</a>
+						</div>
+						<div class="datos">
+							<ul>
+								<li>
+									DNI: 70437424
+								</li>
+								<li>
+									Teléfono: 960579083
+								</li>
+								<li>
+									Correo: frankde@gmail.com
+								</li>
+							</ul>
+						</div>
+						<div class="solitarfactura">
+							<a href="javascript:void(0)" class="solFactura">Solicitar Factura</a>
+						</div>
+					</div>
+					<div class="col2-set__c" id="customer_details">
+						<?php do_action( 'woocommerce_checkout_billing' ); ?>
+					</div>
+				</div>
 			</div>
-
-			<div class="col-2__r">
-				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+			<div class="flex-item">
+				<div class="boxFlex">
+					<div class="checkoutTitle">
+						<h3>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Selecciona tu método de entrega
+						</h3>
+					</div>
+					<div class="escoger_metodo">
+						<ul>
+							<li data-id="#method_domicilio" data-cr="">
+								<div class="contentMetodo">
+									<img src="<?php echo get_template_directory_uri(); ?>/img/camion.png">
+								</div>
+									<p>ENVÍO A DOMICILIO</p>
+							</li>
+							<li data-id="#method_tienda" data-cr="">
+								<div class="contentMetodo">
+									<img src="<?php echo get_template_directory_uri(); ?>/img/almacenar.png">
+								</div>
+									<p>RECOJO EN TIENDA</p>
+							</li>
+						</ul>
+					</div>
+					<div class="method_send">
+						<div class="method_send_se">
+							<div class="method_item" id="method_domicilio">
+								<?php do_action( 'woocommerce_checkout_shipping' ); ?>		
+							</div>
+							<div class="method_item" id="method_tienda">
+								<div class="mensajeRed">*Recuerda llevar tu DNI en físico y tu PDF o captura de pantalla de tu compra.</div>
+								<div class="data_concesionario">
+									<div class="data_item">
+										<strong>Nombre del concesionario</strong>
+										<p>Grupo Lauzher</p>
+									</div>
+									<div class="data_item">
+										<strong>Horario de tienda</strong>
+										<p>L a V : 9:00 a.m. - 6:00 p.m. - S : 9:00 a.m. - 1:00 p.m.</p>
+									</div>
+									<div class="data_item">
+										<strong>Direccion</strong>
+										<p>Jr. Enrique Barron 885</p>
+									</div>
+									<div class="data_item">
+										<strong>Referencia</strong>
+										<p>Altura de la cuadra 6 de Av. Alejandro Tirad</p>
+									</div>
+									<div class="data_item">
+										<strong>Persona encargada de la entrega</strong>
+										<p>Leda Sifuente</p>
+									</div>
+									<div class="data_item">
+										<strong>Cargo</strong>
+										<p>Jefa de tienda</p>
+									</div>
+								</div>
+								<div class="checkoutTitle">
+									<h3>
+										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Lo quiero el
+									</h3>
+									<div class="calendarJs">
+										
+									</div>
+								</div>
+								<div class="checkoutTitle">
+									<h3>
+										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Horario único
+									</h3>
+									<div class="horarioJ">
+										Lunes a viernes de 9 a.m. a 6 p.m.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+		<?php endif; ?>
+		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+		<div class="flex-item">
+			<div class="boxFlex">
+				<div class="checkoutTitle">
+					<h3>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Mi pedido
+					</h3>
+				</div>			
+				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+				<div id="order_review" class="woocommerce-checkout-review-order">
+					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+				</div>
+			</div>
+			<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 		</div>
-
-		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
-	<?php endif; ?>
-	
-	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-	<div class="">
-		<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-		
-		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-		<div id="order_review" class="woocommerce-checkout-review-order">
-			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-		</div>
-
-		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 	</div>
 </form>
 

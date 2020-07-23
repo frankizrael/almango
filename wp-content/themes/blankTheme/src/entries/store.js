@@ -1,5 +1,28 @@
 import '../scss/store.scss';
 import ThreeSixty from '@mladenilic/threesixty.js';
+import { TweenMax, CSSPlugin, EasePack, TimelineMax, gsap } from "gsap";
+import ScrollMagic from "scrollmagic";
+import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
+import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
+if ($('body').hasClass('single-product')) {
+	/*let controller = new ScrollMagic.Controller();
+	let scene_1 = new ScrollMagic.Scene({
+	triggerElement: "#singlebanner"
+	})
+	.setClassToggle('header', 'absolute')
+	.addTo(controller);
+	//
+	let scene_2 = new ScrollMagic.Scene({
+	triggerElement: "#singlebanner"
+	})
+	.setClassToggle('#header_2', 'active')
+	.addTo(controller);*/
+}
+
+
+
+
+
 $('header').addClass('active2');
 
 
@@ -108,4 +131,7 @@ $('.fren_js').on('click',function(){
 });
 $('.fren_js').eq(0).trigger('click');
 
-
+$('.barent').addClass('active');
+setTimeout(function(){
+	$('.item_presnts').addClass('active');
+},1000);

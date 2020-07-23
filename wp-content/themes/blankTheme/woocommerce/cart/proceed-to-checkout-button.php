@@ -23,5 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward">
-	<?php esc_html_e( 'PROCEDER CON LA ORDEN', 'woocommerce' ); ?>
+	<?php esc_html_e( 'CONTINUAR CON EL DESPACHO', 'woocommerce' ); ?>
 </a>
+<?php
+	$porcentaje = get_field('porcentaje_conversion','options');
+?>
+<p class="addcomend">*Precio con tarjeta de crédito tiene un cargo de <?php echo $porcentaje; ?>% adicional.</p>

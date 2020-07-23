@@ -162,3 +162,71 @@ if( ! function_exists('custom_ajax_add_to_cart_button') && class_exists('WooComm
     }
     add_shortcode('ajax_add_to_cart', 'custom_ajax_add_to_cart_button');
 }
+
+function is_featured_product($id){  
+    $featureproducts = array();
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_visibility',
+                    'field'    => 'name',
+                    'terms'    => 'featured',
+                ),
+            ),
+        );
+    $loop = new WP_Query( $args );
+    if ( $loop->have_posts() ) {
+        while ( $loop->have_posts() ) : $loop->the_post();            
+           array_push($featureproducts, get_the_ID());
+        endwhile;
+    } else {
+        $featureproducts = 'No products found';
+    }
+    if (in_array($id,$featureproducts)){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+
+add_filter('woocommerce_billing_fields', 'add_company_data_field', 10, 1);
+
+function add_company_data_field($address_fields)
+{
+    if (!isset($address_fields['billing_razon_social'])) {
+        $address_fields['billing_razon_social'] = array(
+            'label'        => __('Razón Social', 'bmw'),
+            'required'     => true,
+            'class'        => array('form-row-first'),
+            'autocomplete' => 'given-name',
+            'priority'     => 111,
+            'value'        => '',
+        );
+    }
+
+    if (!isset($address_fields['billing_ruc'])) {
+        $address_fields['billing_ruc'] = array(
+            'label'        => __('Ruc', 'bmw'),
+            'required'     => true,
+            'class'        => array('form-row-last'),
+            'autocomplete' => 'given-name',
+            'priority'     => 112,
+            'value'        => '',
+        );
+    }
+
+    if (!isset($address_fields['billing_fiscal'])) {
+        $address_fields['billing_fiscal'] = array(
+            'label'        => __('Dirección del domicilio fiscal', 'bmw'),
+            'required'     => true,
+            'class'        => array('form-row-wide'),
+            'autocomplete' => 'given-name',
+            'priority'     => 113,
+            'value'        => '',
+        );
+    }
+    return $address_fields;
+}

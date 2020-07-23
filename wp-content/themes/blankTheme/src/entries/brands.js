@@ -25,19 +25,21 @@ for (let i=0;i<$sw.length;i++){
 	$('.banner .swiper-pagination-bullet').eq(i).append('<i>'+data+'</i>');
 }
 
-
+var motosSwiper;
 $('.jsCarrusel').on('click',function(){
 	$('.jsLista').removeClass('active');
 	$('.jsCarrusel').addClass('active');
-	var motos = new Swiper(".contentModels .swiper-container", {
+	motosSwiper = new Swiper(".contentModels .swiper-container", {
 	  slidesPerView: 3
 	});
+	$('.contentModels').removeClass('listaView');
 });
 
 $('.jsLista').on('click',function(){
 	$('.jsLista').addClass('active');
 	$('.jsCarrusel').removeClass('active');
-	
+	motosSwiper.destroy();
+	$('.contentModels').addClass('listaView');
 });
 
 

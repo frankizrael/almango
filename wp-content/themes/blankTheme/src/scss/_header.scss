@@ -68,6 +68,9 @@ header {
 	    	}
 	    }
 	}
+	&.absolute {
+		position: absolute;
+	}
 }
 .dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier {
     position: absolute;
