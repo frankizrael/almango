@@ -34,7 +34,7 @@ get_header( 'shop' ); ?>
 						if ($cat) {	
 							$a = 0;				
 							foreach ($cat as $ta) {
-								if ($a == 1 || $a == 2) {
+								if ($a == 1 || $a == 2 || $a == 3) {
 								?>
 								<div class="myTag">
 									<a href="<?php echo get_category_link($ta->term_id); ?>">
@@ -96,7 +96,7 @@ get_header( 'shop' ); ?>
 							<?php 
 								$idmarca = $ta->term_id;
 								$thumbnail_id = wp_get_attachment_url(get_term_meta( $idmarca, 'thumbnail_id', true ));	
-								if ($thumbnail_id && $a == 3) {
+								if ($thumbnail_id && $a == 2) {
 							?>
 							<img src="<?php echo $thumbnail_id; ?>">
 							<?php
