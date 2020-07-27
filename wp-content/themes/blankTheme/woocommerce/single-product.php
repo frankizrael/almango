@@ -18,6 +18,7 @@ set_query_var('ENTRY', 'store');
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$myid = get_the_ID();
 get_header( 'shop' ); ?>
 <section class="init fullheight" style="background-image: url(<?php echo get_field('imagen_background'); ?>);">
 	<div class="fullheight posRelative">		
@@ -30,25 +31,23 @@ get_header( 'shop' ); ?>
 						</a>
 					</div>
 					<?php
-						$cat = get_terms( 'product_cat');
-						if ($cat) {	
-							$a = 0;				
-							foreach ($cat as $ta) {
-								if ($a == 1 || $a == 2 || $a == 3) {
-								?>
-								<div class="myTag">
-									<a href="<?php echo get_category_link($ta->term_id); ?>">
-										#<?php echo $ta->name; ?>
-									</a>
-								</div>
-								<?php
+						$cat = get_the_terms($myid,'product_cat', array( 'order' => 'DESC'));
+						if ($cat) {				
+							foreach ($cat as $ta) {		
+								if ($ta->term_id != 15 && $ta->term_id != 24){						
+							?>
+							<div class="myTag">
+								<a href="<?php echo get_category_link($ta->term_id); ?>" data-id="<?php echo $ta->term_id; ?>">
+									#<?php echo $ta->name; ?>
+								</a>
+							</div>
+							<?php
 									}
-								$a++;
 								}
 							}
-						?>
+						?>		
 					<?php 
-						$tags = get_terms( 'product_tag');
+						$tags = get_the_terms($myid,'product_tag');
 						if ($tags) {
 							foreach ($tags as $ta) {
 								?>
@@ -68,7 +67,7 @@ get_header( 'shop' ); ?>
 			<div class="x-container">
 				<div class="presents__content">
 				<?php
-					$presents = get_field('presents');
+					$presents = get_field('presents',$myid);
 					$transition = 0;
 					if ($presents) {
 						foreach ($presents as $pp) {
@@ -86,31 +85,27 @@ get_header( 'shop' ); ?>
 			</div>
 		</div>
 		<div class="barent">
-			<?php
-				$cat = get_terms( 'product_cat');
-				if ($cat) {	
-					$a = 0;				
-					foreach ($cat as $ta) {
-						?>
-						<div class="imagen_cat">
-							<?php 
-								$idmarca = $ta->term_id;
-								$thumbnail_id = wp_get_attachment_url(get_term_meta( $idmarca, 'thumbnail_id', true ));	
-								if ($thumbnail_id && $a == 2) {
+				<?php
+				$cat = get_the_terms($myid,'product_cat', array( 'order' => 'DESC'));
+				if ($cat) {				
+					foreach ($cat as $ta) {								
+						$idmarca = $ta->term_id;
+						$thumbnail_id = wp_get_attachment_url(get_term_meta( $idmarca, 'thumbnail_id', true ));	
+						if ($thumbnail_id) {
+							if ($ta->parent == 24) {										
 							?>
-							<img src="<?php echo $thumbnail_id; ?>">
+							<div class="imagen_cat">
+								<img src="<?php echo $thumbnail_id; ?>">
+							</div>
 							<?php
-								}
-							?>
-						</div>
-						<?php
-						$a++;
+							}						
 						}
 					}
+				}
 				?>
 				<div class="title_barent">
-					<h1><?php the_title(); ?></h1>
-					<p><?php the_field('modelo'); ?></p>
+					<h1><?php echo get_the_title($myid); ?></h1>
+					<p><?php the_field('modelo',$myid); ?></p>
 				</div>
 				<div class="functss">
 					<a href="javascript:void(0)">
