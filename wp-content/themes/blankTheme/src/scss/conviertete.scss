@@ -1,0 +1,52 @@
+@import "utilities";
+@import "variables";
+
+section.anuncia{
+	height: 100vh;
+	overflow: hidden;
+	.contenedor{
+		.columnas{
+			.columna_izq{
+
+			}
+			.columna_der {
+			    position: absolute;
+			    top: 50%;
+			    right: 0;
+			    width: min-content;
+			    padding-right: 200px;
+			    transform: translateY(-50%);
+			    h1 {
+				    text-align: center;
+				    color: white;
+				    font-size: 40px;
+				}
+				h2 {
+				    font-size: 20px;
+				    text-align: center;
+				    color: white;
+				    margin: 10px 0;
+				}
+				p {
+				    color: white;
+				    text-align: center;
+				    margin-bottom: 15px;
+				}
+			    .back_contactos {
+				    width: 390px;
+				    background-color: rgba(120, 150, 100, .15);
+				    filter: blur(0px);
+				    height: auto;
+				    margin-right: 0px;
+				    p{
+				    	text-align: left;
+
+				    }
+				    .contact_flex {
+					    color: white;
+					}
+				}
+			}
+		}
+	}
+}

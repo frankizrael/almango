@@ -11,6 +11,12 @@ module.exports = function(env) {
             brands: "./src/entries/brands.js",
             store: "./src/entries/store.js",
             myaccount: "./src/entries/myaccount.js",
+            worknos: "./src/entries/worknos.js",
+            nosotros: "./src/entries/nosotros.js",
+            financiamiento: "./src/entries/financiamiento.js",
+            porquenosotros: "./src/entries/porquenosotros.js",
+            anuncia: "./src/entries/anuncia.js",
+            conviertete: "./src/entries/conviertete.js",
             car: "./src/entries/car.js"
         },
         target: "web",

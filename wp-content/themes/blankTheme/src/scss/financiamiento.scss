@@ -1,0 +1,36 @@
+@import "utilities";
+@import "variables";
+
+section.man_comment{
+	height: 800px;
+	overflow: hidden;
+	.contenedor{
+		.columnas{
+			img{
+				width: 100%;
+				position: relative;
+				top: -600px;
+			}
+			.columna_center{
+				position: absolute;
+				right: 400px;
+				top: 130px;
+				p {
+				    top: 50px;
+				    position: absolute;
+				    z-index: 2;
+				    font-size: 31px;
+				    font-family: 'ralewaymedium';
+				    min-width: 728px;
+				    left: -140px;
+				}
+				img{
+					position: relative;
+					top: 0;
+					width: 417px;
+
+				}
+			}
+		}
+	}
+}
