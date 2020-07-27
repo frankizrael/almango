@@ -144,7 +144,7 @@ $marcaTitle = get_the_title();
 							    'tax_query'             => array(
 							        array(
 							            'taxonomy'      => 'product_cat',
-							            'terms'         => get_field('marca')[0],
+							            'terms'         => get_field('marca'),
 							            'operator' => 'IN'
 							        )
 							    )
