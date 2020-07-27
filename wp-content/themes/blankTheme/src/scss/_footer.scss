@@ -1,6 +1,7 @@
 .subscription {
     display: flex;
     align-items: center;
+    overflow: hidden;
     .subscription_left, .subscription_right {
 	    position: relative;
 	    width: calc(50% - 250px);

@@ -141,6 +141,9 @@ a.dgwt-wcas-details-post-title, a.dgwt-wcas-details-product-title {
     font-size: 16px;
     padding: 5px 8px;
     border-radius: 5px;
+    a {
+    	color: #082630;
+    }
 }
 .x-container {
 	margin: auto;
@@ -149,10 +152,10 @@ a.dgwt-wcas-details-post-title, a.dgwt-wcas-details-product-title {
 		max-width: calc(100% - 300px);
 	}
 	@include maxw(mylaptop) {
-		max-width: calc(100% - 200px);
+		max-width: calc(100% - 160px);
 	}
 	@include maxw(laptop) {
-		max-width: calc(100% - 200px);
+		max-width: calc(100% - 160px);
 	}
 	@include maxw(tablet_p) {
 		max-width: calc(100% - 100px);

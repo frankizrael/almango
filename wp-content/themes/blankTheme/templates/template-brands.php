@@ -49,10 +49,19 @@ $marcaTitle = get_the_title();
 				</div>
 			</div>
 		</div>
+		<?php
+			if(get_field('video_banner_init')){
+				?>
+		<video autoplay muted loop id="myVideoInit">
+		  <source src="<?php the_field('video_banner_init'); ?>" type="video/mp4">
+		</video>
+				<?php
+			}
+		?>
 	</div>
 </section>
 <section class="banner fullheight_min">
-	<div class="swiper-container fullheight">
+	<div class="swiper-container fullheight_min">
 		<div class="swiper-wrapper">
 			<?php
 				$motos = get_field('motos');
@@ -61,15 +70,24 @@ $marcaTitle = get_the_title();
 						foreach($motos as $moto) {
 			?>
 				<div class="swiper-slide" data="0<?php echo $a; ?>">
-					<div class="fullheight initCore" style="background-image: url('<?php echo get_field('imagen_banner',$moto['id']); ?>');">
+					<div class="fullheight_min initCore" style="background-image: url('<?php echo get_field('imagen_banner',$moto['id']); ?>');">
 						<div class="absPost">
 							<div class="x-container">
 								<a href="<?php echo get_permalink($moto['id']); ?>">
 									<h2><?php echo get_the_title($moto['id']); ?></h2>
-									<p>Descúbrela<i style="background-image: url(<?php echo get_template_directory_uri(); ?>/src/assets/img/flecha-derecha.png);"></i></p>
+									<div class="descubrela"><p>Descúbrela</p><div><span class="indent" style="background-image: url(<?php echo get_template_directory_uri(); ?>/src/assets/img/flecha-derecha.png);"></span><span class="backen" style="background-image: url(<?php echo get_template_directory_uri(); ?>/src/assets/img/flecha-derecha.png);"></span></div></div>
 								</a>
 							</div>
 						</div>
+						<?php
+							if($moto['video']){
+								?>
+						<video autoplay muted loop id="myVideoInit">
+						  <source src="<?php echo $moto['video']; ?>" type="video/mp4">
+						</video>
+								<?php
+							}
+						?>
 					</div>
 				</div>
 			<?php
@@ -84,6 +102,15 @@ $marcaTitle = get_the_title();
 	</div>
 </section>
 <section class="banner-lineal" style="background-image: url(<?php echo get_field('banner-lineal'); ?>);">	
+	<?php
+		if(get_field('banner-video')){
+			?>
+	<video autoplay muted loop id="myVideoInit">
+	  <source src="<?php echo get_field('banner-video'); ?>" type="video/mp4">
+	</video>
+			<?php
+		}
+	?>
 </section>
 <div class="allModels">
 	<div class="x-container">
@@ -137,7 +164,7 @@ $marcaTitle = get_the_title();
 												<?php
 													} else {
 														?>
-												<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
+												<div class="decorative animationdecoration"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
 														<?php
 													}
 												?>
@@ -150,10 +177,10 @@ $marcaTitle = get_the_title();
 													</div>
 													<div class="myMoto__content">
 														<?php
-															if (get_field('descuento')) {
+															if (get_field('descuento',$myid)) {
 														?>
 														<div class="desct">
-															<span><?php the_field('descuento'); ?></span> DSCTO
+															<span><?php the_field('descuento',$myid); ?></span> DSCTO
 														</div>
 														<?php
 															}
@@ -165,7 +192,9 @@ $marcaTitle = get_the_title();
 																	foreach ($tags as $ta) {
 																		?>
 																		<div class="myTag">
-																			<?php echo $ta->name; ?>
+																			<a href="<?php echo get_category_link($ta->term_id); ?>">
+																				<?php echo $ta->name; ?>
+																			</a>
 																		</div>
 																		<?php		
 																	}
@@ -173,8 +202,8 @@ $marcaTitle = get_the_title();
 															?>
 														</div>
 														<div class="myMoto__title">
-															<h3><?php the_title(); ?></h3>
-															<p><?php the_field('modelo'); ?></p>
+															<h3><?php echo get_the_title($myid); ?></h3>
+															<p><?php the_field('modelo',$myid); ?></p>
 														</div>
 														<div class="myMoto_final">
 															<div class="myMoto__price">

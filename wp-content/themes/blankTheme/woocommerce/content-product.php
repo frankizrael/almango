@@ -24,7 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<li data="<?php echo $search_product; ?>" class="loop_single_prod">
 	<?php
 		$myid = get_the_ID();	
 		$term_obj_list = get_the_terms( $myid , 'product_cat' );
@@ -51,9 +51,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png"> Motos de la marca</div>
 			<?php
 				} else {
-				$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #EDF2EE 0%, #082630 100%) 0% 0% no-repeat padding-box;';
+				$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #4B5AFC 0%, #000000 100%) 0% 0% no-repeat padding-box;';
 					?>
-			<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
+			<div class="decorative animationdecoration"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
 					<?php
 				}
 			?>
@@ -81,7 +81,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 								foreach ($tags as $ta) {
 									?>
 									<div class="myTag">
-										<?php echo $ta->name; ?>
+										<a href="<?php echo get_category_link($ta->term_id); ?>">
+											<?php echo $ta->name; ?>
+										</a>
 									</div>
 									<?php		
 								}
