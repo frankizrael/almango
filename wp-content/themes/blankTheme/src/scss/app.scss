@@ -90,14 +90,14 @@ input {
     line-height: 20px;
 }
 .swiper-button-next {
-    right: -60px;
+    right: -60px !important;
 }
 .swiper-button-prev {
-    left: -60px;
+    left: -60px !important;
 }
 .swiper-button-prev, .swiper-button-next {
-    width: 44px;
-    background-size: cover;
+    width: 44px !important;
+    background-size: cover !important;
 }
 .dgwt-wcas-is-details .dgwt-wcas-suggestions-wrapp {
     overflow: hidden;
