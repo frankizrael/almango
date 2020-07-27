@@ -10,11 +10,4 @@ get_header();
 	endwhile;
 endif; ?>
 </div>
-<style type="text/css">
-	.single-page {		
-		max-width: 1100px;
-		margin: auto;
-		margin-top: 120px;
-	}
-</style>
 <?php get_footer();

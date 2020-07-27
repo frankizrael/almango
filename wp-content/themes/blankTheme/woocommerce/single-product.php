@@ -44,14 +44,16 @@ get_header( 'shop' ); ?>
 				<div class="presents__content">
 				<?php
 					$presents = get_field('presents');
+					$transition = 0;
 					if ($presents) {
 						foreach ($presents as $pp) {
 					?>
-				<div class="item_presnts">
+				<div class="item_presnts" style="transition-delay: 0.<?php echo $transition; ?>s; ">
 					<img src="<?php echo $pp['imagen']; ?>">
 					<p><?php echo $pp['text']; ?></p>
 				</div>
 					<?php
+					$transition = $transition + 2;
 						}
 					}
 				?>
@@ -61,16 +63,23 @@ get_header( 'shop' ); ?>
 		<div class="barent">
 			<?php
 				$cat = get_terms( 'product_cat');
-				if ($tags) {
-					foreach ($tags as $ta) {
+				if ($cat) {	
+					$a = 0;				
+					foreach ($cat as $ta) {
 						?>
 						<div class="imagen_cat">
 							<?php 
-								$thumbnail_id = wp_get_attachment_url(get_term_meta( 25, 'thumbnail_id', true ));						
+								$idmarca = $ta->term_id;
+								$thumbnail_id = wp_get_attachment_url(get_term_meta( $idmarca, 'thumbnail_id', true ));	
+								if ($thumbnail_id && $a == 3) {
 							?>
 							<img src="<?php echo $thumbnail_id; ?>">
+							<?php
+								}
+							?>
 						</div>
 						<?php
+						$a++;
 						}
 					}
 				?>
@@ -97,23 +106,46 @@ get_header( 'shop' ); ?>
 				</div>
 				<div class="prices">
 					<div class="prices_html">
+            			<?php
+							if (get_field('descuento', get_the_ID() )) {
+						?>
+						<div class="desct">
+							<span><?php the_field('descuento', get_the_ID() ); ?></span> DSCTO
+						</div>
 						<?php
-                			$_my_product = wc_get_product( get_the_ID() );
-                			echo $_my_product->get_price_html(); 
-                		?>
+							}
+						?>
+                		<div class="prices_html__price">
+							<?php
+								$product = wc_get_product( get_the_ID() );
+								echo $product->get_price_html();
+							?>
+						</div>
+						<div class="prices_html__mPrice">
+							<span class="pp">Otro medio de pago</span>
+							<span class="bb">
+								<?php
+									$porcentaje = get_field('porcentaje_conversion','options');
+									$price = $product->get_price();
+									$price_new = $porcentaje*$price;
+									echo get_woocommerce_currency_symbol();
+									echo $price_new;
+								?>
+							</span>
+						</div>
 					</div>
-					<p>TIPO DE CAMBIO DEL DÍA S/. 3.41</p>
-				</div>
-				<div class="buttonAdd">
-					<?php
-						$id = get_the_ID();						
-						echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
-					?>
+					<div class="buttonAdd">
+						<?php
+							$id = get_the_ID();						
+							echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
+						?>
+					</div>
+					<p>TIPO DE CAMBIO DEL DÍA S/. <?php echo get_field('tipo_cambio','options'); ?></p>
 				</div>
 		</div>
 	</div>
 </section>
-<section class="banner" style="background-image: url(<?php echo get_field('imagen_parallax'); ?>);">	
+<section id="singlebanner" class="banner" style="background-image: url(<?php echo get_field('imagen_parallax'); ?>);">	
 </section>
 <section class="presures_b">
 	<div class="left_title">

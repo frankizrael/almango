@@ -144,7 +144,7 @@
   }
 }
 .contentModels {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
     position: relative;
 }
@@ -158,10 +158,12 @@
 }
 .allModels {
     padding: 60px 0px;
+    right: 0px;
 	.modelsChange {
 	    display: flex;
 	    align-items: center;
 	    right: 0px;
+    	z-index: 2;
 	    p {
 		    font-size: 20px;
 		    margin-right: 10px;
@@ -290,6 +292,18 @@
 		&__content {
 		    padding: 10px 15px;
 		    background: white;
+		    position: relative;
+		    .desct {
+			    position: absolute;
+			    font-family: 'heebo';
+			    background: #ED1E1E;
+			    color: white;
+			    top: -10px;
+			    z-index: 5;
+			    right: -10px;
+			    padding: 2px 25px;
+			    border-radius: 7px;
+			}
 		}
 		.myMoto_final {
 		    margin-top: 10px;
@@ -385,6 +399,44 @@
 				    border-bottom-left-radius: 20px;
 			    }
 			}
+		}
+	}
+}
+.listaView {
+	.swiper-button-prev, .swiper-button-next { display: none; }
+	.swiper-wrapper {
+		display: block;
+		.swiper-slide {
+			width: calc(50% - 30px);
+		    float: left;
+		    margin-right: 30px;
+		    padding-bottom: 20px;
+		    .myloopWooProducts {
+		    	.myMoto {
+		    		width: 100%;
+		    		border-radius: 0px;
+    				display: flex;
+    				border-bottom-left-radius: 25px;
+    				&__img {
+    					width: calc(50% - 20px);    					
+					    border-top-right-radius: 0px;
+					    border-bottom-left-radius: 25px;
+					    flex: none;
+    				}
+    				&__content {
+    					width: calc(50% + 20px);	
+    					padding-left: 40px;
+					    flex: none;
+					    box-sizing: border-box;
+    				}
+    				.desct {
+					    right: auto;
+					    left: -70px;
+					    top: auto;
+					    bottom: -20px;
+					}
+		    	}
+		    }
 		}
 	}
 }

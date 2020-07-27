@@ -117,19 +117,30 @@ $marcaTitle = get_the_title();
 							    'tax_query'             => array(
 							        array(
 							            'taxonomy'      => 'product_cat',
-							            'terms'         => 25,
+							            'terms'         => get_field('marca')[0],
 							            'operator' => 'IN'
 							        )
 							    )
-							);
+							);							
 							$products = new WP_Query($args);
 							if( $products->have_posts() ) {
 								while ($products->have_posts()) : $products->the_post();
+									$myid = get_the_ID();
 									?>
 									<div class="swiper-slide">
 										<div class="myloopWooProducts">
 											<a href="<?php echo get_permalink(); ?>">
+												<?php
+													if(is_featured_product($myid) == 0) {
+												?>
 												<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png"> Motos de la marca</div>
+												<?php
+													} else {
+														?>
+												<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
+														<?php
+													}
+												?>
 												<div class="myMoto">
 													<div class="myMoto__img" style="background: transparent radial-gradient(closest-side at 50% 50%, #EDF2EE 0%, #082630 100%) 0% 0% no-repeat padding-box;">										
 														<div class="myMoto__title">
@@ -138,6 +149,15 @@ $marcaTitle = get_the_title();
 														<img src="<?php echo get_the_post_thumbnail_url(); ?>">
 													</div>
 													<div class="myMoto__content">
+														<?php
+															if (get_field('descuento')) {
+														?>
+														<div class="desct">
+															<span><?php the_field('descuento'); ?></span> DSCTO
+														</div>
+														<?php
+															}
+														?>
 														<div class="myMoto__tags">
 															<?php 
 																$tags = get_terms( 'product_tag');
