@@ -21,6 +21,11 @@
 		    transform: translateY(-5px);
 		    opacity: 0;
 		}
+		.imagen {
+			img {
+			    max-width: 250px;
+			}
+		}
 		.title-x {
 		    position: absolute;
 		    left: 0px;
