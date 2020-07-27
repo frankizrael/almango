@@ -772,12 +772,15 @@ section#woocommerce_layered_nav-3 ul li span.count {
 	    z-index: 1;
 	}
 	.banner {
-	    height: auto;
+	    height: 350px;
 	    background-size: cover;
 	    background-position: center;
 	    background-attachment: fixed;
 	    overflow: hidden;
 	    position: relative;
+	    &#videoBanner {
+	    	height: auto;
+	    }
 	    .video {
 	    	opacity: 0;
 	    	transition: 0.3s;

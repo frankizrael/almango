@@ -209,6 +209,15 @@ get_header( 'shop' ); ?>
 	</div>
 </div>
 <section id="singlebanner" class="banner" style="background-image: url(<?php echo get_field('imagen_parallax'); ?>);">	
+	<?php
+		if(get_field('video_inicial')){
+			?>
+		<video muted loop id="video_inicial">
+		  <source src="<?php echo get_field('video_inicial'); ?>" type="video/mp4">
+		</video>
+			<?php
+		}
+	?>
 </section>
 <section class="presures_b" id="presures">
 	<div class="left_title">
@@ -435,6 +444,15 @@ get_header( 'shop' ); ?>
 	</div>
 </section>
 <section class="banner" style="background-image: url(<?php echo get_field('imagen_parallax_2'); ?>);">	
+	<?php
+		if(get_field('video_inicial_2')){
+			?>
+		<video muted loop id="video_inicial_2">
+		  <source src="<?php echo get_field('video_inicial_2'); ?>" type="video/mp4">
+		</video>
+			<?php
+		}
+	?>
 </section>
 <section class="section-snith" id="second_tab">
 	<div class="section-snith__core">
