@@ -1909,6 +1909,11 @@ section#woocommerce_layered_nav-3 ul li span.count {
 			    filter: grayscale(1);
 			    transition: 0.3s;
 			}
+			&:hover { 
+				img {
+					filter: grayscale(0);
+				}
+			}
 	    }
 	}
 }
