@@ -198,12 +198,14 @@ section {
 	    	height: 130px;
 		}
 	    img {
-		    height: 100px;
+		    height: 80px;
 		    width: auto;
 		    position: relative;
 		    top: -5px;
+		    object-fit: contain;
+		    padding: 10px;
 		    @include maxw(mylaptop) {
-		    	height: 80px;
+		    	height: 60px;
 		    }
 		}
 	}
