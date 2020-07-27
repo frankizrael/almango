@@ -16,7 +16,7 @@ $marcaTitle = get_the_title();
 							<div class="flex align-items-center">
 								<div class="imagen">
 									<?php
-										$thumbnail_id = wp_get_attachment_url(get_term_meta( get_field('marca')[0], 'thumbnail_id', true ));
+										$thumbnail_id = wp_get_attachment_url(get_term_meta( get_field('marca'), 'thumbnail_id', true ));
 									?>
 									<img src="<?php echo $thumbnail_id; ?>">
 								</div>
@@ -221,7 +221,7 @@ $marcaTitle = get_the_title();
 																		$price = $product->get_price();
 																		$price_new = $porcentaje*$price;
 																		echo get_woocommerce_currency_symbol();
-																		echo $price_new;
+																		echo asDollars($price_new);
 																	?>
 																</span>
 															</div>

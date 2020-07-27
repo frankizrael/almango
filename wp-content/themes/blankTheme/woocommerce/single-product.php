@@ -154,7 +154,7 @@ get_header( 'shop' ); ?>
 									$price = $product->get_price();
 									$price_new = $porcentaje*$price;
 									echo get_woocommerce_currency_symbol();
-									echo $price_new;
+									echo asDollars($price_new);
 								?>
 							</span>
 						</div>

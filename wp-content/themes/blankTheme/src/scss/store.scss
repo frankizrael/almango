@@ -864,7 +864,7 @@ section#woocommerce_layered_nav-3 ul li span.count {
 			.ventaja_img {
 			    height: 100%;
 			    transition: 0.3s;
-			    img {
+			    img, video {
 				    width: 100%;
 				    height: 100%;
 				    object-fit: cover;
@@ -1657,7 +1657,7 @@ section#woocommerce_layered_nav-3 ul li span.count {
 			    }
 			}
 			&__4 {
-			    top: 136px;
+			    top: 180px;
     			right: 40px;
     			.svg_flex {
     				overflow: hidden;
@@ -1689,9 +1689,9 @@ section#woocommerce_layered_nav-3 ul li span.count {
     			}
 			    .svg_a {
 			    	svg {
-					    height: 148px;
-					    width: 58px;
-					    margin-right: 5px;
+					    height: 86px;
+					    width: 35px;
+					    margin-left: 5px;
 					}
 			    }
 			    &.animation {
