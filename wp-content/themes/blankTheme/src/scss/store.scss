@@ -661,6 +661,9 @@ section#woocommerce_layered_nav-3 ul li span.count {
 		    font-family: 'heebo';
 		    font-size: 15px;
 		    line-height: 25px;
+		    p {
+		    	text-align: justify;
+		    }
 		}
 		.prices_html__mPrice {
 		    display: flex;
