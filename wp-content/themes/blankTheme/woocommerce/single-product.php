@@ -987,7 +987,18 @@ get_header( 'shop' ); ?>
 		</div>		
 	</div>
 	<div class="allgrid">
-		<?php the_field('grid_shortcode');?>
+		<?php
+			$lit = get_field('grid');
+			if ($lit){
+				foreach ($lit as $li) {
+					?>
+		<div class="list_grid">
+			<img src="<?php echo $li['list']; ?>">
+		</div>
+					<?php
+				}
+			}
+		?>
 	</div>
 </section>
 <?php get_footer( 'shop' );
