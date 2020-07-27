@@ -212,7 +212,7 @@ get_header( 'shop' ); ?>
 	<?php
 		if(get_field('video_inicial')){
 			?>
-		<video muted loop id="video_inicial">
+		<video autoplay muted loop id="video_inicial">
 		  <source src="<?php echo get_field('video_inicial'); ?>" type="video/mp4">
 		</video>
 			<?php
@@ -970,7 +970,7 @@ get_header( 'shop' ); ?>
 		if(get_field('banner-video')){
 			?>
 	<div class="video" id="videoInside">
-		<video autoplay muted loop id="bannerVideo">
+		<video muted loop id="bannerVideo">
 		  <source src="<?php echo get_field('banner-video'); ?>" type="video/mp4">
 		</video>
 	</div>
