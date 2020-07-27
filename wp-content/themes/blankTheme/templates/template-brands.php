@@ -156,7 +156,6 @@ $marcaTitle = get_the_title();
 									?>
 									<div class="swiper-slide">
 										<div class="myloopWooProducts">
-											<a href="<?php echo get_permalink(); ?>">
 												<?php
 													if(is_featured_product($myid) == 0) {
 												?>
@@ -169,11 +168,13 @@ $marcaTitle = get_the_title();
 													}
 												?>
 												<div class="myMoto">
-													<div class="myMoto__img" style="background: transparent radial-gradient(closest-side at 50% 50%, #EDF2EE 0%, #082630 100%) 0% 0% no-repeat padding-box;">										
-														<div class="myMoto__title">
-															<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
-														</div>
-														<img src="<?php echo get_the_post_thumbnail_url(); ?>">
+													<div class="myMoto__img" style="background: transparent radial-gradient(closest-side at 50% 50%, #EDF2EE 0%, #082630 100%) 0% 0% no-repeat padding-box;">
+														<a href="<?php echo get_permalink(); ?>">								
+															<div class="myMoto__title">
+																<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
+															</div>
+															<img src="<?php echo get_the_post_thumbnail_url(); ?>">
+														</a>
 													</div>
 													<div class="myMoto__content">
 														<?php
@@ -243,7 +244,6 @@ $marcaTitle = get_the_title();
 														</div>
 													</div>
 												</div>
-											</a>
 										</div>
 									</div>
 									<?php

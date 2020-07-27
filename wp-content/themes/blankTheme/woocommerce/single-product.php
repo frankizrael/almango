@@ -895,7 +895,7 @@ get_header( 'shop' ); ?>
 									<div class="bb__item addPowe">
 										<h5><?php echo $li['title']; ?></h5>
 										<div class="desc">
-											<span class="number <?php if($li['number_effect']) { echo 'effectnumber'; } ?>"><?php echo $li['number']; ?></span>
+											<span class="number <?php if($li['number_effect']) { echo 'effectnumber'; } ?>" data="<?php echo $li['number']; ?>"><?php echo $li['number']; ?></span>
 											<?php if ($li['atrib'] ){ ?>
 											<span class="atrib"><?php echo $li['atrib']; ?></span>
 											<?php } ?>

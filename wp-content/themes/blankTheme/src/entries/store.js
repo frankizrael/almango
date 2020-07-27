@@ -77,6 +77,14 @@ if ($('body').hasClass('single-product')) {
 	})
 	.addTo(controller);
 	//
+	let scene_3_1 = new ScrollMagic.Scene({
+	triggerElement: "#there_tab"
+	})
+	.on("start", function() {
+	    countNumbers($('#there_tab'));
+	})
+	.addTo(controller);
+	//
 	let scene_4 = new ScrollMagic.Scene({
 	triggerElement: "#dimensiones"
 	})
@@ -285,6 +293,7 @@ $('.fren_js').on('click',function(){
 		$(data).find('img').addClass('imgActive');
 		$(data).find('video').addClass('imgActive');
 	},200);
+	countNumbers($('#there_tab'));
 });
 $('.fren_js').eq(0).trigger('click');
 

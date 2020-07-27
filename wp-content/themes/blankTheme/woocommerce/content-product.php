@@ -91,8 +91,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 						?>
 					</div>
 					<div class="myMoto__title">
-						<h3><?php the_title(); ?></h3>
-						<p><?php the_field('modelo'); ?></p>
+						<h3><?php echo get_the_title($myid); ?></h3>
+						<p><?php the_field('modelo',$myid); ?></p>
 					</div>				
 					<div class="myMoto_final">
 						<div class="myMoto__price">
