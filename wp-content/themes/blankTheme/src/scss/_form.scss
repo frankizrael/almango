@@ -2,6 +2,153 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+.wpcf7 .wpcf7-form{
+	padding: 20px !important;
+	h2{
+	text-align: center;
+	font-family: 'Raleway';
+	}
+	.contact_flex{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+	font-size: 15px;
+	font-family: 'ralewaysemibold';
+	text-align: left;
+	text-transform: uppercase;
+	#celular{
+		position: relative;
+		width: 45%;
+		overflow: hidden;
 
+		&:before {
+		    position: relative;
+		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/mobile-phone@2x.png);
+		    content: '';
+		    width: 25px;
+		    height: 25px;
+		    background-size: contain;
+		    display: inline-block;
+		    top: 2px;
+		    left: 0;
+		}
+	}
+	#correo{
+		position: relative;
+		width: 45%;
+		&:before {
+		    position: relative;
+		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/multimedia@2x.png);
+		    content: '';
+		    width: 25px;
+		    height: 25px;
+		    background-size: contain;
+		    display: inline-block;
+		    top: 2px;
+		    left: 0;
+		}
+	}
+	}
+	span.wpcf7-form-control-wrap.your-email {
+		width: 100%;
+	}
+	p{
+	font-size: 15px;
+	font-family: 'ralewaysemibold';
+	text-align: left;
+	text-transform: uppercase;
+	label{
+	    position: relative;
+	    display: block;
+	    &#nombre{
+	    	&:before {
+		    position: relative;
+			    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/avatar@2x.png);
+			    content: '';
+			    width: 25px;
+			    height: 25px;
+			    background-size: contain;
+			    display: inline-block;
+			    top: 2px;
+			    left: 0;
+			    margin-right: 10px;
+			}
+		}
+		&#linkedin{
+			margin-top: 15px;
+	    	&:before {
+			    position: relative;
+			    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/linkedin@2x.png);
+			    content: '';
+			    width: 25px;
+			    height: 25px;
+			    background-size: contain;
+			    display: inline-block;
+			    top: 2px;
+			    left: 0;
+			    margin-right: 10px;
+			}
+		}
+		&#interes{
+	    	&:before {
+		    position: relative;
+		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/jigsaw@2x.png);
+		    content: '';
+		    width: 25px;
+		    height: 25px;
+		    background-size: contain;
+		    display: inline-block;
+		    top: 2px;
+		    left: 0;
+		    margin-right: 10px;
+			}
+		}
+		&#curriv{
+	    	&:before {
+		    position: relative;
+		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/businessman@2x.png);
+		    content: '';
+		    width: 25px;
+		    height: 25px;
+		    background-size: contain;
+		    display: inline-block;
+		    top: 2px;
+		    left: 0;
+		    margin-right: 10px;
+			}
+		}
+	}
+	}
+	input {
+	font-family: 'ralewayregular';
+	background: transparent;
+	border: unset;
+	border-bottom: 1px solid #4F4D4D;
+	width: 100%;
+	text-align: center;
+	}
+	select.wpcf7-form-control.wpcf7-select {
+	width: 100%;
+	background: transparent;
+	border: unset;
+	border-bottom: 1px solid #4F4D4D;
+	}
+	input.wpcf7-form-control.wpcf7-file {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	}
+	input.wpcf7-form-control.wpcf7-submit {
+	background: #FF9F32 !important;
+	display: block;
+	position: absolute;
+	color: white;
+	max-width: 279px;
+	margin: 0 auto;
+	height: 56px;
+	bottom: -28px;
+	left: 50%;
+	transform: translateX(-50%);
+	}
 }
 

@@ -1,0 +1,58 @@
+section.trabaja_nosotros {
+  margin-top: 130px;
+  background: transparent linear-gradient(186deg, #BD90FF 0%, #4BF0FC 100%) 0% 0% no-repeat padding-box; }
+  section.trabaja_nosotros .contenedor {
+    width: calc(100% - 200px);
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 69px; }
+    section.trabaja_nosotros .contenedor .columnas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      section.trabaja_nosotros .contenedor .columnas .columna_center {
+        width: 100%;
+        padding-left: 100px; }
+        section.trabaja_nosotros .contenedor .columnas .columna_center h1 {
+          font-size: 30px;
+          margin-bottom: 32PX; }
+        section.trabaja_nosotros .contenedor .columnas .columna_center p {
+          max-width: 789px;
+          font-size: 20px; }
+      section.trabaja_nosotros .contenedor .columnas .col-izq {
+        width: calc(100% - 490px);
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        height: 332px;
+        margin-top: 150px; }
+        section.trabaja_nosotros .contenedor .columnas .col-izq .img_girl {
+          width: 30%;
+          position: relative;
+          max-width: 332px; }
+          section.trabaja_nosotros .contenedor .columnas .col-izq .img_girl img {
+            width: 100%; }
+          section.trabaja_nosotros .contenedor .columnas .col-izq .img_girl .arrow_img {
+            position: absolute;
+            bottom: -40px;
+            right: -90px;
+            width: 146px; }
+        section.trabaja_nosotros .contenedor .columnas .col-izq .img_text {
+          width: calc(100% - 772px); }
+        section.trabaja_nosotros .contenedor .columnas .col-izq .img_boy {
+          width: 30%;
+          position: relative;
+          max-width: 332px; }
+          section.trabaja_nosotros .contenedor .columnas .col-izq .img_boy img {
+            width: 100%; }
+          section.trabaja_nosotros .contenedor .columnas .col-izq .img_boy .arrow_img {
+            position: absolute;
+            top: -40px;
+            left: -50px;
+            width: 144px; }
+      section.trabaja_nosotros .contenedor .columnas .col-der .back_contactos {
+        width: 390px;
+        background-color: rgba(255, 255, 255, 0.3);
+        filter: blur(0px);
+        height: auto;
+        margin-right: 100px; }

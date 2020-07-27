@@ -10,7 +10,13 @@ module.exports = function(env) {
             home: "./src/entries/home.js",
             brands: "./src/entries/brands.js",
             store: "./src/entries/store.js",
-            myaccount: "./src/entries/myaccount.js"
+            myaccount: "./src/entries/myaccount.js",
+            worknos: "./src/entries/worknos.js",
+            nosotros: "./src/entries/nosotros.js",
+            financiamiento: "./src/entries/financiamiento.js",
+            porquenosotros: "./src/entries/porquenosotros.js",
+            anuncia: "./src/entries/anuncia.js",
+            conviertete: "./src/entries/conviertete.js"
         },
         target: "web",
         mode: env.NODE_ENV,

@@ -1,0 +1,102 @@
+@import "utilities";
+@import "variables";
+
+section.quienes_somos{
+	margin-top: 130px;
+	background: transparent linear-gradient(186deg, #BD90FF 0%, #4BF0FC 100%) 0% 0% no-repeat padding-box;
+	.contenedor{
+		width: calc(100% - 200px);
+		margin: 0 auto;
+		padding-top: 40px;
+		padding-bottom: 69px; 
+		
+		.columnas{
+			display: flex;
+		    flex-wrap: wrap;
+		    justify-content: space-between;
+			.columna_center{
+				width: 100%;
+				padding-left: 100px;
+				h1{
+					font-size: 30px;
+					margin-bottom: 32PX;
+					text-align: center;
+				}
+				p{
+				    max-width: 1275px;
+				    font-size: 20px;
+				    margin: 0 auto;
+				    text-align: center;
+				    width: 80%;
+
+				}
+			}
+			.columna_center_equipo{
+				width: 100%;
+				.titulo_equipo {
+				    display: flex;
+				    align-items: initial;
+				    justify-content: center;
+				    padding-top: 25px;
+				    h2 {
+					    padding-top: 10px;
+					    font-size: 30PX;
+					    font-family: 'Raleway';
+					    font-weight: 700;
+					}
+				    img {
+					    width: 252px;
+					}
+				}	
+				.grid_equipo {
+					margin-top: 12PX;
+				    width: 57%;
+				    margin: 0 auto;
+				    display: flex;
+				    flex-wrap: wrap;
+				    justify-content: space-between;
+				    align-items: center;
+				    p{
+				    	font-family: 'bulgatti';
+					    position: absolute;
+					    top: 50%;
+					    font-size: 21px;
+					    right: -18px;
+					    font-weight: 600;
+					    transform: translateY(-50%);
+				    }
+				    img{
+				    	width: 100%;
+				    }
+				    .fernando{
+					    	width: 230px;
+					    	position: relative;
+					    	p{
+					    		top: 50%;
+					    		right: -100px;
+					    	}
+					    }
+				    .element_equipo{
+				    	margin: 0 76px 0 55px; 
+				    	.melissa,.luciano{
+					    	width: 312px;
+					    	position: relative;
+					    	margin-top: 22px;
+					    }
+				    }
+				    .pedro{
+				    	width: 288px;
+				    	position: relative;
+				    	p{
+						    right: 50%;
+						    transform: translateX(50%);
+						    top: 10px;
+				    	}
+				    }
+
+
+				}			
+			}
+		}
+	}
+}
