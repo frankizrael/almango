@@ -124,6 +124,11 @@ section {
 		    top: 0px;
 		    left: 50%;
 		    margin-left: -80px;
+		    @include maxw(mylaptop) {
+				width: 130px;
+		    	height: 130px;
+		    	margin-left: -65px;
+			}
 		}
 	}
 	img {
@@ -133,6 +138,14 @@ section {
 	    margin: 30px;
 	    margin-top: 45px;
 	    margin-bottom: 50px;
+	    @include maxw(mylaptop) {
+	    	height: 50px;
+		    width: auto;
+		    background: white;
+		    margin: 25px;
+		    margin-top: 45px;
+		    margin-bottom: 45px;
+	    }
 	}
 	p {
 	    font-size: 12px;
@@ -180,11 +193,20 @@ section {
 	    display: flex;
 	    align-items: center;
 	    justify-content: center;
+	    @include maxw(mylaptop) {
+			width: 130px;
+	    	height: 130px;
+		}
 	    img {
-		    height: 100px;
+		    height: 80px;
 		    width: auto;
 		    position: relative;
 		    top: -5px;
+		    object-fit: contain;
+		    padding: 10px;
+		    @include maxw(mylaptop) {
+		    	height: 60px;
+		    }
 		}
 	}
 }
@@ -277,7 +299,7 @@ section {
 			&.heightbanner {
 				a {
 					display: block;
-	    			height: 455px;
+	    			height: 410px;
 	    			img {
 					    width: 100%;
 					    height: 100%;
@@ -343,26 +365,71 @@ section {
 			    left: 200px;
 			    position: absolute;
 			    top: -30px;
+			    @include maxw(mypc) {
+			   	 	left: 100px;
+				}
+				@include maxw(mylaptop) {
+			    	left: 80px;
+				}
+				@include maxw(laptop) {
+			    	left: 50px;
+				}
 			}
 			&:nth-child(2) {
 				right: -120px;
 			    position: absolute;
 			    bottom: 10px;
+			    @include maxw(mypc) {
+			   	 	right: -80px;
+				}
+				@include maxw(mylaptop) {
+			    	right: -40px;
+				}
+				@include maxw(laptop) {
+			    	right: -20px;
+				}
 			}
 			&:nth-child(3) {
 				left: 45%;
 			    position: absolute;
 			    bottom: -20px;
+			    @include maxw(mypc) {
+			   	 	left: 35%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 25%;
+				}
+				@include maxw(laptop) {
+			    	left: 15%;
+				}
 			}
 			&:nth-child(4) {
 				right: 275px;
 			    position: absolute;
 			    top: -20px;
+			    @include maxw(mypc) {
+			   	 	right: 200px;
+				}
+				@include maxw(mylaptop) {
+			    	right: 100px;
+				}
+				@include maxw(laptop) {
+			    	right: 40px;
+				}
 			}
 			&:nth-child(5) {
 				left: 42%;
 			    position: absolute;
 			    top: 45px;
+			    @include maxw(mypc) {
+			   	 	left: 32%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 22%;
+				}
+				@include maxw(laptop) {
+			    	left: 12%;
+				}
 			}
 	    }
 	}
@@ -381,26 +448,71 @@ section {
 				left: 350px;
 			    position: absolute;
 			    top: -25px;
+			    @include maxw(mypc) {
+			   	 	left: 250px;
+				}
+				@include maxw(mylaptop) {
+			    	left: 180px;
+				}
+				@include maxw(laptop) {
+			    	left: 70px;
+				}
 			}
 			&:nth-child(2) {
 				right: 200px;
 			    position: absolute;
 			    bottom: 10px;
+			    @include maxw(mypc) {
+			   	 	right: 100px;
+				}
+				@include maxw(mylaptop) {
+			    	right: 50px;
+				}
+				@include maxw(laptop) {
+			    	right: 10px;
+				}
 			}
 			&:nth-child(3) {
 				left: 45%;
 			    position: absolute;
 			    bottom: -20px;
+			    @include maxw(mypc) {
+			   	 	left: 35%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 25%;
+				}
+				@include maxw(laptop) {
+			    	left: 15%;
+				}
 			}
 			&:nth-child(4) {
 			    left: -175px;
 			    position: absolute;
 			    bottom: 0px;
+			    @include maxw(mypc) {
+			   	 	right: -120px;
+				}
+				@include maxw(mylaptop) {
+			    	right: -80px;
+				}
+				@include maxw(laptop) {
+			    	right: -30px;
+				}
 			}
 			&:nth-child(5) {
 				left: 42%;
 			    position: absolute;
 			    top: 45px;
+			    @include maxw(mypc) {
+			   	 	left: 32%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 22%;
+				}
+				@include maxw(laptop) {
+			    	left: 12%;
+				}
 			}
 	    }
 	}

@@ -230,3 +230,7 @@ function add_company_data_field($address_fields)
     }
     return $address_fields;
 }
+
+function asDollars($value) {
+return number_format($value, 0);
+}

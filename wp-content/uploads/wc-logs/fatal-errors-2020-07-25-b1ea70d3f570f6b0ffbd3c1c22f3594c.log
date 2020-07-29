@@ -1,0 +1,8 @@
+2020-07-25T14:14:10+00:00 CRITICAL Uncaught Error: Call to undefined function get_title() in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\templates\template-brands.php:176
+Stack trace:
+#0 C:\xampp\htdocs\almango\wp-includes\template-loader.php(78): include()
+#1 C:\xampp\htdocs\almango\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\almango\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\templates\template-brands.php on line 176
+

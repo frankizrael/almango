@@ -43,7 +43,7 @@ get_header( 'shop' );
 						</aside>
 					</div>
 					<div class="right">
-						<div class="allproducts">
+						<div class="allproducts" id="products_all">
 							<?php
 								if ( woocommerce_product_loop() ) {
 
@@ -57,8 +57,10 @@ get_header( 'shop' );
 									do_action( 'woocommerce_before_shop_loop' );
 
 									woocommerce_product_loop_start();
-
 									if ( wc_get_loop_prop( 'total' ) ) {
+										$search_product = 0;
+										$aux = 0;
+										$banners_pub = get_field('banners_publicidad','options');
 										while ( have_posts() ) {
 											the_post();
 
@@ -68,6 +70,27 @@ get_header( 'shop' );
 											do_action( 'woocommerce_shop_loop' );
 
 											wc_get_template_part( 'content', 'product' );
+
+											if ($search_product == 5) {
+												$aux = 1;
+												?>
+												<li class="flex-banner-prod" style="background-image: url('<?php echo $banners_pub[0]["img"]; ?>');">													
+												</li>
+												<?php
+											} else {
+												if ($search_product > 5) {
+													$valor_aux = 3*$aux+5;
+													if ($search_product == $valor_aux) {
+														?>
+														<li class="flex-banner-prod" style="background-image: url('<?php echo $banners_pub[$aux]["img"]; ?>');">
+														</li>
+														<?php
+														$aux++;
+													}													
+												}
+											}
+
+											$search_product++;
 										}
 									}
 
