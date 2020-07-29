@@ -11,16 +11,18 @@ module.exports = function(env) {
             brands: "./src/entries/brands.js",
             store: "./src/entries/store.js",
             myaccount: "./src/entries/myaccount.js",
-<<<<<<< HEAD
             worknos: "./src/entries/worknos.js",
             nosotros: "./src/entries/nosotros.js",
             financiamiento: "./src/entries/financiamiento.js",
             porquenosotros: "./src/entries/porquenosotros.js",
             anuncia: "./src/entries/anuncia.js",
-            conviertete: "./src/entries/conviertete.js"
-=======
-            car: "./src/entries/car.js"
->>>>>>> 78b394b6e6463232025539cd3ef5874f559c7495
+            conviertete: "./src/entries/conviertete.js",
+            preguntasfrecuentes: "./src/entries/preguntasfrecuentes.js",
+            activacioncuenta: "./src/entries/activacioncuenta.js",
+            passwordolvidada: "./src/entries/passwordolvidada.js",
+            car: "./src/entries/car.js",
+            informacionlegal: "./src/entries/terminosycondiciones.js"
+
         },
         target: "web",
         mode: env.NODE_ENV,
