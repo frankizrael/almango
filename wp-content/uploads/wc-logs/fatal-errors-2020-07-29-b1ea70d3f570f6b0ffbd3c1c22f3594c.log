@@ -1,0 +1,8 @@
+2020-07-29T00:40:44+00:00 CRITICAL Uncaught Error: Call to undefined function get_fiel() in G:\htdocs\almango\wp-content\themes\blankTheme\templates\template-terminosycondiciones.php:6
+Stack trace:
+#0 G:\htdocs\almango\wp-includes\template-loader.php(78): include()
+#1 G:\htdocs\almango\wp-blog-header.php(19): require_once('G:\\htdocs\\alman...')
+#2 G:\htdocs\almango\index.php(17): require('G:\\htdocs\\alman...')
+#3 {main}
+  thrown in G:\htdocs\almango\wp-content\themes\blankTheme\templates\template-terminosycondiciones.php on line 6
+

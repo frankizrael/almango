@@ -1,0 +1,2 @@
+import "../scss/terminosycondiciones.scss";
+
