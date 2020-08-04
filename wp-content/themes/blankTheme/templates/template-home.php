@@ -117,7 +117,7 @@ get_header();
 				<div class="swiper-wrapper">
 					<?php
 		                $taxonomyName = "product_cat"; 
-		                $parent_terms = get_terms( $taxonomyName, array( 'parent' => 24, 'orderby' => 'slug', 'hide_empty' => false ) );
+		                $parent_terms = get_terms( $taxonomyName, array( 'parent' => 67, 'orderby' => 'slug', 'hide_empty' => false ) );
 		                $a = 0;
 		                foreach ( $parent_terms as $pterm ) {
 		                    $thumbnail_id = wp_get_attachment_url(get_term_meta( $pterm->term_id, 'thumbnail_id', true ));
