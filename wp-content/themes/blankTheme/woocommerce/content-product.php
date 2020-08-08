@@ -43,95 +43,95 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		$marcaTitle = $terms_name[2];	
 	?>
 	<div class="myloopWooProducts">
-		<a href="<?php echo get_permalink(); ?>">
-			<?php
-				if(is_featured_product($myid) == 0) {					
-				$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #F9F1E8 0%, #FF9F32 100%) 0% 0% no-repeat padding-box;';
-			?>
-			<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png"> Motos de la marca</div>
-			<?php
-				} else {
-				$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #4B5AFC 0%, #000000 100%) 0% 0% no-repeat padding-box;';
-					?>
-			<div class="decorative animationdecoration"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
-					<?php
-				}
-			?>
-			<div class="myMoto">
-				<div class="myMoto__img" style="<?php echo $background_side; ?>">										
-					<div class="myMoto__title">
-						<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
+		<div class="ident">
+			<a href="<?php echo get_permalink(); ?>">
+				<?php
+					if(is_featured_product($myid) == 0) {					
+					$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #F9F1E8 0%, #FF9F32 100%) 0% 0% no-repeat padding-box;';
+				?>
+				<div class="decorative"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/rock.png"> Motos de la marca</div>
+				<?php
+					} else {
+					$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #4B5AFC 0%, #000000 100%) 0% 0% no-repeat padding-box;';
+						?>
+				<div class="decorative animationdecoration"><img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/fuego.png"><b>Motos Hot</b></div>
+						<?php
+					}
+				?>
+				<div class="myMoto">
+					<div class="myMoto__img" style="<?php echo $background_side; ?>">										
+						<div class="myMoto__title">
+							<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
+						</div>
+						<img src="<?php echo get_the_post_thumbnail_url(); ?>">
 					</div>
-					<img src="<?php echo get_the_post_thumbnail_url(); ?>">
-				</div>
-				<div class="myMoto__content">
-					<?php
-						if (get_field('descuento',$myid)) {
-					?>
-					<div class="desct">
-						<span><?php the_field('descuento',$myid); ?></span> DSCTO
-					</div>
-					<?php
-						}
-					?>
-					<div class="myMoto__tags">
-						<?php 
-							$tags = get_terms( 'product_tag');
-							if ($tags) {
-								foreach ($tags as $ta) {
-									?>
-									<div class="myTag">
-										<a href="<?php echo get_category_link($ta->term_id); ?>">
-											<?php echo $ta->name; ?>
-										</a>
-									</div>
-									<?php		
-								}
+					<div class="myMoto__content">
+						<?php
+							if (get_field('descuento',$myid)) {
+						?>
+						<div class="desct">
+							<span><?php the_field('descuento',$myid); ?></span> DSCTO
+						</div>
+						<?php
 							}
 						?>
-					</div>
-					<div class="myMoto__title">
-						<h3><?php echo get_the_title($myid); ?></h3>
-						<p><?php the_field('modelo',$myid); ?></p>
-					</div>				
-					<div class="myMoto_final">
-						<div class="myMoto__price">
-							<?php
-								$product = wc_get_product( get_the_ID() );
-								echo $product->get_price_html();
-							?>
-						</div>
-						<div class="myMoto__mPrice">
-							<span class="pp">Otro medio de pago</span>
-							<span class="bb">
-								<?php
-									$porcentaje = get_field('porcentaje_conversion','options');
-									$price = $product->get_price();
-									$price_new = $porcentaje*$price;
-									echo get_woocommerce_currency_symbol();
-									echo asDollars($price_new);
-								?>
-							</span>
-						</div>
-						<div class="myMoto__colors">
-							<?php				
-								$colors = get_terms( 'pa_color');
-								if ($colors) {
-									foreach ($colors as $c) {
+						<div class="myMoto__tags">
+							<?php 
+								$tags = get_terms( 'product_tag');
+								if ($tags) {
+									foreach ($tags as $ta) {
 										?>
-										<div class="color">
-											<?php $background =  
-											get_field('color','pa_color_'.$c->term_id); ?>
-											<span style="background: <?php echo $background;?>"></span>
+										<div class="myTag">
+											<a href="<?php echo get_category_link($ta->term_id); ?>">
+												<?php echo $ta->name; ?>
+											</a>
 										</div>
 										<?php		
 									}
 								}
 							?>
 						</div>
+						<div class="myMoto__title">
+							<h3><?php echo get_the_title($myid); ?></h3>
+							<p><?php the_field('modelo',$myid); ?></p>
+						</div>				
+						<div class="myMoto_final">
+							<div class="myMoto__price">
+								<?php
+									$product = wc_get_product( get_the_ID() );
+									echo $product->get_price_html();
+								?>
+							</div>
+							<div class="myMoto__mPrice">
+								<span class="pp">Otro medio de pago</span>
+								<span class="bb">
+									<?php
+										$porcentaje = get_field('porcentaje_conversion','options');
+										$price = $product->get_price();
+										$price_new = $porcentaje*$price;
+										echo get_woocommerce_currency_symbol();
+										echo asDollars($price_new);
+									?>
+								</span>
+							</div>
+							<div class="myMoto__colors">
+								<?php
+									$colores = get_field('colores', $myid);
+									if ($colores) {
+										foreach ($colores as $ce) {
+									?>
+									<div class="color">
+										<span style="background:<?php echo $ce['color']; ?>"></span>
+									</div>
+								<?php
+										}
+									}
+								?>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		</div>
 	</div>
 </li>

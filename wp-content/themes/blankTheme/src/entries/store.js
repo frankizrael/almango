@@ -6,6 +6,26 @@ import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
 
+function animateCards($card) {
+    $card.on('mousemove', function (e) {
+        var x = e.clientX - $(this).offset().left + $(window).scrollLeft();
+        var y = e.clientY - $(this).offset().top + $(window).scrollTop();
+        
+        var rY = map(x, 0, $(this).width(), -10, 10);
+        var rX = map(y, 0, $(this).height(), -10, 10);
+    
+        $(this).children(".ident").css("transform", "rotateY(" + rY + "deg)" + " " + "rotateX(" + -rX + "deg)");
+    });        
+    function map(x, in_min, in_max, out_min, out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+    $card.on('mouseleave',function(){
+      $(this).children(".ident").css('transform','none');
+    });
+}
+animateCards($('.myloopWooProducts'));
+
 function animateValue($obj, start, end, duration) {
     var range = end - start;
     var current = start;
@@ -139,7 +159,9 @@ if ($('body').hasClass('single-product')) {
 	
 }
 
-
+if ($('body').hasClass('page-template-template-printpdf')) {
+	window.onload = function() { window.print(); }
+}
 
 
 

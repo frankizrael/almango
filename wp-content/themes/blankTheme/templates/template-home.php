@@ -159,7 +159,7 @@ get_header();
 									if ($fe['banner_solid']) {
 								?>   
 			                    <div class="my_prod heightbanner">
-			                    	<a href="<?php echo get_permalink($fe['id']); ?>">
+			                    	<a href="<?php echo get_permalink($fe['id']); ?>" class="ident">
 				                    	<img src="<?php echo $fe['banner_solid']; ?>">
 				                    </a>
 			                    </div>    
@@ -167,8 +167,8 @@ get_header();
 			                    	} else {
 			                    		?>
 
-			                    <div class="my_prod" style="background: <?php echo $fe['background_banner'];?>;">
-			                    	<a href="<?php echo get_permalink($fe['id']); ?>">
+			                    <div class="my_prod">
+			                    	<a href="<?php echo get_permalink($fe['id']); ?>" class="ident" style="background: <?php echo $fe['background_banner'];?>;">
 				                    	<div class="imagen">
 					                    	<div class="destacada">
 					                    		Destacada

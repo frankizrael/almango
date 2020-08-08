@@ -278,6 +278,12 @@
     padding: 10px;
     margin-top: 60px;
     transition: 0.3s;
+    perspective: 500px;
+	position: relative;
+	.ident {
+		transform-style: preserve-3d;
+    	transition: 0.3s;
+	}
     a {
     	color: black;
     }

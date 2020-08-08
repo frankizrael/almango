@@ -954,7 +954,7 @@ get_header( 'shop' ); ?>
 </section>
 <section class="descargar_ficha">
 	<div class="maxdescargas">
-		<a href="<?php the_field('descargar_ficha'); ?>" download>
+		<a href="<?php echo site_url(); ?>/print?id=<?php echo get_the_ID(); ?>" target="_blank">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
 		</a>
 		<p>DESCARGA TU FICHA TÉCNICA DETALLADA</p>
