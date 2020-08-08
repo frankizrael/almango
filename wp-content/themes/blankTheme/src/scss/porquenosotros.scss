@@ -4,9 +4,7 @@
 section.porque_nosotros{
 	margin-top: 90px;
 	background: transparent linear-gradient(186deg, #BD90FF 0%, #4BF0FC 100%) 0% 0% no-repeat padding-box;
-	.contenedor{
-		width: calc(100% - 200px);
-		margin: 0 auto;
+	.x-container{
 		padding-top: 40px;
 		padding-bottom: 69px;
 		.columnas{
@@ -33,6 +31,7 @@ section.porque_nosotros{
 			    width: 80%;
 			    margin: auto;
 			    display: flex;
+			    justify-content: center;
 
 			    img.adorno-izq {
 				    position: relative;
@@ -70,6 +69,7 @@ section.porque_nosotros{
 			    justify-content: space-between;
 			    background: transparent linear-gradient(180deg, #FF9F32 0%, #DFD900 100%) 0% 0% no-repeat padding-box;
 			    align-items: center;
+			    margin-top: 50px;
 			    &:before{
 			    	content: '';
 			    	width: 100%;
@@ -148,5 +148,13 @@ section.porque_nosotros{
 
 			}
 		}	 
+	}
+}
+@media screen and (max-width: 1380px){
+	section.porque_nosotros .x-container .columnas .descuento .ticketder {
+	    right: 0px;
+	}
+	section.porque_nosotros .x-container .columnas .descuento .ticketizq {
+	    left: -100px;
 	}
 }

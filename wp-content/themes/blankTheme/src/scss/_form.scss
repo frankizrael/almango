@@ -1,9 +1,6 @@
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.wpcf7 .wpcf7-form{
+
+
+.wpcf7, .wpcf7-form{
 	padding: 20px !important;
 	h2{
 	text-align: center;
@@ -125,6 +122,8 @@
 	border: unset;
 	border-bottom: 1px solid #4F4D4D;
 	width: 100%;
+	background-color: transparent;
+	color: white;
 	}
 	select.wpcf7-form-control.wpcf7-select {
 	width: 100%;
@@ -148,5 +147,29 @@
 	left: 50%;
 	transform: translateX(-50%);
 	}
+	.wpcf7 input.wpcf7-form-control.wpcf7-submit, .wpcf7-form input.wpcf7-form-control.wpcf7-submit {
+	    max-width: 80%;
+	    font-size: 18px;
+	    font-family: 'Raleway';
+	    font-weight: 600;
+	}
 }
 
+@media screen and (max-width: 500px){
+	.wpcf7 p, .wpcf7-form p {
+	    font-size: 11px;
+	}
+	.wpcf7 .contact_flex, .wpcf7-form .contact_flex {
+	    font-size: 11px;
+	}
+	.wpcf7 h2, .wpcf7-form h2 {
+	    font-size: 15px;
+	    margin-bottom: 15px;
+	}
+	.wpcf7 input.wpcf7-form-control.wpcf7-submit, .wpcf7-form input.wpcf7-form-control.wpcf7-submit {
+	    max-width: 80%;
+	}
+	.wpcf7 input, .wpcf7-form input {
+	    font-size: 9px;
+	}
+}

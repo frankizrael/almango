@@ -22,7 +22,7 @@ get_header();
 					<img class="arrow_img" src="<?php echo get_field('img_arrow_boy') ?>" alt="">
 				</div>
 			</div>
-			<div class="col-der">
+			<div class="col-der back_contactos">
 				<?php echo do_shortcode('[contact-form-7 id="322" title="Envio de Solicitud"]'); ?>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 @import "variables";
 
 section.quienes_somos{
-	margin-top: 130px;
+	margin-top: 90px;
 	background: transparent linear-gradient(186deg, #BD90FF 0%, #4BF0FC 100%) 0% 0% no-repeat padding-box;
 	.contenedor{
 		width: calc(100% - 200px);
@@ -16,7 +16,6 @@ section.quienes_somos{
 		    justify-content: space-between;
 			.columna_center{
 				width: 100%;
-				padding-left: 100px;
 				h1{
 					font-size: 30px;
 					margin-bottom: 32PX;
@@ -50,11 +49,11 @@ section.quienes_somos{
 				}	
 				.grid_equipo {
 					margin-top: 12PX;
-				    width: 57%;
+				    width: 100%;
 				    margin: 0 auto;
 				    display: flex;
 				    flex-wrap: wrap;
-				    justify-content: space-between;
+				    justify-content: center;
 				    align-items: center;
 				    p{
 				    	font-family: 'bulgatti';
@@ -98,5 +97,100 @@ section.quienes_somos{
 				}			
 			}
 		}
+	}
+}
+.hashtag {
+    text-align: center;
+    color: white;
+    padding-bottom: 60px;
+}
+@media screen and (max-width: 500px) {
+	section.quienes_somos .contenedor {
+	    width: calc(100% - 40px);
+	}
+	section.quienes_somos .contenedor .columnas .columna_center p {
+	    font-size: 12px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .titulo_equipo h2 {
+	    font-size: 20PX;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .titulo_equipo img {
+	    width: 50%;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .fernando {
+	    width: 132px;
+	    height: max-content;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo p {
+	    font-size: 9px;
+	    display: block;
+	    z-index: 0;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo {
+	    display: grid;
+	    align-items: unset;
+	    position: relative;
+	    grid-template-columns: 50% 50%;
+	    height: 322px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo {
+	    margin: 0;
+	    width: 100%;
+	    left: 0;
+	    position: absolute;
+
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo	.melissa img {
+	    width: 200px;
+	    position: absolute;
+	    right: 0;
+	    max-width: 223px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo .melissa, section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo .luciano {
+	    height: 150px;
+	    width: 100%;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo .luciano {
+	    width: 191px;
+	    position: relative;
+	    margin-top: 22px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .pedro {
+	    width: 199px;
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	}
+	
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo p {
+	    right: 40px;
+	    z-index: 100;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .fernando p {
+	    top: 50%;
+	    right: -30px;
+	    z-index: 100;
+	}
+}
+@media screen and (max-width: 320px) {
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .titulo_equipo h2 {
+	    font-size: 17PX;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .fernando {
+	    width: 100px;
+	    height: max-content;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo .melissa img {
+	    width: 177px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .pedro {
+	    width: 177px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .element_equipo .luciano {
+	    width: 178px;
+	    bottom: -5px;
+	}
+	section.quienes_somos .contenedor .columnas .columna_center_equipo .grid_equipo .fernando p {
+	    right: -43px;
 	}
 }
