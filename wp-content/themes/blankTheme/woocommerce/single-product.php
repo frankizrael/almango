@@ -34,7 +34,7 @@ get_header( 'shop' ); ?>
 						$cat = get_the_terms($myid,'product_cat', array( 'order' => 'DESC'));
 						if ($cat) {				
 							foreach ($cat as $ta) {		
-								if ($ta->term_id != 15 && $ta->term_id != 24){						
+								if ($ta->term_id != 15 && $ta->term_id != 67){						
 							?>
 							<div class="myTag">
 								<a href="<?php echo get_category_link($ta->term_id); ?>" data-id="<?php echo $ta->term_id; ?>">
@@ -92,7 +92,7 @@ get_header( 'shop' ); ?>
 						$idmarca = $ta->term_id;
 						$thumbnail_id = wp_get_attachment_url(get_term_meta( $idmarca, 'thumbnail_id', true ));	
 						if ($thumbnail_id) {
-							if ($ta->parent == 24) {										
+							if ($ta->parent == 67) {										
 							?>
 							<div class="imagen_cat">
 								<img src="<?php echo $thumbnail_id; ?>">

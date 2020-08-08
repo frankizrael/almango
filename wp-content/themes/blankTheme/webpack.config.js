@@ -23,7 +23,10 @@ module.exports = function(env) {
             car: "./src/entries/car.js",
             informacionlegal: "./src/entries/terminosycondiciones.js",
             car: "./src/entries/car.js"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 975b6f4bddcfdcc88894312e179aa6c3e3a23d0f
         },
         target: "web",
         mode: env.NODE_ENV,
