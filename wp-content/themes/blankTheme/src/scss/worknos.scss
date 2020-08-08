@@ -2,7 +2,7 @@
 @import "variables";
 
 section.trabaja_nosotros{
-	margin-top: 130px;
+	margin-top: 90px;
 	background: transparent linear-gradient(186deg, #BD90FF 0%, #4BF0FC 100%) 0% 0% no-repeat padding-box;
 	.contenedor{
 		width: calc(100% - 200px);
@@ -19,7 +19,9 @@ section.trabaja_nosotros{
 				padding-left: 100px;
 				h1{
 					font-size: 30px;
-					margin-bottom: 32PX;
+					margin-bottom: 32px;
+					font-family: 'Raleway';
+					font-weight: 800;
 				}
 				p{
 					max-width: 789px;
@@ -37,18 +39,27 @@ section.trabaja_nosotros{
 					width: 30%;
 					position: relative;
 					max-width: 332px;
+					height: max-content;
 					img{
 						width: 100%;
 					}
 					.arrow_img{
 						position: absolute;
-					    bottom: -40px;
-					    right: -90px;
-					    width: 146px;
+					    bottom: -10%;
+					    right: -15%;
+					    width: 40%;
+					  
 					}
 				}
 				.img_text{
-					width: calc(100% - 772px);
+					width: 40%;
+					justify-content: center;
+					display: flex;
+					align-items: center;
+					height: max-content;
+					img{
+						width: 80%;
+					}
 				}
 				.img_boy{
 					width: 30%;
@@ -58,10 +69,11 @@ section.trabaja_nosotros{
 						width: 100%;
 					}
 					.arrow_img{
-						position: absolute;
-					    top: -40px;
-					    left: -50px;
-					    width: 144px;
+							position: absolute;
+					    	top: -10%;
+					    	left: -15%;
+					    	width: 40%;
+						}
 					}
 				}
 			}
@@ -72,6 +84,52 @@ section.trabaja_nosotros{
   				height: auto;
   				margin-right: 100px;
 			}
-		}
 	}
+}
+
+@media screen and (max-width: 1500px) {
+	.back_contactos {
+		margin-right: 0;
+	}
+}
+@media screen and (max-width: 1100px) {
+	.back_contactos {
+	    margin: auto;
+	}
+	section.trabaja_nosotros .contenedor .columnas .columna_center {
+	    width: 100%;
+	    padding-left: 0px;
+	    text-align: center;
+	}
+	section.trabaja_nosotros .contenedor {
+	    width: calc(100% - 40px);
+	}
+	section.trabaja_nosotros .contenedor .columnas .col-izq {
+	    width: 100%;
+	    padding: 40px 0;
+	    height: auto;
+	    margin-top: 0;
+	}
+	section.trabaja_nosotros .contenedor .columnas .columna_center p {
+	    max-width: 789px;
+	    font-size: 20px;
+	    margin: auto;
+	}
+}
+@media screen and (max-width: 500px){
+	section.trabaja_nosotros .contenedor .columnas .columna_center h1 {
+	    font-size: 20px;
+	    text-align: center;
+	}
+	section.trabaja_nosotros .contenedor {
+	    width: calc(100% - 40px);
+	    margin: 0 auto;
+	    padding-top: 40px;
+	    padding-bottom: 69px;
+	}
+	section.trabaja_nosotros .contenedor .columnas .columna_center p {
+	    max-width: 789px;
+	    font-size: 12px;
+	    text-align: center;
+	}	
 }

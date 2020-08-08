@@ -17,16 +17,13 @@ module.exports = function(env) {
             porquenosotros: "./src/entries/porquenosotros.js",
             anuncia: "./src/entries/anuncia.js",
             conviertete: "./src/entries/conviertete.js",
-<<<<<<< HEAD
             preguntasfrecuentes: "./src/entries/preguntasfrecuentes.js",
             activacioncuenta: "./src/entries/activacioncuenta.js",
             passwordolvidada: "./src/entries/passwordolvidada.js",
             car: "./src/entries/car.js",
-            informacionlegal: "./src/entries/terminosycondiciones.js"
-
-=======
+            informacionlegal: "./src/entries/terminosycondiciones.js",
             car: "./src/entries/car.js"
->>>>>>> c7587fcf17becb8292122962f77524dda9370f65
+
         },
         target: "web",
         mode: env.NODE_ENV,

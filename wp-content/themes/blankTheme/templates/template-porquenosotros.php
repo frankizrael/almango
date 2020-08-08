@@ -3,7 +3,7 @@ set_query_var('ENTRY', 'porquenosotros');
 get_header();
 ?>
 <section class="porque_nosotros">
-	<div class="contenedor">
+	<div class="x-container">
 		<div class="columnas">
 			<div class="columna_center">
 				<h1><?php echo get_field('titulo') ?></h1>

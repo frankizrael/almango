@@ -25,3 +25,79 @@ section.informacionlegal {
 	    }
 	}
 }
+
+.form_reclamo{
+	.form {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+	}
+	.subtitle {
+	    font-size: 16px;
+	    font-weight: 700;
+	    margin-bottom: 30px;
+	}
+
+	.row:not(:last-child) {
+	    margin-bottom: 20px;
+	}
+	.customSelect {
+	    width: -webkit-calc(50% - 5px);
+	    width: calc(50% - 5px);
+	    position: relative;
+	}
+	.control {
+	    position: relative;
+	    width: -webkit-calc(50% - 10px);
+	    width: calc(50% - 10px);
+	}
+	.control .label {
+	    font-size: 14px;
+	    margin-bottom: 5px;
+	    display: block;
+	}
+	.control input, .control textarea {
+	    border: 1px solid #bbb;
+	    font-size: 14px;
+	    line-height: 18px;
+	    width: 94%;
+	    -webkit-transition: .3s;
+	    -o-transition: .3s;
+	    transition: .3s;
+	    position: relative;
+	    z-index: 2;
+	    color: #665c57;
+	    -webkit-appearance: none;
+	}
+	.control input {
+	    padding: 18px 30px 12px 15px;
+	}
+	.customSelect select {
+	    border: 1px solid #e6e6e6 !important;
+	    font-size: 12px;
+	    line-height: 18px;
+	    width: 100%;
+	    padding: 18px 30px 12px 11px;
+	    -webkit-appearance: none !important;
+	    -webkit-transition: .3s !important;
+	    -o-transition: .3s;
+	    transition: .3s;
+	    color: #665c57;
+	}
+	.row {
+	    display: -webkit-box;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	    justify-content: space-between;
+	}
+	.customSelect.full {
+	    width: 100%;
+	}
+	.chekbox, .chekbox .right {
+	    display: -webkit-box;
+	    display: -ms-flexbox;
+	    display: flex;
+	}
+}
