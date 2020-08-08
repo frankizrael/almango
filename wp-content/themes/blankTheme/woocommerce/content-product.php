@@ -27,24 +27,24 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 <li data="<?php echo $search_product; ?>" class="loop_single_prod">
 	<?php
 		$myid = get_the_ID();	
-		$term_obj_list = get_the_terms( $myid , 'product_cat' );
-		$terms_name = array();	
-		$listerm;
-		$a = 0;
-		foreach ($term_obj_list as $tt) {
-			array_push($terms_name,$tt->name);			
-			if ($a == 0) {
-				$listerm = $tt->name;
-			} else {
-				$listerm = $listerm.', '.$tt->name;
+
+
+		$cat = get_the_terms($myid,'product_cat', array( 'order' => 'DESC'));
+		if ($cat) {				
+			foreach ($cat as $ta) {						
+				if ($ta->parent == 67) {										
+					?>
+				<div class="imagen_cat">
+					<?php $marcaTitle = $ta->name;?>
+				</div>
+				<?php
+				}	
 			}
-			$a++;
 		}
-		$marcaTitle = $terms_name[2];	
 	?>
 	<div class="myloopWooProducts">
 		<div class="ident">
-			<a href="<?php echo get_permalink(); ?>">
+			<a href="<?php echo get_permalink($myid); ?>">
 				<?php
 					if(is_featured_product($myid) == 0) {					
 					$background_side = 'background: transparent radial-gradient(closest-side at 50% 50%, #F9F1E8 0%, #FF9F32 100%) 0% 0% no-repeat padding-box;';
@@ -63,7 +63,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 						<div class="myMoto__title">
 							<h4 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h4>
 						</div>
-						<img src="<?php echo get_the_post_thumbnail_url(); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url($myid); ?>">
 					</div>
 					<div class="myMoto__content">
 						<?php
@@ -77,7 +77,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 						?>
 						<div class="myMoto__tags">
 							<?php 
-								$tags = get_terms( 'product_tag');
+								$tags = get_terms( 'product_tag', $myid);
 								if ($tags) {
 									foreach ($tags as $ta) {
 										?>
@@ -98,7 +98,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 						<div class="myMoto_final">
 							<div class="myMoto__price">
 								<?php
-									$product = wc_get_product( get_the_ID() );
+									$product = wc_get_product( $myid );
 									echo $product->get_price_html();
 								?>
 							</div>

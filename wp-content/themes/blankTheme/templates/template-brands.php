@@ -210,7 +210,7 @@ $marcaTitle = get_the_title();
 														<div class="myMoto_final">
 															<div class="myMoto__price">
 																<?php
-																	$product = wc_get_product( get_the_ID() );
+																	$product = wc_get_product( $myid );
 																	echo $product->get_price_html();
 																?>
 															</div>

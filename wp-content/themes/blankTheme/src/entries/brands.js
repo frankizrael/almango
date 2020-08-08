@@ -51,7 +51,10 @@ $('.jsCarrusel').on('click',function(){
 	$('.jsLista').removeClass('active');
 	$('.jsCarrusel').addClass('active');
 	motosSwiper = new Swiper(".contentModels .swiper-container", {
-	  slidesPerView: 3
+	  	slidesPerView: 3,	  
+	    autoplay: {
+	        delay: 7500
+	    }
 	});
 	$('.contentModels').removeClass('listaView');
 });
