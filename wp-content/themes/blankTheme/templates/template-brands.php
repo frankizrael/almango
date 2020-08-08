@@ -36,7 +36,7 @@ $marcaTitle = get_the_title();
 							                foreach ( $images as $img ) {
 							                    ?> 
 							                    <div class="swiper-slide">                           
-								                    <img src="<?php echo $img['img']; ?>">                            
+								                    <img src="<?php echo $img['img']; ?>" style="max-width: 250px;">                            
 							                    </div>   
 							                    <?php
 							                }
@@ -156,6 +156,7 @@ $marcaTitle = get_the_title();
 									?>
 									<div class="swiper-slide">
 										<div class="myloopWooProducts">
+											<div class="ident">
 												<?php
 													if(is_featured_product($myid) == 0) {
 												?>
@@ -209,7 +210,7 @@ $marcaTitle = get_the_title();
 														<div class="myMoto_final">
 															<div class="myMoto__price">
 																<?php
-																	$product = wc_get_product( get_the_ID() );
+																	$product = wc_get_product( $myid );
 																	echo $product->get_price_html();
 																?>
 															</div>
@@ -226,17 +227,15 @@ $marcaTitle = get_the_title();
 																</span>
 															</div>
 															<div class="myMoto__colors">
-																<?php				
-																	$colors = get_terms( 'pa_color');
-																	if ($colors) {
-																		foreach ($colors as $c) {
-																			?>
-																			<div class="color">
-																				<?php $background =  
-																				get_field('color','pa_color_'.$c->term_id); ?>
-																				<span style="background: <?php echo $background;?>"></span>
-																			</div>
-																			<?php		
+																<?php
+																	$colores = get_field('colores', $myid);
+																	if ($colores) {
+																		foreach ($colores as $ce) {
+																	?>
+																	<div class="color">
+																		<span style="background:<?php echo $ce['color']; ?>"></span>
+																	</div>
+																<?php
 																		}
 																	}
 																?>
@@ -244,6 +243,7 @@ $marcaTitle = get_the_title();
 														</div>
 													</div>
 												</div>
+											</div>
 										</div>
 									</div>
 									<?php

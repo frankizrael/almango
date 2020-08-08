@@ -56,6 +56,28 @@ var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-con
     },
 });
 
+function animateCards($card) {
+    $card.on('mousemove', function (e) {
+        var x = e.clientX - $(this).offset().left + $(window).scrollLeft();
+        var y = e.clientY - $(this).offset().top + $(window).scrollTop();
+        
+        var rY = map(x, 0, $(this).width(), -17, 17);
+        var rX = map(y, 0, $(this).height(), -17, 17);
+    
+        $(this).children(".ident").css("transform", "rotateY(" + rY + "deg)" + " " + "rotateX(" + -rX + "deg)");
+    });        
+    function map(x, in_min, in_max, out_min, out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+    $card.on('mouseleave',function(){
+      $(this).children(".ident").css('transform','none');
+    });
+}
+animateCards($('.my_prod'));
+
+
+
 let $sw = $('.banner .swiper-slide');
 for (let i=0;i<$sw.length;i++){
 	let data = $sw.eq(i).attr('data');

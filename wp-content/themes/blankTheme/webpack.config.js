@@ -20,9 +20,7 @@ module.exports = function(env) {
             preguntasfrecuentes: "./src/entries/preguntasfrecuentes.js",
             activacioncuenta: "./src/entries/activacioncuenta.js",
             passwordolvidada: "./src/entries/passwordolvidada.js",
-            car: "./src/entries/car.js",
-            informacionlegal: "./src/entries/terminosycondiciones.js",
-            car: "./src/entries/car.js"
+            informacionlegal: "./src/entries/terminosycondiciones.js"
         },
         target: "web",
         mode: env.NODE_ENV,
