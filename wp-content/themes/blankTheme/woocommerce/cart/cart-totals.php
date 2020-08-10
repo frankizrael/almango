@@ -75,11 +75,7 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 		?>
-		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
-		<tr class="order-total">
-			<th><?php esc_html_e( 'Adicionales', 'woocommerce' ); ?></th>
-			<td data-title="<?php esc_attr_e( 'Adicionales', 'woocommerce' ); ?>">S/. 0</td>
-		</tr>
+		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>		
 		<tr class="order-total">
 			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
