@@ -23,9 +23,17 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
+	//echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
+	$location = site_url().'/my-account/';
+	header('Location: '.$location);
 	return;
 }
+
+$user = wp_get_current_user();
+$user_id = get_current_user_id();
+
+$user_telefono = get_user_meta( $user_id, 'billing_phone', true );
+$user_correo = get_user_meta( $user_id, 'billing_email', true );
 
 ?>
 
@@ -38,12 +46,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<div class="boxFlex">
 					<div class="checkoutTitle">
 						<h3>
-							<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Selecciona tu color favorito
+							<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Confirma tus datos personales
 						</h3>
 					</div>
 					<div class="simple-verifydata">
 						<h4>
-							<img src="<?php echo get_template_directory_uri(); ?>/img/user.png"> Datos personales
+							<img src="<?php echo get_template_directory_uri(); ?>/img/user_1.png"> Datos personales
 						</h4>
 						<div class="editData">
 							<a href="javascript:void(0)" class="edit">
@@ -53,18 +61,33 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						<div class="datos">
 							<ul>
 								<li>
-									DNI: 70437424
+									DNI: <?php echo $user->display_name; ?>
 								</li>
 								<li>
-									Teléfono: 960579083
+									Teléfono: <?php echo $user_telefono; ?>
 								</li>
 								<li>
-									Correo: frankde@gmail.com
+									Correo: <?php echo $user_correo; ?>
 								</li>
 							</ul>
 						</div>
 						<div class="solitarfactura">
 							<a href="javascript:void(0)" class="solFactura">Solicitar Factura</a>
+						</div>
+						<div class="facturaFields" style="display: none;">
+							<div class="factura_flex">
+								<div class="factura30">
+									<label>RUC</label>
+									<input type="number" name="add_ruc" id="add_ruc" placeholder="Ingresa tu RUC">
+								</div>
+								<div class="factura30">
+									<label>Razón Social</label>
+									<input type="text" name="add_raz_social" id="add_raz_social" placeholder="Ingresa tu Razón social">
+								</div>
+								<div class="factura30">
+									<a href="javascript:void(0)" class="addFacture" id-use="<?php echo $user_id; ?>">Agregar Factura</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col2-set__c" id="customer_details">

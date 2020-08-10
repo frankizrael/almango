@@ -1,5 +1,122 @@
 @import "utilities";
 @import "variables";
+.cart-empty {
+	&.woocommerce-info {
+		display: none;
+	}
+}
+.emptyCart {
+    text-align: center;
+    padding-bottom: 60px;
+    padding-top: 20px;
+    h1 {
+	    color: #FF9F32;
+	    font-weight: 700;
+	    margin-top: 25px;
+	    margin-bottom: 15px;
+	    font-size: 20px;
+	}
+}
+.f-container {
+	.titleCenter {
+	    display: block;
+	    text-align: center;
+	    margin-bottom: 20px;
+	}
+	.my_products_featureds {
+		margin-top: 20px;
+		.my_prod {
+		    margin-right: 50px;
+		    margin-top: 40px;
+		    position: relative;
+		    margin-bottom: 20px;
+		    margin-left: 10px;
+		    transition: 0.3s;
+		    perspective: 500px;
+  			position: relative;
+			.ident {
+				transform-style: preserve-3d;
+		    	box-shadow: 0px 4px 12px #0000003b;
+			}
+		    &:hover {
+			    .ident {
+			    	box-shadow: 0px 12px 18px #4e4e4e66;
+			    }
+			}
+			a {
+			    display: block;
+			    .imagen {
+				    margin-bottom: -30px;
+				    .destacada {
+					    position: absolute;
+					    font-weight: 700;
+					    background: #FB0415;
+					    font-size: 12px;
+					    top: -15px;
+					    left: 15px;
+					    color: white;
+					    padding: 10px;
+					    text-transform: uppercase;
+					    border-radius: 5px;
+					}
+					img {
+					    width: calc(100% + 60px);
+					    display: block;
+					    position: relative;
+					    top: -40px;
+					}
+				}
+				.text {
+				    padding: 0px 15px;
+				    h3 {
+					    font-size: 30px;
+					    color: #001A23;
+					    font-weight: 700;
+					    font-family: 'heebo';
+					}
+					p {
+					    font-size: 20px;
+					    font-weight: 700;
+					    -webkit-text-stroke: 1px #959595;
+					    color: #959595;
+					}
+				}
+				.myprice {
+				    padding: 15px;
+				    margin-top: 20px;
+				    del {
+					    display: block;
+					    color: $orange;
+					    opacity: 0.8;
+					    font-size: 20px;
+					    font-family: 'heebo';
+					    span {
+						    color: $orange;
+						}
+					}
+					ins {
+					    text-decoration: none;
+					    font-size: 35px;
+					    font-family: 'heebo';
+					    font-weight: 700;
+					    color: white;
+					}
+				}
+			}
+			&.heightbanner {
+				a {
+					display: block;
+	    			height: 410px;
+	    			img {
+					    width: 100%;
+					    height: 100%;
+					    object-fit: cover;
+					}
+				}
+			}
+		}
+	}
+}
 .cart-page {
 	margin-top: 120px;
 	.core-page {
@@ -251,9 +368,10 @@
 			    height: 20px;
 			    border-bottom: solid 3px black;
 			    border-right: solid 3px black;
-			    transform: rotate(45deg);
-				left: 34px;
-				top: 12px;
+			    transform: rotate(45deg);				
+			    left: 50%;
+			    top: 12px;
+			    margin-left: -5px;
 			}
 		}
 	}
@@ -265,6 +383,7 @@
 	    .item_additional {
 		    width: 215px;
 		    margin-right: 20px;
+		    position: relative;
 		    .flex {
 		    	align-items: center;
 		    }
@@ -296,14 +415,83 @@
 				    font-size: 12px;
 				}
 			}
+			input {
+				&.disabled {
+					pointer-events: none;
+					opacity: 0.5;
+				}
+			}
+			.information {
+			    position: absolute;
+			    background: white;
+			    width: calc(100% - 40px);
+			    left: 50%;
+			    transform: translateX(-50%);
+			    bottom: 70px;
+			    padding: 20px 10px;
+			    font-size: 11px;
+			    text-align: center;
+			    line-height: 16px;
+			    box-sizing: border-box;
+			    opacity: 0;
+			    pointer-events: none;
+			    .close-inf {
+				    position: absolute;
+				    width: 17px;
+				    height: 17px;
+				    cursor: pointer;
+				    top: 0;
+				    right: 0;
+				    &:before {
+					    content: '';
+					    position: absolute;
+					    width: 14px;
+					    height: 2px;
+					    background: black;
+					    transform: rotate(45deg);
+					    left: 2px;
+					    top: 7px;
+					}
+					&:after {
+					    content: '';
+					    position: absolute;
+					    width: 14px;
+					    height: 2px;
+					    background: black;
+					    transform: rotate(-45deg);
+					    left: 2px;
+					    top: 7px;
+					}
+				}
+				&:after {
+				    content: '';
+				    position: absolute;
+				    width: 10px;
+				    height: 10px;
+				    background: white;
+				    transform: rotate(45deg);
+				    bottom: -3px;
+				    left: 50%;
+				    margin-left: -2px;
+				}
+				&.active {
+					opacity: 1;
+					pointer-events: all;
+				}
+			}
 		}
 	}
 	button.btn.update_cart {
 	    background: $orange;
 	}
+	.cart_totals {
+		.woocommerce-shipping-totals {
+			display: none;
+		}
+	}
 }
 .woocommerce table.shop_table td {
-    border: none !important;
+   &.additionaltd { border-top: none !important; }
 }
 .woocommerce table.shop_table {
     box-shadow: 0px 3px 6px #00000066;
@@ -364,6 +552,12 @@
 	}
 	&:before, &:after {
 	    display: none !important;
+	}
+	.woocommerce-Price-amount {
+		font-family: 'heebo';
+	}
+	.order-total {
+		font-size: 24px;
 	}
 }
 .wc-proceed-to-checkout .checkout-button {
@@ -513,6 +707,7 @@ p.addcomend {
 		    display: flex;
 		    align-items: center;
 		    img {
+		    	max-width: 25px;
 			    margin-right: 5px;
 			}
 		}
@@ -523,10 +718,11 @@ p.addcomend {
 		}
 	}
 	#customer_details { display: none; }
-	.woocommerce-billing-fields input, .woocommerce-shipping-fields input, .woocommerce-shipping-fields select {
+	.woocommerce-billing-fields input, .woocommerce-billing-fields select, .woocommerce-shipping-fields input, .woocommerce-shipping-fields select {
 	    padding: 10px;
 	    border-radius: 5px;
 	    border: solid 1px gainsboro;
+	    appearance: none;
 	}
 	.woocommerce-billing-fields, .woocommerce-shipping-fields  {
 	    border-top: solid 1px #d4d4d4;
@@ -560,6 +756,52 @@ p.addcomend {
 			    font-family: 'heebo';
 			    font-size: 14px;
 			    padding: 5px 0px;
+			}
+		}
+	}	
+	#billing_country_field { display: none; }
+	.factura_flex {
+		display: flex;
+	    flex-wrap: wrap;
+	    padding: 15px 20px;
+	    background: #efefef;
+	    margin-top: 20px;
+	    position: relative;
+	    justify-content: space-between;
+	    align-items: flex-end;
+	    &:before {
+		    content: '';
+		    position: absolute;
+		    width: 10px;
+		    height: 10px;
+		    background: #efefef;
+		    top: -4px;
+		    transform: rotate(-45deg);
+		}
+		.factura30 {
+		    width: calc(33.33% - 5px);
+		    label {
+			    font-size: 14px;
+			    font-weight: 700;
+			}
+			input {
+			    padding: 10px 5px;
+			    width: 100%;
+			    box-sizing: border-box;
+			    border-radius: 5px;
+			    border: solid 1px #cacaca;
+			    appearance: none;
+			}
+			.addFacture {
+			    width: 100%;
+			    background: #435bff;
+			    display: block;
+			    text-align: center;
+			    font-size: 14px;
+			    color: white;
+			    padding: 12px 5px;
+			    box-sizing: border-box;
+			    border-radius: 5px;
 			}
 		}
 	}
