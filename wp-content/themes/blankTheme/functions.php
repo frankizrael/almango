@@ -192,45 +192,142 @@ function is_featured_product($id){
 }
 
 
-add_filter('woocommerce_billing_fields', 'add_company_data_field', 10, 1);
-
-function add_company_data_field($address_fields)
-{
-    if (!isset($address_fields['billing_razon_social'])) {
-        $address_fields['billing_razon_social'] = array(
-            'label'        => __('Razón Social', 'bmw'),
-            'required'     => true,
-            'class'        => array('form-row-first'),
-            'autocomplete' => 'given-name',
-            'priority'     => 111,
-            'value'        => '',
-        );
-    }
-
-    if (!isset($address_fields['billing_ruc'])) {
-        $address_fields['billing_ruc'] = array(
-            'label'        => __('Ruc', 'bmw'),
-            'required'     => true,
-            'class'        => array('form-row-last'),
-            'autocomplete' => 'given-name',
-            'priority'     => 112,
-            'value'        => '',
-        );
-    }
-
-    if (!isset($address_fields['billing_fiscal'])) {
-        $address_fields['billing_fiscal'] = array(
-            'label'        => __('Dirección del domicilio fiscal', 'bmw'),
-            'required'     => true,
-            'class'        => array('form-row-wide'),
-            'autocomplete' => 'given-name',
-            'priority'     => 113,
-            'value'        => '',
-        );
-    }
-    return $address_fields;
-}
-
 function asDollars($value) {
 return number_format($value, 0);
 }
+
+
+function wooc_extra_register_fields() {?>
+
+        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="nombres">
+            <label>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/avatar_r.png">
+                Nombres
+            </label>
+            <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" placeholder="Ingresa tus nombres"/>
+        </div>
+        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="apellidos">
+            <label>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/avatar_r.png">
+                Apellidos
+            </label>
+            <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" placeholder="Ingresa tus apellidos"/>
+        </div>
+        <!-- especiales e inutiles init -->
+        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="genero">
+            <label>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/genero.png">
+                GENERO
+            </label>
+            <select name="user_genero">
+                <option value="masculino">Masculino</option>
+                <option value="femenimo">Femenino</option>
+                <option value="no-especifico">No especifica</option>
+            </select>
+        </div>
+        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="cumple">
+            <label>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/cake.png">
+                CUMPLEAÑOS
+            </label>
+            <input type="text" class="input-text" name="user_birthdate" id="user_birthdate" value="<?php esc_attr_e( $_POST['user_birthdate'] ); ?>" placeholder="Ingresa tu cumpleaños"/>
+        </div>
+        <!-- especiales e inutiles end -->
+        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="celular">
+            <label>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/mobile-phone.png">
+                CELULAR
+            </label>
+            <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_phone'] ); ?>" placeholder="Ingresa tu teléfono"/>
+        </div>
+
+
+       <?php
+ }
+add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );
+function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
+    if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
+             $validation_errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: Los nombres son necesarios', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+             $validation_errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Los apellidos son necesarios.', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
+        $validation_errors->add( 'billing_phone_error', __( '<strong>Error</strong>: El celular es necesario.', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['user_birthdate'] ) && empty( $_POST['user_birthdate'] ) ) {
+        $validation_errors->add( 'user_birthdate_error', __( '<strong>Error</strong>: Increiblemente necesitamos su cumpleaños.', 'woocommerce' ) );
+    }
+    return $validation_errors;
+}
+add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
+
+function wooc_save_extra_register_fields( $customer_id ) {
+    if ( isset( $_POST['billing_phone'] ) ) {
+        update_user_meta( $customer_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
+    }
+    if ( isset( $_POST['billing_first_name'] ) ) {
+        //First name field which is by default
+        update_user_meta( $customer_id, 'first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+        // First name field which is used in WooCommerce
+        update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) ) {
+        // Last name field which is by default
+        update_user_meta( $customer_id, 'last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+        // Last name field which is used in WooCommerce
+        update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+    }
+    if ( isset( $_POST['user_genero'] ) ) {
+        update_field( 'user_genero', $_POST['user_genero'], 'user_'.$customer_id );
+    }
+    if ( isset( $_POST['user_birthdate'] ) ) {
+        update_field( 'user_birthdate', $_POST['user_birthdate'], 'user_'.$customer_id );
+    }
+}
+add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
+
+/**
+ * Exclude products from a particular category on the shop page
+ */
+function custom_pre_get_posts_query( $q ) {
+
+    $tax_query = (array) $q->get( 'tax_query' );
+
+    $tax_query[] = array(
+       'taxonomy' => 'product_cat',
+       'field' => 'slug',
+       'terms' => array( 'addon' ),
+       'operator' => 'NOT IN'
+    );
+
+
+    $q->set( 'tax_query', $tax_query );
+
+}
+add_action( 'woocommerce_product_query', 'custom_pre_get_posts_query' );  
+
+//add prod
+
+function addproducto() {
+    $product_id = filter_input(INPUT_GET, 'product_id');
+    WC()->cart->add_to_cart( $product_id );
+    echo $product_id;
+    wp_die();
+}
+add_action( 'wp_ajax_addproducto', 'addproducto' );
+add_action( 'wp_ajax_nopriv_addproducto', 'addproducto' );
+
+//add addfacture
+
+function addfacture() {
+    $add_ruc = filter_input(INPUT_GET, 'add_ruc');
+    $add_raz_social = filter_input(INPUT_GET, 'add_raz_social');
+    $id_user = filter_input(INPUT_GET, 'id_user');
+
+    update_field( 'ruc', $add_ruc, 'user_'.$id_user );
+    update_field( 'razon_social', $add_raz_social, 'user_'.$id_user );
+    wp_die();
+}
+add_action( 'wp_ajax_addfacture', 'addfacture' );
+add_action( 'wp_ajax_nopriv_addfacture', 'addfacture' );

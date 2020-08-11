@@ -21,11 +21,78 @@ defined( 'ABSPATH' ) || exit;
  * @hooked wc_empty_cart_message - 10
  */
 do_action( 'woocommerce_cart_is_empty' );
-
+$frontpage_id = get_option( 'page_on_front' );
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
-	<p class="return-to-shop">
-		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
-			<?php esc_html_e( 'Return to shop', 'woocommerce' ); ?>
-		</a>
-	</p>
+	<section class="emptyCart">
+		<div class="x-container">
+			<div class="size-empty">
+				<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/shopping-cart.png">
+				<h1>¡TU CARRITO DE COMPRAS ESTA VACIO!</h1>
+				<p>Tu próxima compañera, a un solo clic</p>
+			</div>
+		</div>
+	</section>
+	<section id="destacados">
+		<div class="f-container">
+			<div class="title titleCenter">
+				<h2>LOS MODELOS MÁS TOP</h2>
+			</div>
+			<div class="my_products_featureds posRelative">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<?php
+							$featured = get_field('products_featureds',$frontpage_id);
+							if ($featured) {
+								foreach ($featured as $fe) {
+									?>
+								<div class="swiper-slide">  
+									<?php
+										if ($fe['banner_solid']) {
+									?>   
+				                    <div class="my_prod heightbanner">
+				                    	<a href="<?php echo get_permalink($fe['id']); ?>" class="ident">
+					                    	<img src="<?php echo $fe['banner_solid']; ?>">
+					                    </a>
+				                    </div>    
+				                    <?php
+				                    	} else {
+				                    		?>
+
+				                    <div class="my_prod">
+				                    	<a href="<?php echo get_permalink($fe['id']); ?>" class="ident" style="background: <?php echo $fe['background_banner'];?>;">
+					                    	<div class="imagen">
+						                    	<div class="destacada">
+						                    		Destacada
+						                    	</div>
+					                    		<img src="<?php echo get_the_post_thumbnail_url($fe['id']); ?>">
+					                    	</div>
+					                    	<div class="text">
+					                    		<h3><?php echo get_the_title($fe['id']); ?></h3>
+					                    		<p class="brand">
+					                    			Susuki
+					                    		</p>			                    		
+					                    	</div>
+					                    	<div class="myprice">
+					                    		<?php
+					                    			$_my_product = wc_get_product( $fe['id'] );
+					                    			echo $_my_product->get_price_html(); 
+					                    		?>
+					                    	</div>
+				                    	</a>
+				                    </div>
+				                    		<?php
+				                    	}
+				                    ?>                       
+			                    </div> 
+									<?php
+								}
+							}
+						?>
+					</div>	
+		    	</div>	    	
+				<div class="swiper-button-prev"></div>
+	    		<div class="swiper-button-next"></div>
+			</div>
+		</div>
+	</section>
 <?php endif; ?>
