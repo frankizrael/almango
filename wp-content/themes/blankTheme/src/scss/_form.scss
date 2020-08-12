@@ -1,5 +1,36 @@
 
-
+#empresa{
+	position: relative;
+	width: 45%;
+	overflow: hidden;
+	&:before {
+	    position: relative;
+	    background-image: url(../assets/img/empresa.png);
+	    content: '';
+	    width: 25px;
+	    height: 25px;
+	    background-size: contain;
+	    display: inline-block;
+	    top: 2px;
+	    left: 0;
+	}
+}
+#cargo{
+	position: relative;
+	width: 45%;
+	overflow: hidden;
+	&:before {
+	    position: relative;
+	    background-image: url(../assets/img/cargo.png);
+	    content: '';
+	    width: 25px;
+	    height: 25px;
+	    background-size: contain;
+	    display: inline-block;
+	    top: 2px;
+	    left: 0;
+	}
+}		
 .wpcf7, .wpcf7-form{
 	padding: 20px !important;
 	h2{
@@ -14,38 +45,7 @@
 	font-family: 'ralewaysemibold';
 	text-align: left;
 	text-transform: uppercase;
-		#empresa{
-			position: relative;
-			width: 45%;
-			overflow: hidden;
-			&:before {
-			    position: relative;
-			    background-image: url(../assets/img/empresa.png);
-			    content: '';
-			    width: 25px;
-			    height: 25px;
-			    background-size: contain;
-			    display: inline-block;
-			    top: 2px;
-			    left: 0;
-			}
-		}
-		#cargo{
-			position: relative;
-			width: 45%;
-			overflow: hidden;
-			&:before {
-			    position: relative;
-			    background-image: url(../assets/img/cargo.png);
-			    content: '';
-			    width: 25px;
-			    height: 25px;
-			    background-size: contain;
-			    display: inline-block;
-			    top: 2px;
-			    left: 0;
-			}
-		}	
+	
 	#celular{
 		position: relative;
 		width: 45%;
