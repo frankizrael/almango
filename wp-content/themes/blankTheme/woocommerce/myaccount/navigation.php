@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $user = wp_get_current_user();
+$user_id = get_current_user_id();
 do_action( 'woocommerce_before_account_navigation' );
 ?>
 <nav class="myaccount-navigation">
@@ -26,8 +27,20 @@ do_action( 'woocommerce_before_account_navigation' );
 		<div class="image-people">
 			<?php
 				$imagenPerfil = get_field('imagen_perfil','user_'.get_current_user_id());
+				if ($imagenPerfil) {
 			?>
-			<img src="<?php echo $imagenPerfil; ?>">
+					<img src="<?php echo $imagenPerfil; ?>" id="perfilImg">
+			<?php
+				} else {
+					?>
+				<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png" id="perfilImg">
+					<?php
+				}
+			?>
+			<div class="editImage">
+				<input type="file" id="editFile" data="<?php echo $user_id; ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/pen.png">
+			</div>
 		</div>
 		<ul class="flex">
 			<li class="link_list">
@@ -72,18 +85,18 @@ do_action( 'woocommerce_before_account_navigation' );
 		</div>
 		<div class="lines-advance">
 			<div class="flex flex-advnce">
-				<div class="line">
+				<div class="line <?php if(get_field('valid_mail','user_'.$user_id)) { echo 'emailValid'; } ?>">
 					<i></i>
 				</div>
 				<div class="number">
-					50%
+					<?php if(get_field('valid_mail','user_'.$user_id)) { echo '100%'; } else { echo '50%'; } ?>
 				</div>
 			</div>
 			<div class="simple-mss"><a href="<?php echo site_url(); ?>/my-account/edit-account/">Completa tu perfil</a></div>
 		</div>
 		<div class="lists flex">
 			<div class="lists-it">
-				<a>
+				<a href="<?php echo site_url(); ?>/my-account?extend=favorite">
 					<div class="img">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/heart.png">
 					</div>
@@ -140,3 +153,7 @@ do_action( 'woocommerce_before_account_navigation' );
 		</div>
 	</div>	
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>
+<script type="text/javascript">
+	jQuery('header').addClass('header-notactive');
+	var urlajax = '<?php echo site_url(); ?>/wp-admin/admin-ajax.php';
+</script>

@@ -651,11 +651,54 @@ section#woocommerce_layered_nav-3 ul li span.count {
 		    justify-content: center;		    
 		    margin-top: 25px;
 		    margin-bottom: 35px;
+		    align-items: center;
 		    a {
 			    color: white;
 			    font-size: 12px;
 			    text-align: center;
 			    margin: 0px 10px;
+			}
+			.whislistButtonAdd {
+				.yith-wcwl-add-to-wishlist {
+				    margin-top: 0px;
+				    a.add_to_wishlist {
+					    cursor: pointer;
+					    display: block;
+					    i {
+						    display: block;
+						    margin-right: 0px !important;
+						    font-size: 25px;
+						}
+					}
+				}
+				.yith-wcwl-wishlistexistsbrowse {
+				    position: relative;
+				    text-align: center;
+				    margin: 0px 10px;
+				    .feedback {
+					    color: white;
+					    font-size: 12px;
+					    i {
+						    font-size: 25px;
+						    display: block;
+						    margin-right: 0px;
+						}
+					}
+					a {
+					    position: absolute;
+					    left: -20px;
+					    bottom: -40px;
+					    margin: 0px !important;
+					    background: white;
+					    color: black !important;
+					    padding: 5px !important;
+					    font-size: 11px !important;
+					    opacity: 0;
+					    transition: 0.3s;
+					    min-width: 80px;
+					    &:hover { opacity: 1; }
+					}
+				}
 			}
 		}
 		.resumen_s {

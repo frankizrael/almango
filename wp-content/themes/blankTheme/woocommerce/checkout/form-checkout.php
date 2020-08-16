@@ -74,19 +74,20 @@ $user_correo = get_user_meta( $user_id, 'billing_email', true );
 						<div class="solitarfactura">
 							<a href="javascript:void(0)" class="solFactura">Solicitar Factura</a>
 						</div>
-						<div class="facturaFields" style="display: none;">
+						<div class="facturaFields" <?php if(!get_field('ruc','user_'.$user_id)) { ?> style="display: none;" <?php } ?>>
 							<div class="factura_flex">
 								<div class="factura30">
 									<label>RUC</label>
-									<input type="number" name="add_ruc" id="add_ruc" placeholder="Ingresa tu RUC">
+									<input type="number" name="add_ruc" id="add_ruc" placeholder="Ingresa tu RUC" <?php if(get_field('ruc','user_'.$user_id)) { ?> value="<?php echo get_field('ruc','user_'.$user_id); ?>" <?php } ?>>
 								</div>
 								<div class="factura30">
 									<label>Razón Social</label>
-									<input type="text" name="add_raz_social" id="add_raz_social" placeholder="Ingresa tu Razón social">
+									<input type="text" name="razon_social" id="razon_social" placeholder="Ingresa tu Razón social" <?php if(get_field('razon_social','user_'.$user_id)) { ?> value="<?php echo get_field('razon_social','user_'.$user_id); ?>" <?php } ?>>
 								</div>
 								<div class="factura30">
 									<a href="javascript:void(0)" class="addFacture" id-use="<?php echo $user_id; ?>">Agregar Factura</a>
 								</div>
+								<p class="validation" id="valID"></p>
 							</div>
 						</div>
 					</div>
@@ -121,42 +122,94 @@ $user_correo = get_user_meta( $user_id, 'billing_email', true );
 					<div class="method_send">
 						<div class="method_send_se">
 							<div class="method_item" id="method_domicilio">
-								<?php do_action( 'woocommerce_checkout_shipping' ); ?>		
-							</div>
-							<div class="method_item" id="method_tienda">
-								<div class="mensajeRed">*Recuerda llevar tu DNI en físico y tu PDF o captura de pantalla de tu compra.</div>
-								<div class="data_concesionario">
-									<div class="data_item">
-										<strong>Nombre del concesionario</strong>
-										<p>Grupo Lauzher</p>
-									</div>
-									<div class="data_item">
-										<strong>Horario de tienda</strong>
-										<p>L a V : 9:00 a.m. - 6:00 p.m. - S : 9:00 a.m. - 1:00 p.m.</p>
-									</div>
-									<div class="data_item">
-										<strong>Direccion</strong>
-										<p>Jr. Enrique Barron 885</p>
-									</div>
-									<div class="data_item">
-										<strong>Referencia</strong>
-										<p>Altura de la cuadra 6 de Av. Alejandro Tirad</p>
-									</div>
-									<div class="data_item">
-										<strong>Persona encargada de la entrega</strong>
-										<p>Leda Sifuente</p>
-									</div>
-									<div class="data_item">
-										<strong>Cargo</strong>
-										<p>Jefa de tienda</p>
-									</div>
+								<div class="data_dom">
+									<?php do_action( 'woocommerce_checkout_shipping' ); ?>										
 								</div>
-								<div class="checkoutTitle">
+								<div class="checkoutTitle calendarDiv">
 									<h3>
 										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Lo quiero el
 									</h3>
 									<div class="calendarJs">
-										
+										<label>Ingresa una fecha</label>
+										<input type="text" name="calendarDomicilio" id="calendarDomicilio" placeholder="Fecha ...">
+									</div>
+								</div>	
+								<div class="checkoutTitle horarioDiv">
+									<h3>
+										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Horario único
+									</h3>
+									<p>Lunes a viernes de 9 a.m. a 6 p.m.</p>
+								</div>	
+							</div>
+							<div class="method_item" id="method_tienda">
+								<div class="mensajeRed">*Recuerda llevar tu DNI en físico y tu PDF o captura de pantalla de tu compra.</div>
+								<div class="data_concesionario">
+									<?php
+										$arraycats = array();
+										$concesionario = get_field('concesionarios','options');
+										foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+											$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+											$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+											if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+												
+											$cat = get_the_terms($product_id,'product_cat', array( 'order' => 'DESC'));
+											if ($cat) {				
+												foreach ($cat as $ta) {						
+													if ($ta->parent == 67) {										
+													//if ($ta->parent == 24) {
+														array_push($arraycats, $ta->term_id);
+													}
+												}
+											}
+											}
+										}			
+										$newarraycats = array_unique($arraycats);
+									?>
+									<?php
+										if ($newarraycats) {
+											foreach ($newarraycats as $a_id) {					
+												foreach ($concesionario as $con) {
+													if ($con['marca'] == $a_id) {
+												?>
+												<div class="data_concesionario__item">
+													<div class="data_item">
+														<strong>Nombre del concesionario</strong>
+														<p><?php echo $con['nombre']; ?></p>
+													</div>
+													<div class="data_item">
+														<strong>Horario de tienda</strong>
+														<p><?php echo $con['horario']; ?></p>
+													</div>
+													<div class="data_item">
+														<strong>Direccion</strong>
+														<p><?php echo $con['direccion']; ?></p>
+													</div>
+													<div class="data_item">
+														<strong>Referencia</strong>
+														<p><?php echo $con['referencia']; ?></p>
+													</div>
+													<div class="data_item">
+														<strong>Persona encargada de la entrega</strong>
+														<p><?php echo $con['encargado']; ?></p>
+													</div>
+													<div class="data_item">
+														<strong>Cargo</strong>
+														<p><?php echo $con['cargo']; ?></p>
+													</div>												
+												</div>
+												<?php												
+													}
+												}	
+											}
+										}
+									?>
+								</div>
+								<div class="checkoutTitle calendarDiv">
+									<h3>
+										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Lo quiero el
+									</h3>
+									<div class="calendarJs">
+										<input type="text" name="calendarDomicilio" id="calendarDomicilio2" placeholder="Fecha ...">
 									</div>
 								</div>
 								<div class="checkoutTitle">
@@ -195,4 +248,5 @@ $user_correo = get_user_meta( $user_id, 'billing_email', true );
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
 <script type="text/javascript">
 	jQuery('header').addClass('header-notactive');
+	var urlajax = '<?php echo site_url(); ?>/wp-admin/admin-ajax.php';
 </script>

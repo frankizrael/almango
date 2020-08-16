@@ -1,9 +1,87 @@
 import '../scss/car.scss';
 import "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
-$('.escoger_metodo li').on('click',function(){
+import datepicker from 'js-datepicker';
+import 'js-datepicker/dist/datepicker.min.css';
+
+function addDays(date, days) {
+  const copy = new Date(Number(date))
+  copy.setDate(date.getDate() + days)
+  return copy
+}
+
+let today = new Date();
+let bday = addDays(today,3);
+
+if ($('#calendarDomicilio').length > 0) {
+  var picker = datepicker('#calendarDomicilio', {
+    customMonths: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    customDays: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    overlayPlaceholder : 'Ingresar un año',
+    overlayButton : "Filtrar",
+    noWeekends: true,
+    minDate: bday,
+    onSelect : ( instance ,  date )  =>  {   
+      let month = date.getMonth()+1;  
+      let val = date.getDate() +'/'+ month + '/'+ date.getFullYear();
+      $('#calendarDomicilio').val(val);
+    }
+  });
+}
+
+if ($('#calendarDomicilio2').length > 0) {
+  var picker = datepicker('#calendarDomicilio2', {
+    customMonths: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    customDays: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    overlayPlaceholder : 'Ingresar un año',
+    overlayButton : "Filtrar",
+    noWeekends: true,
+    minDate: bday,
+    onSelect : ( instance ,  date )  =>  {   
+      let month = date.getMonth()+1;  
+      let val = date.getDate() +'/'+ month + '/'+ date.getFullYear();
+      $('#calendarDomicilio2').val(val);
+    }
+  });
+}
+
+$('#add_ruc').on('blur',function(){
+	let username = $('#add_ruc').val();
+	if (username.length >= 8) {
+		$.ajax({
+	        url: urlajax,
+	        method: 'get',
+	        data: {
+	            action: 'sunatlogin',            
+	            username: username
+	        },
+	        beforeSend: function() {
+	        	$('#add_ruc').addClass('opacity');
+	        	$('#add_raz_social').addClass('opacity');					        	
+	        },
+	        success: function (resp) { 
+					console.log(resp);  
+	        	if (resp.length > 0) { 
+		        	let json = JSON.parse(resp);  
+		        	$('#add_raz_social').val(json.razon_social);
+		        	$('#valID').html('RUC Válido');
+		        }
+	        },
+	        complete: function() {
+	        	$('#add_ruc').removeClass('opacity');
+	        	$('#add_raz_social').removeClass('opacity');
+	        }
+	    });
+	}
+});
+
+
+
+$('.escoger_metodo li').on('click',function(){	
 	let data = $(this).attr('data-id');
-	$('.method_item').hide();
+	$('.escoger_metodo li').removeClass('active');
+	$(this).addClass('active');
+	$('.method_item').hide();	
 	$(data).show();
 });
 
@@ -44,9 +122,10 @@ $('.inbox_check input').on('change',function(){
 $(document).on('click','.colors_step',function(){
 	let $this = $(this);
 	let data = $this.attr('data');
+	let prod_id = $('.colores_tag').attr('data-id');
 	$this.closest('.addtionalContent').find('.colors_step').removeClass('active');
 	$this.addClass('active');
-	$this.closest('.addtionalContent').find('input').val(data);
+	localStorage.setItem(prod_id+'_color',data);
 });
 
 for(let t=0;t<$('.addtionalContent').length;t++){
@@ -119,3 +198,5 @@ $('.addFacture').on('click',function(){
 		}
 	}
 });
+
+$('.escoger_metodo li').eq(0).trigger('click');

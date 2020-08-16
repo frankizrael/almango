@@ -21,17 +21,112 @@ defined( 'ABSPATH' ) || exit;
 
 $notes = $order->get_customer_order_notes();
 ?>
-<p>
-<?php
-printf(
-	/* translators: 1: order number 2: order date 3: order status */
-	esc_html__( 'Order #%1$s was placed on %2$s and is currently %3$s.', 'woocommerce' ),
-	'<mark class="order-number">' . $order->get_order_number() . '</mark>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	'<mark class="order-date">' . wc_format_datetime( $order->get_date_created() ) . '</mark>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	'<mark class="order-status">' . wc_get_order_status_name( $order->get_status() ) . '</mark>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-);
-?>
-</p>
+<div class="simpletitle">
+	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', esc_html__( 'Mis pedidos', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
+</div>
+<div class="contentMyPedidos">
+	<div class="itemPedido">
+		<div class="title_pedido">
+			<?php
+				$status = wc_get_order_status_name($order->get_status());
+				if ( $status == 'Pending payment' ) {
+					?>
+					Validando pago
+					<?php
+				}
+				if ( $status == 'Failed' ) {
+					?>
+					Pedido Fallido
+					<?php
+				}
+				if ( $status == 'Processing' ) {
+					?>
+					Pedido por entregar
+					<?php
+				}
+				if ( $status == 'Completed' ) {
+					?>
+					Pedido Entregado
+					<?php
+				}
+				if ( $status == 'On hold' ) {
+					?>
+					Pedido en Espera
+					<?php
+				}
+				if ( $status == 'Cancelled' ) {
+					?>
+					Pedido cancelado
+					<?php
+				}
+				if ( $status == 'Refunded' ) {
+					?>
+					Pedido reembolzado
+					<?php
+				}
+			?>
+		</div>
+		<div class="body_pedido">
+			<div class="left_img">
+				<?php
+					$status = wc_get_order_status_name($order->get_status());
+					if ( $status == 'Pending payment' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/time-is-money.png">
+						<?php
+					}
+					if ( $status == 'Failed' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
+						<?php
+					}
+					if ( $status == 'Processing' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
+						<?php
+					}
+					if ( $status == 'Completed' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery-guy.png">
+						<?php
+					}
+					if ( $status == 'On hold' ) {
+						?>										
+						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
+						<?php
+					}
+					if ( $status == 'Cancelled' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
+						<?php
+					}
+					if ( $status == 'Refunded' ) {
+						?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
+						<?php
+					}
+				?>
+			</div>
+			<div class="right_p">
+				<ul>
+					<li>
+						<strong>N° de pedido :</strong>
+						<p><?php echo $order->get_order_number(); ?></p>
+					</li>
+					<li>
+						<strong>Fecha de pedido :</strong>
+						<p><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></p>
+					</li>
+					<li>
+						<strong>Estado :</strong>
+						<p><?php echo wc_get_order_status_name( $order->get_status() ); ?></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <?php if ( $notes ) : ?>
 	<h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
@@ -54,3 +149,7 @@ printf(
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_view_order', $order_id ); ?>
+
+<script type="text/javascript">
+	jQuery('.myaccount-navigation .link_list').eq(3).find('a').addClass('active');
+</script>
