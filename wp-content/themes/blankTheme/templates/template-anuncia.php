@@ -101,7 +101,7 @@ get_header();
 		</div>
 		<div class="form_empresa back_contactos">
 			
-			<?php echo do_shortcode('[contact-form-7 id="416" title="Envio de Solicitud (Empresas)"]'); ?>
+			<?php echo do_shortcode('[contact-form-7 id="747" title="Envio de Solicitud"]'); ?>
 		</div>
 	</div>
 </section>

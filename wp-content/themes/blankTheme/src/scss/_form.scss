@@ -1,5 +1,4 @@
 
-
 .wpcf7, .wpcf7-form{
 	padding: 20px !important;
 	h2{
@@ -14,14 +13,45 @@
 	font-family: 'ralewaysemibold';
 	text-align: left;
 	text-transform: uppercase;
+		#empresa{
+			position: relative;
+			width: 45%;
+			overflow: hidden;
+			&:before {
+			    position: relative;
+			    background-image: url(../assets/img/empresa.png);
+			    content: '';
+			    width: 25px;
+			    height: 25px;
+			    background-size: contain;
+			    display: inline-block;
+			    top: 2px;
+			    left: 0;
+			}
+		}
+		#cargo{
+			position: relative;
+			width: 45%;
+			overflow: hidden;
+			&:before {
+			    position: relative;
+			    background-image: url(../assets/img/cargo.png);
+			    content: '';
+			    width: 25px;
+			    height: 25px;
+			    background-size: contain;
+			    display: inline-block;
+			    top: 2px;
+			    left: 0;
+			}
+		}
 	#celular{
 		position: relative;
 		width: 45%;
 		overflow: hidden;
-
 		&:before {
 		    position: relative;
-		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/mobile-phone@2x.png);
+		    background-image: url(../assets/img/celular.png);
 		    content: '';
 		    width: 25px;
 		    height: 25px;
@@ -31,12 +61,13 @@
 		    left: 0;
 		}
 	}
+	
 	#correo{
 		position: relative;
 		width: 45%;
-		&:before {
+		#correo:before {
 		    position: relative;
-		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/multimedia@2x.png);
+		    background-image: url(../assets/img/mensaje.png);
 		    content: '';
 		    width: 25px;
 		    height: 25px;
@@ -61,7 +92,7 @@
 	    &#nombre{
 	    	&:before {
 		    position: relative;
-			    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/avatar@2x.png);
+			    background-image: url(../assets/img/usuario.png);
 			    content: '';
 			    width: 25px;
 			    height: 25px;
@@ -76,7 +107,7 @@
 			margin-top: 15px;
 	    	&:before {
 			    position: relative;
-			    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/linkedin@2x.png);
+			    background-image: url(../assets/img/linkedin.png);
 			    content: '';
 			    width: 25px;
 			    height: 25px;
@@ -90,7 +121,7 @@
 		&#interes{
 	    	&:before {
 		    position: relative;
-		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/jigsaw@2x.png);
+		    background-image: url(../assets/img/icon1.png);
 		    content: '';
 		    width: 25px;
 		    height: 25px;
@@ -104,7 +135,7 @@
 		&#curriv{
 	    	&:before {
 		    position: relative;
-		    background-image: url(http://dev.almango-master.com/wp-content/uploads/2020/07/businessman@2x.png);
+		    background-image: url(../assets/img/icon2.png);
 		    content: '';
 		    width: 25px;
 		    height: 25px;

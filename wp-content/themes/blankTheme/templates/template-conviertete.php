@@ -16,7 +16,7 @@ get_header();
 				<p class="movil_text1"><?php echo get_field('parrafo_socio') ?></p>
 				<p class="movil_text2"><?php echo get_field('parrafo') ?></p>
 				<div class="contacto_empresa back_contactos">
-					<?php echo do_shortcode('[contact-form-7 id="416" title="Envio de Solicitud (Empresas)"]'); ?>
+					<?php echo do_shortcode('[contact-form-7 id="748" title="Solicitud (Empresa)"]'); ?>
 				</div>
 				
 			</div>

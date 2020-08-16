@@ -1,0 +1,56 @@
+section.preguntas_frecuentes {
+  padding-top: 90px;
+  height: calc(100vh - 90px);
+  overflow: hidden; }
+  section.preguntas_frecuentes img.back_imagen {
+    position: absolute;
+    z-index: -1;
+    width: 100%; }
+  section.preguntas_frecuentes .x-container {
+    height: 100%; }
+    section.preguntas_frecuentes .x-container .columnas {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%; }
+      section.preguntas_frecuentes .x-container .columnas .columna-izq {
+        margin-right: 43px; }
+        section.preguntas_frecuentes .x-container .columnas .columna-izq p {
+          font-size: 20px;
+          font-family: 'Raleway';
+          font-weight: 500; }
+    section.preguntas_frecuentes .x-container .columna-der {
+      background: white;
+      padding: 60px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 310px;
+      padding: 50px 45px;
+      text-align: center; }
+      section.preguntas_frecuentes .x-container .columna-der img.openModal {
+        margin: 92px auto; }
+      section.preguntas_frecuentes .x-container .columna-der p {
+        font-size: 18px;
+        font-family: 'Raleway';
+        font-weight: 500;
+        margin-bottom: 90px; }
+      section.preguntas_frecuentes .x-container .columna-der .pregunta-link {
+        font-size: 15px;
+        display: flex;
+        justify-content: space-between; }
+        section.preguntas_frecuentes .x-container .columna-der .pregunta-link h2 {
+          font-size: 15px; }
+        section.preguntas_frecuentes .x-container .columna-der .pregunta-link a {
+          color: blue; }
+  section.preguntas_frecuentes .modalShow .contentModalShow {
+    background: #D4EDDA;
+    padding: 0 100px; }
+    section.preguntas_frecuentes .modalShow .contentModalShow .content {
+      display: flex;
+      align-items: center;
+      padding: 25px; }
+      section.preguntas_frecuentes .modalShow .contentModalShow .content p {
+        font-size: 20px;
+        font-weight: 500;
+        margin-left: 25px; }
