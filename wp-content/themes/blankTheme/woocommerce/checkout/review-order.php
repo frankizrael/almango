@@ -17,30 +17,62 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<table class="shop_table woocommerce-checkout-review-order-table">
-	<thead>
-		<tr>
-			<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-			<th class="product-total"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
-		</tr>
-	</thead>
+<table class="shop_table woocommerce-checkout-review-order-table checkout_table_order">
 	<tbody>
 		<?php
 		do_action( 'woocommerce_review_order_before_cart_contents' );
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-
+			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 				?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 					<td class="product-name">
-						<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<div class="img">
+							<?php
+								$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+
+								if ( ! $product_permalink ) {
+									echo $thumbnail; // PHPCS: XSS ok.
+								} else {
+									printf( '<a href="%s" class="thumbnail_core">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
+								}
+							?>
+						</div>
 					</td>
 					<td class="product-total">
+						<div class="product">
+							<h3><?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
+							<p><?php the_field('modelo',$product_id); ?></p>
+						</div>
+						<div class="color">
+							<div class="colores_tag">
+								<script type="text/javascript">
+									var color_exactly = localStorage.getItem('<?php echo $product_id; ?>_color');
+								</script>
+								<?php
+									$colores = get_field('colores',$product_id);
+									if ($colores) {
+										$a=0;
+										foreach ($colores as $ce) {
+									?>
+									<div class="colors_step" data="#colors_img_<?php echo $a;?>" data="<?php echo $ce['text']; ?>">
+										<span style="background: <?php echo $ce['color']; ?>"></span>
+										<p><?php echo $ce['text']; ?></p>
+									</div>
+									<?php
+										$a++;
+										}
+									}
+								?>
+							</div>
+						</div>
+						<p>Cantidad: <?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>						
+						<div cla_colors_ss="price">
 						<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						</div>
 					</td>
 				</tr>
 				<?php

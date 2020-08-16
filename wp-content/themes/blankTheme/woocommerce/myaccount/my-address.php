@@ -23,8 +23,8 @@ if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) {
 	$get_addresses = apply_filters(
 		'woocommerce_my_account_get_addresses',
 		array(
-			'billing'  => __( 'Billing address', 'woocommerce' ),
-			'shipping' => __( 'Shipping address', 'woocommerce' ),
+			'billing'  => __( 'Mis direcciones de envio', 'woocommerce' ),
+			'shipping' => __( 'Mi facturación', 'woocommerce' ),
 		),
 		$customer_id
 	);
@@ -32,7 +32,7 @@ if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) {
 	$get_addresses = apply_filters(
 		'woocommerce_my_account_get_addresses',
 		array(
-			'billing' => __( 'Billing address', 'woocommerce' ),
+			'billing' => __( 'Mis direcciones de envio', 'woocommerce' ),
 		),
 		$customer_id
 	);
@@ -43,7 +43,7 @@ $col    = 1;
 ?>
 
 <p>
-	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'The following addresses will be used on the checkout page by default.', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Aquí puedes editar tus direcciones de envío.', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </p>
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
@@ -58,15 +58,15 @@ $col    = 1;
 	?>
 
 	<div class="u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $oldcol < 0 ? 1 : 2; ?> woocommerce-Address">
-		<header class="woocommerce-Address-title title">
+		<div class="woocommerce-Address-title title">
 			<h3><?php echo esc_html( $address_title ); ?></h3>
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="edit"><?php echo $address ? esc_html__( 'Edit', 'woocommerce' ) : esc_html__( 'Add', 'woocommerce' ); ?></a>
-		</header>
-		<address>
+			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="btn"><?php echo $address ? esc_html__( 'Editar', 'woocommerce' ) : esc_html__( 'Agregar', 'woocommerce' ); ?></a>
+		</div>
+		<div class="address">
 			<?php
-				echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'woocommerce' );
+				echo $address ? wp_kses_post( $address ) : esc_html_e( 'Aún no configuras está dirección.', 'woocommerce' );
 			?>
-		</address>
+		</div>
 	</div>
 
 <?php endforeach; ?>

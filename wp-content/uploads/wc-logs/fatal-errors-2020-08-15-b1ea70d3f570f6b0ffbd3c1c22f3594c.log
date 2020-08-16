@@ -1,0 +1,13 @@
+2020-08-15T00:46:43+00:00 CRITICAL Uncaught Error: Class 'SoapClient' not found in C:\xampp\htdocs\almango\wp-content\plugins\woocommerce-payme-gateway\woocommerce-gateway-payme.php:891
+Stack trace:
+#0 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce-payme-gateway\woocommerce-gateway-payme.php(718): WC_payme->userCodePayme(Array)
+#1 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce-payme-gateway\woocommerce-gateway-payme.php(796): WC_payme->get_payme_args(411)
+#2 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce-payme-gateway\woocommerce-gateway-payme.php(519): WC_payme->generate_payme_form(411)
+#3 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(286): WC_payme->receipt_page(411)
+#4 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 C:\xampp\htdocs\almango\wp-includes\plugin.php(465): WP_Hook->do_action(Array)
+#6 C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\checkout\order-receipt.php(44): do_action('woocommerce_rec...', 411)
+#7 C:\xampp\htdocs\almango\wp-con in C:\xampp\htdocs\almango\wp-content\plugins\woocommerce-payme-gateway\woocommerce-gateway-payme.php on line 891
+
+2020-08-15T21:17:10+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\form-edit-account.php on line 69
+

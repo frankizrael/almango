@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 2020-08-07T00:17:22+00:00 NOTICE Unable to download GeoIP Database: cURL error 6: Could not resolve host: geolite.maxmind.com; Unknown error
+=======
+2020-08-07T00:13:52+00:00 NOTICE Unable to download GeoIP Database: cURL error 6: Could not resolve host: geolite.maxmind.com
+>>>>>>> 27b1d56a3d09c986237dcaf31d82013ccf0a5aff

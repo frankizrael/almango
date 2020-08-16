@@ -43,7 +43,8 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 							<img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">
 							DNI
 						</label>
-						<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="<?php esc_html_e( 'Ingresa tu DNI', 'woocommerce' ); ?>"/>
+						<input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="<?php esc_html_e( 'Ingresa tu DNI', 'woocommerce' ); ?>"/>
+						<p class="flexFullInsideR" id="msjLog"></p>
 					</div>
 					<div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput">
 						<label>
@@ -109,6 +110,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 								DOCUMENTO
 							</label>
 							<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="<?php esc_html_e( 'Usuario', 'woocommerce' ); ?>"/>
+							<p class="flexFullInsideR" id="msjReg"></p>
 						</div>
 					<?php endif; ?>
 
@@ -159,4 +161,8 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <script type="text/javascript">
 	jQuery('.top-background').hide();
+</script>
+<script type="text/javascript">
+	jQuery('header').addClass('header-notactive');
+	var urlajax = '<?php echo site_url(); ?>/wp-admin/admin-ajax.php';
 </script>

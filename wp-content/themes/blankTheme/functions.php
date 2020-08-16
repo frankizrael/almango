@@ -287,6 +287,46 @@ function wooc_save_extra_register_fields( $customer_id ) {
 }
 add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
 
+
+function save_new_paramaters( $user_id ) {
+    // For Favorite color
+    if( isset( $_POST['user_genero'] ) ) {        
+        update_field( 'user_genero', $_POST['user_genero'], 'user_'.$user_id );
+    }
+    if( isset( $_POST['user_birthdate'] ) ) {        
+        update_field( 'user_birthdate', $_POST['user_birthdate'], 'user_'.$user_id );
+    }
+    if( isset( $_POST['estilos_preferidos'] ) ) {        
+        update_field( 'estilos_preferidos', $_POST['estilos_preferidos'], 'user_'.$user_id );
+    }
+    if( isset( $_POST['tienes_moto'] ) ) {        
+        update_field( 'tienes_moto', $_POST['tienes_moto'], 'user_'.$user_id );
+    }
+    if( isset( $_POST['redes_sociales'] ) ) {        
+        update_field( 'redes_sociales', $_POST['redes_sociales'], 'user_'.$user_id );
+    }
+    if ( isset( $_POST['billing_phone'] ) ) {
+        update_user_meta( $user_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
+    }    
+}
+add_action( 'woocommerce_save_account_details', 'save_new_paramaters', 12, 1 );
+
+
+// define the woocommerce_customer_save_address callback 
+function action_woocommerce_customer_save_address( $user_id, $load_address ) { 
+    if ($load_address === 'shipping') {
+        if( isset( $_POST['ruc'] ) ) {        
+            update_field( 'ruc', $_POST['ruc'], 'user_'.$user_id );
+        }
+        if( isset( $_POST['razon_social'] ) ) {        
+            update_field( 'razon_social', $_POST['razon_social'], 'user_'.$user_id );
+        }
+    }
+}; 
+         
+// add the action 
+add_action( 'woocommerce_customer_save_address', 'action_woocommerce_customer_save_address', 10, 2 ); 
+
 /**
  * Exclude products from a particular category on the shop page
  */
@@ -331,3 +371,72 @@ function addfacture() {
 }
 add_action( 'wp_ajax_addfacture', 'addfacture' );
 add_action( 'wp_ajax_nopriv_addfacture', 'addfacture' );
+
+
+add_filter('woocommerce_order_button_text','custom_order_button_text',1);
+
+function custom_order_button_text($order_button_text) {
+    
+    $order_button_text = 'GENERAR COMPRA';
+    
+    return $order_button_text;
+}
+
+function sunatlogin() {
+    $username = filter_input(INPUT_GET, 'username'); 
+    $url ='https://api.sunat.cloud/ruc/'.$username;
+    // Get cURL resource
+    $curl = curl_init();
+    // Set some options - we are passing in a useragent too here
+    curl_setopt_array($curl, [
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_URL => $url,
+        CURLOPT_USERAGENT => ''
+    ]);
+    // Send the request & save response to $resp
+    $resp = curl_exec($curl);
+    // Close request to clear up some resources
+    curl_close($curl);
+    wp_send_json( $resp );
+
+
+    wp_die();
+}
+add_action( 'wp_ajax_sunatlogin', 'sunatlogin' );
+add_action( 'wp_ajax_nopriv_sunatlogin', 'sunatlogin' );
+
+function pippin_get_image_id($image_url) {
+    global $wpdb;
+    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+        return $attachment[0]; 
+}
+
+function imagen_file_upload() {
+    $arr_img_ext = array('image/png', 'image/jpeg', 'image/jpg', 'application/pdf');
+    $user_id = $_POST["user"];
+    if (in_array($_FILES['file']['type'], $arr_img_ext)) {
+        $upload_file = wp_upload_bits($_FILES["file"]["name"], null, file_get_contents($_FILES["file"]["tmp_name"]));
+        if (!$upload_file['error']) {
+            $attachment = array(
+                'post_mime_type' => $_FILES['file']['type'],
+                'post_parent' => $user_id,
+                'post_title' => preg_replace('/\.[^.]+$/', '', $_FILES["file"]["name"]),
+                'post_content' => '',
+                'post_status' => 'inherit'
+            );
+            $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], $user_id );
+            if (!is_wp_error($attachment_id)) {
+                require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
+                wp_update_attachment_metadata( $attachment_id,  $attachment_data );
+                //add thmbnail
+                update_field('imagen_perfil', $attachment_id, 'user_'.$user_id );   
+                echo get_field('imagen_perfil','user_'.$user_id);
+            }
+        }
+    }    
+    wp_die();
+}
+add_action( 'wp_ajax_imagen_file_upload', 'imagen_file_upload' );
+add_action( 'wp_ajax_nopriv_imagen_file_upload', 'imagen_file_upload' );
+

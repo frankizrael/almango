@@ -21,7 +21,8 @@ module.exports = function(env) {
             activacioncuenta: "./src/entries/activacioncuenta.js",
             passwordolvidada: "./src/entries/passwordolvidada.js",
             car: "./src/entries/car.js",
-            informacionlegal: "./src/entries/terminosycondiciones.js"
+            informacionlegal: "./src/entries/terminosycondiciones.js",
+            car: "./src/entries/car.js"
         },
         target: "web",
         mode: env.NODE_ENV,

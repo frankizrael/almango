@@ -45,7 +45,7 @@ get_header( 'shop' ); ?>
 									}
 								}
 							}
-						?>		
+					?>		
 					<?php 
 						$tags = get_the_terms($myid,'product_tag');
 						if ($tags) {
@@ -112,10 +112,9 @@ get_header( 'shop' ); ?>
 						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/compare.png">
 						<p>Compara</p>
 					</a>
-					<a href="javascript:void(0)">
-						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/heart.png">
-						<p>Me gusta</p>
-					</a>
+					<div href="javascript:void(0)" class="whislistButtonAdd">
+						<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+					</div>
 					<a href="<?php the_field('descargar_ficha'); ?>" download>
 						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
 						<p>Descargas</p>

@@ -80,18 +80,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 							?>
 						</td>
 						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
-							<p class="marca">
+							<p class="marca">								
 								<?php
-								$cat = get_the_terms( $product_id, 'product_cat');
-								$catargs = array();
-								if ($cat) {	
-									$a = 0;		
-									foreach ($cat as $ta) {
-										$name =  $ta->name;
-										if ($a == 2) {
-											echo $name;
-										}
-										$a++;
+								$cat = get_the_terms($myid,'product_cat', array( 'order' => 'DESC'));
+								if ($cat) {				
+									foreach ($cat as $ta) {						
+										if ($ta->parent == 67) {										
+											echo $ta->name;										
+										}	
 									}
 								}
 								?>
@@ -194,7 +190,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								</h3>
 							</div>
 							<div class="addtionalContent">
-								<div class="colores_tag">
+								<div class="colores_tag" data-id="<?php echo $product_id; ?>">
 									<?php
 										$colores = get_field('colores',$product_id);
 										if ($colores) {
@@ -211,7 +207,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 										}
 									?>
 								</div>
-								<input type="hidden" name="_colors_<?php echo $product_id?>">
 							</div>
 						</td>
 					</tr>

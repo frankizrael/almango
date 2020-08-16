@@ -1,1 +1,27 @@
 @import "variables";
+#yith-wcwl-form {
+    overflow: hidden;
+    margin-top: 120px;
+    margin-bottom: 40px;
+    table.wishlist_table tbody td, table.wishlist_table thead th {
+	    border: none;
+	}
+	table.shop_table {
+		border: none;
+	    box-shadow: 0px 3px 10px #0000003d;
+	    margin: 20px 10px;
+	    box-sizing: border-box;
+	    width: calc(100% - 20px);
+	}
+	td.product-price {
+	    font-family: 'heebo';
+	    text-align: left !important;
+	    font-size: 16px;
+	}
+	a.button.add_to_cart_button.ajax_add_to_cart.add_to_cart.alt {
+	    background: #ffa62c;
+	    padding: 10px 20px !important;
+	    height: auto;
+	    display: block;
+	}
+}

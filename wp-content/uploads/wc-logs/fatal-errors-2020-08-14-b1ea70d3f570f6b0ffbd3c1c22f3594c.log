@@ -1,0 +1,2 @@
+2020-08-14T23:40:02+00:00 CRITICAL syntax error, unexpected '}', expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\checkout\form-checkout.php on line 205
+
