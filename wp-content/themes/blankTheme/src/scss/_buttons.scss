@@ -7,9 +7,89 @@
     border-radius: 12px;
     &--morado {
         background: $morado;
+        position: relative;
+        width: 240px;
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        overflow: hidden;
+        z-index: 1;
+        &:before {
+            content: '';
+            position: absolute;
+            background-image: url('../assets/img/motocicleta_white.svg');
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+            left: 0px;
+            transition: 0.5s;
+            top: 12px;
+            opacity: 0;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #3141f5;
+            left: 0px;
+            top: 0;
+            z-index: -1;
+            transform: translateX(-100%);
+            transition: 0.8s;
+        }
+        &:hover {
+            &:before {
+                transform: translateX(200px);
+                opacity: 1;
+            }
+            &:after {
+                transform: translateX(190px);
+            }
+        }
     }
     &--naranja {
-        background: $orange;   
+        background: $orange;  
+        position: relative;
+        width: 240px;
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        overflow: hidden;
+        z-index: 1;
+        &:before {
+            content: '';
+            position: absolute;
+            background-image: url('../assets/img/motocicleta_white.svg');
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+            left: 0px;
+            transition: 0.5s;
+            top: 12px;
+            opacity: 0;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #f98b0d;
+            left: 0px;
+            top: 0;
+            z-index: -1;
+            transform: translateX(-100%);
+            transition: 0.8s;
+        }
+        &:hover {
+            &:before {
+                transform: translateX(200px);
+                opacity: 1;
+            }
+            &:after {
+                transform: translateX(190px);
+            }
+        }
     }
 }
 .buttonAdd a {

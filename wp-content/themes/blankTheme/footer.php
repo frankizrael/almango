@@ -31,8 +31,11 @@
         </a>
         <h2>Métodos de pago</h2>
         <div class="metodos-s">
-          <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/visaimg.png">
-          <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pagoefectivo-logo-1.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_1.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_2.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_3.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_4.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_5.png">
         </div>
         <p class="extraff">Copyright 2020 - ALMANGO.PE. TODOS LOS DERECHOS RESERVADOS</p>
       </div>

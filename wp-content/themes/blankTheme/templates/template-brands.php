@@ -3,7 +3,7 @@ set_query_var('ENTRY', 'brands');
 get_header();
 $marcaTitle = get_the_title();
 ?>
-<section class="init fullheight" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
+<section class="init fullheight <?php if(get_field('video_banner_init')){ echo 'videoContent'; }?>">
 	<div class="fullheight flex alignBottom posRelative">		
 		<div class="content-x">
 			<div class="x-container posRelative">
@@ -32,13 +32,15 @@ $marcaTitle = get_the_title();
 								<div class="swiper-wrapper">
 									<?php
 						                $images = get_field('imagesswiper'); 
+						                $trans = 0;
 						                if ($images) {
 							                foreach ( $images as $img ) {
 							                    ?> 
 							                    <div class="swiper-slide">                           
-								                    <img src="<?php echo $img['img']; ?>" style="max-width: 250px;">                            
+								                    <img src="<?php echo $img['img']; ?>" style="max-width: 250px;transition-delay:0.<?php echo $trans; ?>s;">
 							                    </div>   
 							                    <?php
+							                    $trans = $trans + 2;
 							                }
 							            }
 						            ?>
@@ -52,9 +54,13 @@ $marcaTitle = get_the_title();
 		<?php
 			if(get_field('video_banner_init')){
 				?>
-		<video autoplay muted loop id="myVideoInit">
+		<video autoplay muted preload="metadata" loop id="myVideoInit">
 		  <source src="<?php the_field('video_banner_init'); ?>" type="video/mp4">
 		</video>
+				<?php
+			} else {
+				?>				
+		<div style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)" class="backgroundInside"></div>
 				<?php
 			}
 		?>
@@ -115,7 +121,7 @@ $marcaTitle = get_the_title();
 <div class="allModels">
 	<div class="x-container">
 		<div class="title-center">
-			<h2>CONOCE TODOS LOS MODELOS</h2>
+			<h2>CONOCE TODOS LOS MODELOS DE <img src="<?php echo $thumbnail_id; ?>"></h2>
 		</div>
 		<div class="model-loop posRelative">
 			<div class="jsModels modelsChange posAbsolute">

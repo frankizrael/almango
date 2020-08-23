@@ -27,7 +27,7 @@
 	.x-mid-container {
 	    width: 500px;
 	    text-align: center;
-	    padding: 70px 0px;
+	    padding: 30px 0px;
 	    h2 {
 		    color: white;
 		    font-size: 25px;
@@ -173,9 +173,10 @@ footer {
     color: white;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 5px 0px;
     justify-content: center;
-}
-@media screen and (max-width: 1500px) {
-
+    font-size: 14px;
+    img {
+	    height: 30px;
+	}
 }

@@ -7,13 +7,52 @@ import ScrollMagic from "scrollmagic";
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
-TweenLite.to( $('.init img') , 1, {css:{left:'0px'}, delay:0});
+let $img = $('.init img');
+if ($img) {
+  TweenLite.to( $img, 1, {css:{left:'0px'}, delay:0});  
+} else {
+  let video = document.getElementById('myVideo');
+  video.addEventListener('loadedmetadata', function() {
+  if (video.buffered.length === 0) return;
+  var bufferedSeconds = video.buffered.end(0) - video.buffered.start(0);
+  console.log(bufferedSeconds + ' segundos para play!');
+  });
+}
 
-var typed = new Typed('#typed', {
-	stringsElement: '#typed-letter',
-	typeSpeed: 90,
-	loop: true
+//animation home
+let $hometext = $('.content_text');
+let len = $hometext.length;
+let aux = 0;
+$(window).on('load',function(){
+  $hometext.eq(0).show();
+  setTimeout(function(){
+    $hometext.eq(0).addClass('active');
+    //really animation cadousel (si con d)
+    setInterval(function(){ 
+      if (aux == (len-1)){
+        aux = 0;
+      } else {
+        aux++;
+      } 
+      //number is correct!!
+      for (let y=0;y<len;y++){
+        if ($hometext.eq(y).hasClass('active')) {
+          $hometext.eq(y).removeClass('active');
+          setTimeout(function(){
+            $hometext.hide();
+            $hometext.eq(aux).show();
+            setTimeout(function(){
+              $hometext.eq(aux).addClass('active');
+            },200);
+          },700);
+        }
+      }
+    }, 5000);
+
+  },500);
 });
+  
+
 
 var swiperBanner = new Swiper(".banner .swiper-container", {
   slidesPerView: 1,
@@ -21,40 +60,67 @@ var swiperBanner = new Swiper(".banner .swiper-container", {
     el: ".banner .swiper-pagination",
     clickable: true,
   },
+  autoplay: {
+    delay: 5000
+  }
 });
 
 var swiperNews = new Swiper(".style_motos .swiper-container", {
   slidesPerView: 8,
-  loop: true,
-  navigation: {
-      nextEl: '.style_motos .swiper-button-next',
-      prevEl: '.style_motos .swiper-button-prev',
-    },
+  autoplay: {
+    delay: 6000
+  }
 });
 
 var swiperA = new Swiper(".section-a .swiper-container", {
   slidesPerView: 'auto',
+  loop: true,
   navigation: {
       nextEl: '.section-a .swiper-button-next',
       prevEl: '.section-a .swiper-button-prev',
-    },
+  },
+  autoplay: {
+    delay: 6000
+  }
 });
 
 var swipermarcas_list = new Swiper(".marcas_list .swiper-container", {
   slidesPerView: 8,
+  loop: true,
   navigation: {
-      nextEl: '.marcas_list .swiper-button-next',
-      prevEl: '.marcas_list .swiper-button-prev',
-    },
+    nextEl: '.marcas_list .swiper-button-next',
+    prevEl: '.marcas_list .swiper-button-prev',
+  },
+  autoplay: {
+    delay: 6000
+  }
 });
 
 var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-container", {
   slidesPerView: 4,
+  loop: true,
   navigation: {
-      nextEl: '.my_products_featureds .swiper-button-next',
-      prevEl: '.my_products_featureds .swiper-button-prev',
-    },
+    nextEl: '.my_products_featureds .swiper-button-next',
+    prevEl: '.my_products_featureds .swiper-button-prev',
+  },
+  autoplay: {
+    delay: 6000
+  }
 });
+
+var swipermy_bannerMoonM = new Swiper(".bannerMoonM .swiper-container", {
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+    nextEl: '.bannerMoonM .swiper-button-next',
+    prevEl: '.bannerMoonM .swiper-button-prev',
+  },
+  autoplay: {
+    delay: 6000
+  }
+});
+
+
 
 function animateCards($card) {
     $card.on('mousemove', function (e) {

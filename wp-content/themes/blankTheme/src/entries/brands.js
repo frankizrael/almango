@@ -8,7 +8,10 @@ import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators";
 
 var swiperBanner = new Swiper(".slide-min .swiper-container", {
-  slidesPerView: 3
+  slidesPerView: 3,
+  autoplay: {
+    delay: 3500
+  }
 });
 
 var bannner = new Swiper(".banner .swiper-container", {
@@ -17,7 +20,29 @@ var bannner = new Swiper(".banner .swiper-container", {
     el: ".banner .swiper-pagination",
     clickable: true,
   },
+  autoplay: {
+    delay: 7500
+  }
 });
+
+if ($('.init').hasClass('videoContent')) {  
+  let video = document.getElementById('myVideoInit');
+  video.addEventListener('loadedmetadata', function() {
+    if (video.buffered.length === 0) return;
+    var bufferedSeconds = video.buffered.end(0) - video.buffered.start(0);
+    console.log(bufferedSeconds + ' segundos para play!');
+  });
+  $(window).on('load',function(){
+    let conent = $('.init .content-x').height();
+    let hei = 'calc(100vh - '+conent+'px)';
+    $('#myVideoInit').css('height',hei);  });
+} else {
+  $(window).on('load',function(){
+    let conent = $('.init .content-x').height();
+    let hei = 'calc(100vh - '+conent+'px)';
+    $('.backgroundInside').css('height',hei);
+  });
+}
 
 
 function animateCards($card) {
@@ -56,6 +81,7 @@ $('.jsCarrusel').on('click',function(){
 	      nextEl: '.contentModels .swiper-button-next',
 	      prevEl: '.contentModels .swiper-button-prev',
 	    },
+      loop: true,
 	    autoplay: {
 	        delay: 7500
 	    }
@@ -76,3 +102,7 @@ $('.jsCarrusel').trigger('click');
 //animation
 TweenLite.to( $('.title-x h1') , 0.5, {css:{transform:'none',opacity:'1'}, delay:1});
 TweenLite.to( $('.init .content-x .desc') , 0.5, {css:{transform:'none',opacity:'1'}, delay:1.5});
+
+setTimeout(function(){
+  $('.slide-min img').addClass('active');
+},1900);

@@ -7,11 +7,21 @@
     background-attachment: fixed;
     background-position: center;
     overflow: hidden;
+    .backgroundInside {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    z-index: -1;
+	    width: 100%;
+	    background-size: cover;
+    	background-attachment: fixed;
+	}
     .content-x {
 	    position: absolute;
 	    bottom: 0px;
-	    padding: 60px 0px;
 	    background: #000000;
+	    box-sizing: border-box;
+	    .x-container { padding: 60px 0px; }
 		.desc {
 		    padding: 0px 30px;
 		    color: white;
@@ -29,7 +39,7 @@
 		.title-x {
 		    position: absolute;
 		    left: 0px;
-		    top: -165px;
+		    top: -100px;
 		    h1 {
 			    color: white;
 			    font-size: 130px;
@@ -49,6 +59,16 @@
 				    transform: translateX(-40%);
 				    font-weight: 700;
 				    opacity: 0.5;
+				}
+			}
+		}
+		.slide-min {
+			.swiper-slide {
+			    overflow: hidden;
+			    img {
+				    transition: 0.3s;
+				    transform: translateX(-180px);
+				    &.active { transform: none; }
 				}
 			}
 		}
@@ -118,6 +138,7 @@
 				    left: 0px;
 				    font-size: 25px;
 				    font-weight: 700;
+				    font-family: 'heebo';
 				}
 			    &:before {
 			    	display: none;

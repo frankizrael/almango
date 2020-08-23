@@ -3,17 +3,35 @@ set_query_var('ENTRY', 'home');
 get_header();
 ?>
 <section class="init fullheight">
-	<img src="<?php the_field('init_img'); ?>" id="jsAnim-init-imagen">
-	<div class="x-container fullheight posRelative flex align-items-center ">
+	<?php
+		$videohome = get_field('init_video');
+		if ($videohome) {
+			?>
+			<video autoplay muted preload="metadata" loop id="myVideo" src="<?php the_field('init_video'); ?>" ></video>	
+			<?php
+		} else {
+			?>
+			<img src="<?php the_field('init_img'); ?>" id="jsAnim-init-imagen">
+			<?php
+		}
+	?>	
+	<div class="ff-container fullheight posRelative flex align-items-center ">
 		<div class="init-title">
-			<div class="initTitle"><?php the_field('init-first-title'); ?><div id="typed-letter"><?php 
-				$list = get_field('init-title-list');
-				if ($list) {
-					foreach ($list as $ls) {
-						?><p><?php echo $ls['text']; ?></p><?php		
+			<div class="initTitle">				
+				<?php 
+					$list = get_field('init-title-list');
+					if ($list) {
+						foreach ($list as $ls) {
+							?>
+								<div class="content_text">
+									<div class="top"><?php echo $ls['text']; ?></div>
+									<div class="botto"><?php echo $ls['text_bottom']; ?></div>
+								</div>
+							<?php		
+						}
 					}
-				}
-			?></div><span id="typed"></span></div>
+				?>
+			</div>
 			<h1><?php the_field('init-subtitle'); ?></h1>
 		</div>
 		<div class="posAbsolute initButtons">
@@ -79,8 +97,6 @@ get_header();
 		            ?>
             	</div>
 			</div>
-			<div class="swiper-button-prev"></div>
-	    	<div class="swiper-button-next"></div>	
 		</div>
 	</div>
 </section>
@@ -103,6 +119,8 @@ get_header();
 					?>
 				</div>	
 			</div>
+			<div class="swiper-button-prev"></div>
+	    	<div class="swiper-button-next"></div>	
 		</div>
 	</div>
 </section>
@@ -206,7 +224,26 @@ get_header();
 </section>
 <section class="bannerMoonM">
 	<div class="x-container">
-		<div class="bannerMoon" style="background-image: url('<?php the_field('banner_publicitario_num_one'); ?>');"></div>
+		<div class="section-bannerMoon posRelative">
+			<div class="swiper-container ">
+				<div class="swiper-wrapper">
+					<?php
+						$banner_moon = get_field('banner_moon');
+							if ($banner_moon){
+								foreach($banner_moon as $ban) {
+					?>
+						<div class="swiper-slide">
+							<img src="<?php echo $ban['img']; ?>">
+						</div>
+					<?php
+							}
+						}
+					?>
+				</div>	
+			</div>
+			<div class="swiper-button-prev"></div>
+	    	<div class="swiper-button-next"></div>	
+		</div>
 	</div>
 </section>
 <section id="dsct" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
@@ -259,8 +296,11 @@ get_header();
 			<h2><?php the_field('aceptamos_title'); ?></h2>
 		</div>
 		<div class="paymenthds">			
-			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/visaimg.png" style="transition-delay: 0s;">
-			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pagoefectivo-logo-1.png" style="transition-delay: 0.2s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_1.png" style="transition-delay: 0s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_2.png" style="transition-delay: 0.2s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_3.png" style="transition-delay: 0.4s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_4.png" style="transition-delay: 0.6s;">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/metodo_pago_5.png" style="transition-delay: 0.8s;">
 		</div>
 	</div>
 </section>

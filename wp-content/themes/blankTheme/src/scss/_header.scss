@@ -74,6 +74,19 @@ header {
 		position: absolute;
 	}
 }
+.dgwt-wcas-sf-wrapp:before {
+    display: block;
+    position: absolute;
+    background-image: url('../assets/img/lupa.png');
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    right: 15px;
+    top: 7px;
+}
+.dgwt-wcas-sf-wrapp svg {
+    display: none;
+}
 .dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier {
     position: absolute;
     right: 20px !important;
