@@ -244,6 +244,28 @@ section {
 		}
 	}
 }
+.swiperHome {
+	margin-top: 20px;
+	.swiper-pagination {
+	    margin: 0px;
+	    span {
+	    	margin: 0px 5px;
+		    border: solid 2px #425aff;
+		    width: 16px;
+		    height: 16px;
+		    &:before {
+		    	//background: url('../assets/img/motocicleta_white.svg') !important;
+		    	background: #425aff !important;
+		    	width: 12px !important;
+			    height: 12px !important;
+			    background-size: cover !important;
+		    }
+		    &.swiper-pagination-bullet-active {
+		    	background: #425aff;
+		    }
+	    }
+	}
+}
 #marcas {
 	.marcas_list__item {
 		opacity: 0;

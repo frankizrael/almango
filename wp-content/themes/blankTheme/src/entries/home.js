@@ -75,9 +75,9 @@ var swiperNews = new Swiper(".style_motos .swiper-container", {
 var swiperA = new Swiper(".section-a .swiper-container", {
   slidesPerView: 'auto',
   loop: true,
-  navigation: {
-      nextEl: '.section-a .swiper-button-next',
-      prevEl: '.section-a .swiper-button-prev',
+  pagination: {
+    el: ".section-a .swiper-pagination",
+    clickable: true,
   },
   autoplay: {
     delay: 6000
@@ -87,9 +87,9 @@ var swiperA = new Swiper(".section-a .swiper-container", {
 var swipermarcas_list = new Swiper(".marcas_list .swiper-container", {
   slidesPerView: 8,
   loop: true,
-  navigation: {
-    nextEl: '.marcas_list .swiper-button-next',
-    prevEl: '.marcas_list .swiper-button-prev',
+  pagination: {
+    el: ".marcas_list .swiper-pagination",
+    clickable: true,
   },
   autoplay: {
     delay: 6000
@@ -99,21 +99,21 @@ var swipermarcas_list = new Swiper(".marcas_list .swiper-container", {
 var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-container", {
   slidesPerView: 4,
   loop: true,
-  navigation: {
-    nextEl: '.my_products_featureds .swiper-button-next',
-    prevEl: '.my_products_featureds .swiper-button-prev',
-  },
+  pagination: {
+    el: ".my_products_featureds .swiper-pagination",
+    clickable: true,
+  }/*,
   autoplay: {
     delay: 6000
-  }
+  }*/
 });
 
 var swipermy_bannerMoonM = new Swiper(".bannerMoonM .swiper-container", {
   slidesPerView: 1,
   loop: true,
-  navigation: {
-    nextEl: '.bannerMoonM .swiper-button-next',
-    prevEl: '.bannerMoonM .swiper-button-prev',
+  pagination: {
+    el: ".bannerMoonM .swiper-pagination",
+    clickable: true,
   },
   autoplay: {
     delay: 6000

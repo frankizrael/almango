@@ -119,8 +119,9 @@ get_header();
 					?>
 				</div>	
 			</div>
-			<div class="swiper-button-prev"></div>
-	    	<div class="swiper-button-next"></div>	
+			<div class="swiperHome">
+				<div class="swiper-pagination"></div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -153,8 +154,9 @@ get_header();
 		            ?>
 				</div>
 	    	</div>
-			<div class="swiper-button-prev"></div>
-	    	<div class="swiper-button-next"></div>	
+			<div class="swiperHome">
+				<div class="swiper-pagination"></div>
+			</div>	
 		</div>
 	</div>
 </section>
@@ -217,8 +219,9 @@ get_header();
 					?>
 				</div>	
 	    	</div>	    	
-			<div class="swiper-button-prev"></div>
-    		<div class="swiper-button-next"></div>
+			<div class="swiperHome">
+				<div class="swiper-pagination"></div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -241,8 +244,9 @@ get_header();
 					?>
 				</div>	
 			</div>
-			<div class="swiper-button-prev"></div>
-	    	<div class="swiper-button-next"></div>	
+			<div class="swiperHome">
+				<div class="swiper-pagination"></div>
+			</div>	
 		</div>
 	</div>
 </section>
