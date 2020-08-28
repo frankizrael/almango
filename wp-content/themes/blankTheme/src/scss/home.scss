@@ -111,10 +111,12 @@ section {
 			    width: 30px;
 			    border-radius: 0px;
 			    height: 0px;
+			    background: white;
 			    border: solid 2px white;
 			    margin-left: 10px;
 			    &.swiper-pagination-bullet-active {
 			    	width: 100px;
+			    	background: $morado;
 			    	border: solid 2px $morado;
 			    }
 			    i {
