@@ -7,8 +7,11 @@
     background-attachment: fixed;
     background-position: center;
     overflow: hidden;
+    .flex {
+    	flex-wrap: wrap;
+    }
     .flex__table {
-	    flex: 1;
+	    flex: none;
 	    width: 50%;
 	}
     .backgroundInside {
@@ -26,6 +29,7 @@
 	    bottom: 0px;
 	    background: #000000;
 	    box-sizing: border-box;
+	    width: 100%;
 	    .x-container { padding: 60px 0px; }
 		.desc {
 		    padding: 0px 30px;
