@@ -53,6 +53,11 @@ import TweenLite from "gsap/TweenLite";
 		$('.modal_left').removeClass('active');
 		$('body').removeClass('hidden')
  	});
+ 	$('.terms').on('click', function(event){
+		event.preventDefault();
+		$('.terms').toggleClass('active');
+		$('.subscriptionmethod button').toggleClass('active');
+ 	});
 //forms input
 
 //preload animation

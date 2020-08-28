@@ -5,29 +5,23 @@
     .subscription_left, .subscription_right {
 	    position: relative;
 	    width: calc(50% - 250px);
-	    display: flex;
-	    justify-content: space-between;
-	    padding: 0px 70px;
 	    box-sizing: border-box;
-	    top: -50px;
-	    img {
-	    	&:nth-child(even) {
-			    bottom: 0px;
-			    position: absolute;
-			    bottom: -100px;
-			}
-			&:nth-child(2) {
-			    left: 160px;
-			}
-			&:nth-child(4) {
-			    right: 190px;
-			}
-	    }
+	    height: 230px;
+	    background-size: cover;
+	    .insideBack {
+		    height: 100%;
+		    width: 100%;
+		    transition: 0.3s;
+		    z-index: -1;
+		    animation: suscriptionanimate linear 2s;
+		    animation-iteration-count: infinite;
+		    transform-origin: 50% 50%;
+		}
 	}
 	.x-mid-container {
 	    width: 500px;
 	    text-align: center;
-	    padding: 30px 0px;
+	    padding: 20px 0px;
 	    h2 {
 		    color: white;
 		    font-size: 25px;
@@ -52,10 +46,20 @@
 				    padding: 20px 20px;
 				    border-radius: 13px;
 				    background: white;
+				    color: black;
 				}
 			}
 			button {
 			    border: none;
+			    flex: none;
+			    cursor: pointer;
+			    pointer-events: none;
+			    background: #7c87ff;
+			    outline: none;
+			    &.active {
+			    	background: #4B5AFC;
+			    	pointer-events: all;
+			    }
 			}
 		}
 	}
@@ -79,6 +83,23 @@
 			    background: white;
 			    border: 1px solid #4B5AFC;
 			    left: 0px;
+			}
+			&:after {
+			    content: '';
+			    position: absolute;
+			    width: 8px;
+			    height: 20px;
+			    border-bottom: solid 3px #4b5afc;
+			    border-right: solid 3px #4b5afc;
+			    transform: rotate(45deg);
+			    left: 22px;
+			    top: 2px;
+			    opacity: 0;
+			}
+			&.active {
+				&:after {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -166,7 +187,14 @@ footer {
 		color: $orange;
 	}
 }
-
+@keyframes suscriptionanimate{
+  0% {
+    background-position: 105px 105px;
+  }
+  100% {
+    background-position: 380px -380px;
+  }
+}
 .extraFooter {
     text-align: center;
     background: #212322;

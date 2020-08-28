@@ -1,24 +1,16 @@
 <section class="subscription" style="background: transparent linear-gradient(135deg, #FF9F32 0%, #ED1E1E 100%) 0% 0% no-repeat padding-box;">
   <div class="subscription_left">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_4.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_2.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_6.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_3.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_5.png">
+    <div style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gg1_left.png);" class="insideBack"></div>
   </div>
   <div class="x-mid-container">
     <h2><?php the_field('subscription_title','options'); ?></h2>
     <div class="subscriptionmethod">
       <?php echo do_shortcode('[contact-form-7 id="5" title="subscription"]'); ?>
-      <p class="terms">He leído y acepto la <a href="#">Política de tratamiento de protección de datos personales.</a></p>
+      <p class="terms">He leído y acepto la <a href="<?php echo site_url(); ?>/politicas-de-privacidad/">Política de tratamiento de protección de datos personales.</a></p>
     </div>
   </div>
   <div class="subscription_right">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_7.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_6.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_1.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_4.png">
-    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/motorcycle_3.png">
+    <div style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gg1_right.png);" class="insideBack"></div>
   </div>
 </section>
 
