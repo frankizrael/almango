@@ -10,7 +10,7 @@ $marcaTitle = get_the_title();
 				<div class="title-x">
 					<h1 data="<?php echo $marcaTitle; ?>"><?php echo $marcaTitle; ?></h1>
 				</div>
-				<div class="flex align-items-center justify-content-between">
+				<div class="flex align-items-center justify-content-between flex-wrap">
 					<div class="flex__table">
 						<div class="content-r">
 							<div class="flex align-items-center">
