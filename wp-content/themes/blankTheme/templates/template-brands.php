@@ -121,7 +121,8 @@ $marcaTitle = get_the_title();
 <div class="allModels">
 	<div class="x-container">
 		<div class="title-center">
-			<h2>CONOCE TODOS LOS MODELOS DE <img src="<?php echo $thumbnail_id; ?>"></h2>
+			<h2>CONOCE TODOS LOS MODELOS DE</h2>
+			<img src="<?php echo $thumbnail_id; ?>">
 		</div>
 		<div class="model-loop posRelative">
 			<div class="jsModels modelsChange posAbsolute">
