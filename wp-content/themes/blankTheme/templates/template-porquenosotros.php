@@ -11,9 +11,7 @@ get_header();
 			</div>	
 			<div class="col-youtube">
 				<img src="<?php echo get_field('img_adorni') ?>" alt="" class="adorno-izq">
-				<iframe width="420" height="315"
-				src="<?php echo get_field('url_youtube') ?>">
-				</iframe>
+				<?php echo get_field('url_youtube') ?>
 				<img src="<?php echo get_field('img_adornd') ?>" alt="" class="adorno-der">
 			</div>	
 			<div class="hashtag">
