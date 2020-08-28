@@ -1,6 +1,7 @@
 <?php /* Template Name: porquenosotros */
 set_query_var('ENTRY', 'porquenosotros');
 get_header();
+$idhome = get_option( 'page_on_front' );
 ?>
 <section class="porque_nosotros">
 	<div class="x-container">
@@ -16,26 +17,28 @@ get_header();
 			</div>	
 			<div class="hashtag">
 				<p><?php echo get_field('hashtag') ?> </p>
-			</div>
-			<div class="descuento">
-				<div class="ticketizq">
-					<img class="blueticket" src="<?php echo get_field('img_ticketb') ?>" alt="">
-					<img class="redticket" src="<?php echo get_field('img_tickety') ?>" alt="">
-					<img class="orangeticket" src="<?php echo get_field('img_ticketro') ?>" alt="">
-				</div>
-				<div class="texto_descuento">
-					<h2><?php echo get_field('titulo_descuento') ?></h2>
-					<h3><?php echo get_field('text_ticketro') ?></h3>
-				</div>
-				<div class="ticketder">
-					<img class="blueticket" src="<?php echo get_field('img_ticketb') ?>" alt="">
-					<img class="redticket" src="<?php echo get_field('img_tickety') ?>" alt="">
-					<img class="orangeticket" src="<?php echo get_field('img_ticketro') ?>" alt="">
-				</div>
 			</div>	
 		</div>
+	</div>	
+</section>
+<section id="dsct" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
+	<div class="decorative_left">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_0.svg" style="transition-delay: 0s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_1.svg" style="transition-delay: 0.2s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_2.svg" style="transition-delay: 0.4s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_3.svg" style="transition-delay: 0.6s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_4.svg" style="transition-delay: 0.8s;">
 	</div>
-	
+	<div class="x-container">
+		<h2><?php the_field('descuentos_title',$idhome); ?></h2>
+		<p><?php the_field('descuentos_subtitle',$idhome); ?></p>
+	</div>
+	<div class="decorative_right">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount.svg" style="transition-delay: 1s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-1.svg" style="transition-delay: 1.2s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-2.svg" style="transition-delay: 1.4s;">
+		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-3.svg" style="transition-delay: 1.6s;">
+	</div>
 </section>
 <?php get_footer();
 
