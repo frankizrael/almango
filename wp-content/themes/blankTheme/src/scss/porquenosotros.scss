@@ -158,6 +158,196 @@ section.porque_nosotros{
 		}	 
 	}
 }
+
+.descuentos {
+    position: relative;
+    padding: 50px 0px;
+    z-index: 1;
+    h2 {
+	    text-align: center;
+	    font-size: 45px;
+	}
+	p {
+	    text-align: center;
+	    font-size: 30px;
+	    color: white;
+	}
+	.decorative_left {
+	    position: absolute;
+	    z-index: -1;
+		left: 0px;	    
+	    top: 0;
+	    width: 50%;
+	    height: 100%;
+	    img {
+	    	transform: translateY(-5px);
+	    	opacity: 0;
+	    	transition: 0.3s;
+	    	&:nth-child(1) {
+			    left: 200px;
+			    position: absolute;
+			    top: -30px;
+			    @include maxw(mypc) {
+			   	 	left: 100px;
+				}
+				@include maxw(mylaptop) {
+			    	left: 80px;
+				}
+				@include maxw(laptop) {
+			    	left: 50px;
+				}
+			}
+			&:nth-child(2) {
+				right: -120px;
+			    position: absolute;
+			    bottom: 10px;
+			    @include maxw(mypc) {
+			   	 	right: -80px;
+				}
+				@include maxw(mylaptop) {
+			    	right: -40px;
+				}
+				@include maxw(laptop) {
+			    	right: -20px;
+				}
+			}
+			&:nth-child(3) {
+				left: 45%;
+			    position: absolute;
+			    bottom: -20px;
+			    @include maxw(mypc) {
+			   	 	left: 35%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 25%;
+				}
+				@include maxw(laptop) {
+			    	left: 15%;
+				}
+			}
+			&:nth-child(4) {
+				right: 275px;
+			    position: absolute;
+			    top: -20px;
+			    @include maxw(mypc) {
+			   	 	right: 200px;
+				}
+				@include maxw(mylaptop) {
+			    	right: 100px;
+				}
+				@include maxw(laptop) {
+			    	right: 40px;
+				}
+			}
+			&:nth-child(5) {
+				left: 42%;
+			    position: absolute;
+			    top: 45px;
+			    @include maxw(mypc) {
+			   	 	left: 32%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 22%;
+				}
+				@include maxw(laptop) {
+			    	left: 12%;
+				}
+			}
+	    }
+	}
+	.decorative_right {
+	    position: absolute;
+	    z-index: -1;
+	    right: 0px;	    
+	    top: 0;
+	    width: 50%;
+	    height: 100%;
+	    img {
+	    	transform: translateY(-5px);
+	    	opacity: 0;
+	    	transition: 0.3s;
+	    	&:nth-child(1) {
+				left: 350px;
+			    position: absolute;
+			    top: -25px;
+			    @include maxw(mypc) {
+			   	 	left: 250px;
+				}
+				@include maxw(mylaptop) {
+			    	left: 180px;
+				}
+				@include maxw(laptop) {
+			    	left: 70px;
+				}
+			}
+			&:nth-child(2) {
+				right: 200px;
+			    position: absolute;
+			    bottom: 10px;
+			    @include maxw(mypc) {
+			   	 	right: 100px;
+				}
+				@include maxw(mylaptop) {
+			    	right: 50px;
+				}
+				@include maxw(laptop) {
+			    	right: 10px;
+				}
+			}
+			&:nth-child(3) {
+				left: 45%;
+			    position: absolute;
+			    bottom: -20px;
+			    @include maxw(mypc) {
+			   	 	left: 35%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 25%;
+				}
+				@include maxw(laptop) {
+			    	left: 15%;
+				}
+			}
+			&:nth-child(4) {
+			    left: -175px;
+			    position: absolute;
+			    bottom: 0px;
+			    @include maxw(mypc) {
+			   	 	right: -120px;
+				}
+				@include maxw(mylaptop) {
+			    	right: -80px;
+				}
+				@include maxw(laptop) {
+			    	right: -30px;
+				}
+			}
+			&:nth-child(5) {
+				left: 42%;
+			    position: absolute;
+			    top: 45px;
+			    @include maxw(mypc) {
+			   	 	left: 32%;
+				}
+				@include maxw(mylaptop) {
+			    	left: 22%;
+				}
+				@include maxw(laptop) {
+			    	left: 12%;
+				}
+			}
+	    }
+	}
+	&.animation {
+		.decorative_left, .decorative_right {
+			img {
+				transform: none;
+				opacity: 1;
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 1380px){
 	section.porque_nosotros .x-container .columnas .descuento .ticketder {
 	    right: 0px;
