@@ -7,6 +7,10 @@
     background-attachment: fixed;
     background-position: center;
     overflow: hidden;
+    .flex__table {
+	    flex: 1;
+	    width: 50%;
+	}
     .backgroundInside {
 	    position: absolute;
 	    top: 0;

@@ -9,6 +9,7 @@ import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 
 var swiperBanner = new Swiper(".slide-min .swiper-container", {
   slidesPerView: 3,
+  loop: true,
   autoplay: {
     delay: 3500
   }
