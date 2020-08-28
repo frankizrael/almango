@@ -70,6 +70,17 @@ $extend = $_GET['extend'];
 		</script>
 	</section>
 	<?php
+		} else {
+			if ($extend == 'versus') {
+				?>
+		<section class="favorite_section">	
+			
+			<script type="text/javascript">
+				jQuery('.lists-it').eq(1).find('a').addClass('active');
+			</script>
+		</section>
+				<?php
+			}
 		}
 	}
 ?>
