@@ -21,7 +21,6 @@ var bannner = new Swiper(".banner .swiper-container", {
     el: ".banner .swiper-pagination",
     clickable: true,
   },
-  loop: true,
   autoplay: {
     delay: 5000
   }
