@@ -21,7 +21,7 @@ $idhome = get_option( 'page_on_front' );
 		</div>
 	</div>	
 </section>
-<section id="dsct" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
+<section id="descuento" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
 	<div class="decorative_left">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_0.svg" style="transition-delay: 0s;">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_1.svg" style="transition-delay: 0.2s;">
