@@ -632,6 +632,13 @@
 				    display: flex;
 				    align-items: center;
 				    flex-wrap: wrap;
+				    position: relative;
+				    .secret {
+					    position: absolute;
+					    right: 0px;
+					    cursor: pointer;
+					    top: 13px;
+					}
 				    .flexFullInsideR {
 					    flex: none;
 					    width: 100%;
@@ -653,10 +660,9 @@
 						}
 					}
 					input, select {
-					    padding: 10px;
-					    border: solid 1px #dedede;
-					    border-radius: 6px;
-					    /* width: 100%; */
+					    padding: 10px 0px;
+					    border: none;
+					    border-bottom: solid 2px #2f2f2f;
 					    appearance: none;
 					    width: calc(100% - 125px);
 					    flex: none;

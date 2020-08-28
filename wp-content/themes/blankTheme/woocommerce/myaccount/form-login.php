@@ -52,6 +52,9 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 							CONTRASEÑA
 						</label>
 						<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" placeholder="<?php esc_html_e( 'Ingresa tu contraseña', 'woocommerce' ); ?>" />
+						<i class="secret" data="#password">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/eyes.png">
+						</i>
 					</div>
 
 					<?php do_action( 'woocommerce_login_form' ); ?>
@@ -71,11 +74,11 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					<div class="whyAccount">
 						<h2>¿Porque tener mi cuenta?</h2>
 						<ul>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">¡Descuentos para tu engreida!</li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">¡Promociones únicas para ti!</li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">¡Enviamos tu compra a donde te encuentres!</li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">¡Asesoramiento 5 estrellas!</li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">¡Y mucho mas.</li>
+							<li><img src="<?php echo get_template_directory_uri(); ?>/img/money_bolsa.png">¡Descuentos para tu engreida!</li>
+							<li><img src="<?php echo get_template_directory_uri(); ?>/img/bolsa_caja.png">¡Promociones únicas para ti!</li>
+							<li><img src="<?php echo get_template_directory_uri(); ?>/img/carrito_entrega.png">¡Enviamos tu compra a donde te encuentres!</li>
+							<li><img src="<?php echo get_template_directory_uri(); ?>/img/callcenter.png">¡Asesoramiento 5 estrellas!</li>
+							<li><img src="<?php echo get_template_directory_uri(); ?>/img/moremore.png">¡Y mucho mas.</li>
 						</ul>
 					</div>
 
@@ -123,6 +126,9 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 								CONTRASEÑA
 							</label>
 							<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" placeholder="<?php esc_html_e( 'Ingresa tu contraseña', 'woocommerce' ); ?>" />
+							<i class="secret" data="#reg_password">
+								<img src="<?php echo get_template_directory_uri(); ?>/img/eyes.png">
+							</i>
 						</div>
 
 					<?php else : ?>

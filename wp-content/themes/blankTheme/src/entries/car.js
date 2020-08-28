@@ -4,6 +4,8 @@ import Swiper from "swiper";
 import datepicker from 'js-datepicker';
 import 'js-datepicker/dist/datepicker.min.css';
 
+$('header').addClass('active-2');
+
 function addDays(date, days) {
   const copy = new Date(Number(date))
   copy.setDate(date.getDate() + days)

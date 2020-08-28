@@ -65,22 +65,25 @@ get_header( 'shop' ); ?>
 		</div>
 		<div class="presents">
 			<div class="x-container">
-				<div class="presents__content">
-				<?php
-					$presents = get_field('presents',$myid);
-					$transition = 0;
-					if ($presents) {
-						foreach ($presents as $pp) {
-					?>
-				<div class="item_presnts" style="transition-delay: 0.<?php echo $transition; ?>s; ">
-					<img src="<?php echo $pp['imagen']; ?>">
-					<p><?php echo $pp['text']; ?></p>
+				<div class="presents__ident">
+					Lo que viene con tu compra
 				</div>
+				<div class="presents__content">
 					<?php
-					$transition = $transition + 2;
+						$presents = get_field('presents',$myid);
+						$transition = 0;
+						if ($presents) {
+							foreach ($presents as $pp) {
+						?>
+					<div class="item_presnts" style="transition-delay: 0.<?php echo $transition; ?>s; ">
+						<img src="<?php echo $pp['imagen']; ?>">
+						<p><?php echo $pp['text']; ?></p>
+					</div>
+						<?php
+						$transition = $transition + 2;
+							}
 						}
-					}
-				?>
+					?>
 				</div>
 			</div>
 		</div>
@@ -108,18 +111,18 @@ get_header( 'shop' ); ?>
 					<p><?php the_field('modelo',$myid); ?></p>
 				</div>
 				<div class="functss">
-					<a href="javascript:void(0)">
+					<div class="compareButtondiv">
 						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/compare.png">
-						<p>Compara</p>
-					</a>
+						<?php	echo do_shortcode( '[yith_compare_button]' );?>					
+					</div>
 					<div href="javascript:void(0)" class="whislistButtonAdd">
 						<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
 					</div>
-					<a href="<?php the_field('descargar_ficha'); ?>" download>
+					<a href="<?php the_field('descargar_ficha'); ?>" class="download" download>
 						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
 						<p>Descargas</p>
 					</a>
-				</div>
+				</div>				
 				<div class="resumen_s">
 					<?php the_field('resumen'); ?>
 				</div>
@@ -190,10 +193,25 @@ get_header( 'shop' ); ?>
 					</div>
 					<div class="inde-right">
 						<div class="butt">
-							<?php
-								$id = get_the_ID();						
-								echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
-							?>	
+							<a href="javascript:void(0)" class="repet">COMPRAR</a>
+							<a href="<?php echo site_url();?>/cart" class="repetAdded" style="display: none;">VER CARRITO</a>
+							<script type="text/javascript">
+								jQuery(window).on('load',function(){
+									setTimeout(function(){
+										jQuery('.repet').on('click',function(){
+											jQuery('.add_to_cart_button').trigger('click');
+										});			
+									},500);
+								});
+								jQuery( 'body' ).on( 'added_to_cart', function( e, fragments, cart_hash, this_button ) {
+								    jQuery('.repet').hide();
+								    jQuery('.repetAdded').show();
+								    setTimeout(function(){
+								    	jQuery('.buttonAdd .added_to_cart').addClass('animationButton');
+								    	jQuery('.butt .repetAdded').addClass('animationButton');
+								    },200);
+								} );
+							</script>
 						</div>
 						<p>TIPO DE CAMBIO DEL DÍA S/. <?php echo get_field('tipo_cambio','options'); ?></p>						
 					</div>
@@ -953,10 +971,18 @@ get_header( 'shop' ); ?>
 </section>
 <section class="descargar_ficha">
 	<div class="maxdescargas">
-		<a href="<?php echo site_url(); ?>/print?id=<?php echo get_the_ID(); ?>" target="_blank">
+		<a href="javascript:void(0)" data-iframe="<?php echo site_url(); ?>/print?id=<?php echo get_the_ID(); ?>" class="iframe-modal">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
 		</a>
 		<p>DESCARGA TU FICHA TÉCNICA DETALLADA</p>
+	</div>
+	<div class="modal-iframe">
+		<div class="modal-iframe-content">
+			<div class="modal-iframe__close"></div>
+			<div class="modal-iframe__content">
+				<iframe src="" id="iframeCore"></iframe>
+			</div>
+		</div>
 	</div>
 </section>
 <section class="banner" style="background-image: url(<?php echo get_field('imagen_parallax_3'); ?>);" id="videoBanner">	

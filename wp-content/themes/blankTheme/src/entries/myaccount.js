@@ -1,6 +1,10 @@
 import "../scss/myaccount.scss";
 import datepicker from 'js-datepicker';
 import 'js-datepicker/dist/datepicker.min.css';
+
+$('header').addClass('active2');
+
+
 $('.tab_in').on('click',function(){
 	let $this = $(this);
 	let id = $this.attr('data');
@@ -24,6 +28,17 @@ if ($('#user_birthdate').length > 0) {
     }
   });
 }
+
+$('.secret').on('click',function(){
+	let data = $(this).attr('data');
+	if ($(data).hasClass('notsecret')) {
+		$(data).attr('type','password');
+		$(data).removeClass('notsecret');
+	} else {
+		$(data).attr('type','text');
+		$(data).addClass('notsecret');
+	}
+});
 
 $('#username').on('blur',function(){
 	let username = $('#username').val();

@@ -57,6 +57,11 @@ function countNumbers($id) {
 }
 
 if ($('body').hasClass('single-product')) {
+
+	
+
+
+
 	let controller = new ScrollMagic.Controller();
 	let i1 = 0; 
 	let i2 = 0; 
@@ -321,6 +326,20 @@ $('.fren_js').eq(0).trigger('click');
 
 $('.barent').addClass('active');
 setTimeout(function(){
-	$('.item_presnts').addClass('active');
+	$('.presents__ident').addClass('active');
 },1000);
+setTimeout(function(){
+	$('.presents__content').addClass('active');
+},1350);
+setTimeout(function(){
+	$('.item_presnts').addClass('active');
+},1650);
 
+$('.iframe-modal').on('click',function(){
+	let iframe = $(this).attr('data-iframe');
+	$('#iframeCore').attr('src',iframe);
+	$('.modal-iframe').show();
+});
+$('.modal-iframe__close').on('click',function(){
+	$('.modal-iframe').hide();
+});

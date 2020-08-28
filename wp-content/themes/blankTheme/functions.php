@@ -26,6 +26,16 @@ function my_widgets_init() {
 		'after_title'   => '</h2>',
 	) );	
 
+    register_sidebar( array(
+        'name'          => __( 'comparador', 'twentyseventeen' ),
+        'id'            => 'compare',
+        'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentyseventeen' ),
+        'before_widget' => '<section id="%1$s" class="widget-compare %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-compare-title">',
+        'after_title'   => '</h2>',
+    ) );    
+
 }
 add_action( 'widgets_init', 'my_widgets_init' );
 
@@ -222,7 +232,7 @@ function wooc_extra_register_fields() {?>
             <select name="user_genero">
                 <option value="masculino">Masculino</option>
                 <option value="femenimo">Femenino</option>
-                <option value="no-especifico">No especifica</option>
+                <option value="no-especifico">LGTBQ+</option>
             </select>
         </div>
         <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="cumple">
