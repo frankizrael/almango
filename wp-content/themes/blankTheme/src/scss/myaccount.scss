@@ -826,16 +826,22 @@
     				margin-bottom: 10px;
     				label {
 					    width: 100%;
-					    margin-bottom: 8px;
+					    margin-bottom: 0px;
+					    img {
+						    height: 20px;
+						    width: 20px;
+						}
 					}
 					input, select {
 						width: 100%;
 					}
+
 			    }
 			}
 		}
 	}
 }
+
 .woocommerce-Address-title a {
     background: #4b5afc;
     padding: 10px;

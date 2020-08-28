@@ -150,14 +150,14 @@ section {
 	    &:before {
 		    content: '';
 		    position: absolute;
-		    width: 160px;
-		    height: 160px;
+		    width: 140px;
+		    height: 140px;
 		    box-shadow: 3px 3px 3px #000000B5;
 		    border: 1px solid #95959526;
 		    border-radius: 50%;
 		    top: 0px;
 		    left: 50%;
-		    margin-left: -80px;
+		    margin-left: -70px;
 		    @include maxw(mylaptop) {
 				width: 130px;
 		    	height: 130px;
@@ -166,10 +166,10 @@ section {
 		}
 	}
 	img {
-		height: 75px;
+	    height: 60px;
 	    width: auto;
 	    background: white;
-	    margin: 30px;
+	    margin: 16px;
 	    margin-top: 45px;
 	    margin-bottom: 50px;
 	    @include maxw(mylaptop) {
@@ -218,8 +218,8 @@ section {
     margin: 20px 0px;
     a {
 	    text-align: center;
-	    width: 160px;
-	    height: 160px;
+	    width: 140px;
+	    height: 140px;
 	    margin: auto;
 	    border-radius: 50%;
 	    box-shadow: 3px 3px 3px #000000B5;
@@ -237,7 +237,7 @@ section {
 		    top: -5px;
 		    object-fit: cover;
 		    padding: 10px;
-		    width: 120px;
+		    width: 90px;
 		    @include maxw(mylaptop) {
 		    	width: 80px;
 		    }
