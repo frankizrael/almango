@@ -134,6 +134,50 @@ function yarpay_pagination()
 }
 
 
+// Register Custom Post Type
+function register_cupones_descuentos() {
+    $labels = array(
+        'name'                  => _x('Cupones de descuento', 'Post Type General Name', 'miloficios'),
+        'singular_name'         => _x('Cupón de descuento', 'Post Type Singular Name', 'miloficios'),
+        'menu_name'             => __('Cupones de descuento', 'miloficios'),
+        'name_admin_bar'        => __('descuentos', 'miloficios'),
+        'all_items'             => __('Todos los cupones', 'miloficios'),
+        'add_new_item'          => __('Añadir cupón', 'miloficios'),
+        'search_items'          => __('Buscar cupón', 'miloficios'),
+    );
+    $rewrite = array(
+        'slug'                  => 'descuentos',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => false,
+    );
+    $args = array(
+        'label'                 => __('descuento', 'miloficios'),
+        'description'           => __('descuentos', 'miloficios'),
+        'labels'                => $labels,
+        'supports'              => array('title'),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 5,
+        'menu_icon'             => 'dashicons-star-filled',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => false,
+    );
+    register_post_type('descuentos', $args);
+}
+
+add_action('init', 'register_cupones_descuentos', 0);
+
+
 if( ! function_exists('custom_ajax_add_to_cart_button') && class_exists('WooCommerce') ) {
     function custom_ajax_add_to_cart_button( $atts ) {
         // Shortcode attributes

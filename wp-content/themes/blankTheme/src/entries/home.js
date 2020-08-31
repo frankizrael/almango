@@ -52,6 +52,89 @@ $(window).on('load',function(){
   },500);
 });
   
+//descuentos
+let $left_dcts = $('.dscto_left');
+for (let i=0;i<$left_dcts.length;i++){
+  $('.descuentos__left').append($left_dcts.eq(i));
+}
+let $right_dcts = $('.dscto_right');
+for (let i=0;i<$right_dcts.length;i++){
+  $('.descuentos__right').append($right_dcts.eq(i));
+}
+//animation core.
+  /*function calculateHeight($content){
+    return $content.height();
+  }
+  function calculateHeightMin($content){
+    return $content.height();
+  }
+  function animationCore(content,minContent){
+    let heightContent = calculateHeight($(content));
+    let heightContentMin = calculateHeightMin($(minContent)) + 40;
+    let cant = $(content).find(minContent).length;
+    let $firstelement = $(content).find(minContent).eq(0);
+    let events = 0;
+    if (cant > 5) {
+      let interval = setInterval(function(){
+        let number = events + 5;
+        let diference = cant - number;
+        if (diference > 0) {          
+          events++;
+        } else {          
+          events--;
+        }
+        let css = 'margin-top:-'+heightContentMin*events+'px';
+        $firstelement.attr('style',css);
+      },2000);
+    }
+  }*/
+
+  function newcarouselleft(){
+    var interval = 3000;
+    let leng = $('#listLeft').find('.dscto_inside').length;
+    if (leng > 5) {
+      setInterval(function() {
+        var first_height = $('#listLeft').find('.dscto_inside:first').height();
+        var paddings = parseInt($('#listLeft').find('.dscto_inside:first').css('padding-top')) + parseInt($('#listLeft').find('.dscto_inside:first').css('padding-bottom'));
+        var margins = parseInt($('#listLeft').find('.dscto_inside:first').css('margin-top')) + parseInt($('#listLeft').find('.dscto_inside:first').css('margin-bottom'));
+        var animation = interval - paddings - margins;
+          $('#listLeft').stop().animate({
+            scrollTop: first_height + paddings + margins
+          }, animation, 'linear', function() {
+            $(this).scrollTop(0).find('.dscto_inside:last').after($('.dscto_inside:first', this));
+          });
+        }, interval);
+    }
+  }
+
+  function newcarouselright(){
+    var interval = 3000;
+    let leng = $('#listRight').find('.dscto_inside').length;
+    if (leng > 5) {
+      setInterval(function() {
+        var first_height = $('#listRight').find('.dscto_inside:first').height();
+        var paddings = parseInt($('#listRight').find('.dscto_inside:first').css('padding-top')) + parseInt($('#listRight').find('.dscto_inside:first').css('padding-bottom'));
+        var margins = parseInt($('#listRight').find('.dscto_inside:first').css('margin-top')) + parseInt($('#listRight').find('.dscto_inside:first').css('margin-bottom'));
+        var animation = interval - paddings - margins;
+          $('#listRight').stop().animate({
+            scrollTop: first_height + paddings + margins
+          }, animation, 'linear', function() {
+            $(this).scrollTop(0).find('.dscto_inside:last').after($('.dscto_inside:first', this));
+          });
+      }, interval);
+    }
+  }
+
+  $('#dsct').on('click', function(event){
+      setTimeout(function(){
+        newcarouselleft();    
+        newcarouselright();
+      },500);
+  });
+
+
+
+
 
 
 var swiperBanner = new Swiper(".banner .swiper-container", {

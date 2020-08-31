@@ -1,0 +1,71 @@
+.imposibleZindex {
+	z-index: 9999999999 !important;
+	position: relative;
+}
+.myModal {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	pointer-events: none;
+	transform: scale(0);
+	opacity: 0;
+	transition: 0.3s;
+	&__content {
+		position: absolute;
+		transform: translateX(-50%)translateY(-50%);
+		left: 50%;
+		top: 50%;
+		background: #FFFFFF 0% 0% no-repeat padding-box;
+		box-shadow: 0px 3px 6px #000000;
+		border-radius: 19px;
+		z-index: 2;
+		padding: 30px 50px;
+	}
+	&__close {
+		position: absolute;
+	    width: 30px;
+	    height: 30px;
+	    background: white;
+	    top: 10px;
+	    right: 10px;
+	    border-radius: 50%;
+	    border: solid 1px $orange;
+	    cursor: pointer;
+	    &:before {
+	    	content: '';
+		    position: absolute;
+		    width: 20px;
+		    height: 3px;
+		    background: $orange;
+		    transform: rotate(45deg);
+		    top: 13px;
+		    left: 5px;
+	    }
+	    &:after {
+	    	content: '';
+		    position: absolute;
+		    width: 20px;
+		    height: 3px;
+		    background: $orange;
+		    transform: rotate(-45deg);
+		    top: 13px;
+		    left: 5px;
+	    }
+	}
+	&__close_full {
+	    position: absolute;
+	    z-index: 1;
+	    width: 100%;
+	    height: 100%;
+	    background: black;
+	    opacity: 0.3;
+	}
+	&.open {
+		transform: none;
+	    opacity: 1;
+	    pointer-events: all;
+	}
+}

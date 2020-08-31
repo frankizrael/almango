@@ -58,6 +58,23 @@ import TweenLite from "gsap/TweenLite";
 		$('.terms').toggleClass('active');
 		$('.subscriptionmethod button').toggleClass('active');
  	});
+ 	$('.openMyModal').on('click', function(event){
+		let $this = $(this);
+		let id = $this.attr('data-modal');
+		$(id).addClass('open');
+		$this.closest('.contentMyModal').addClass('imposibleZindex');		
+ 	});
+ 	$('.myModal__close').on('click', function(event){ 	
+ 		event.stopPropagation();
+		$('.myModal').removeClass('open');
+		$('.contentMyModal').removeClass('imposibleZindex');
+ 	});
+ 	$('.myModal__close_full').on('click', function(event){
+ 		event.stopPropagation();
+		$('.myModal').removeClass('open');
+		$('.contentMyModal').removeClass('imposibleZindex');
+ 	});
+ 	
 //forms input
 
 //preload animation

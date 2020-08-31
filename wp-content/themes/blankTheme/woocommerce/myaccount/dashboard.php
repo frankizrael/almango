@@ -70,8 +70,8 @@ $extend = $_GET['extend'];
 		</script>
 	</section>
 	<?php
-		} else {
-			if ($extend == 'versus') {
+		}
+		if ($extend == 'versus') {
 				?>
 		<section class="favorite_section">	
 			
@@ -79,8 +79,17 @@ $extend = $_GET['extend'];
 				jQuery('.lists-it').eq(1).find('a').addClass('active');
 			</script>
 		</section>
-				<?php
-			}
+			<?php 
+		}
+		if ($extend == 'descuentos') {
+				?>
+		<section class="favorite_section">	
+			
+			<script type="text/javascript">
+				jQuery('.lists-it').eq(1).find('a').addClass('active');
+			</script>
+		</section>
+			<?php 
 		}
 	}
 ?>

@@ -250,7 +250,7 @@ get_header();
 		</div>
 	</div>
 </section>
-<section id="dsct" class="descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
+<section id="dsct" class="descuentos openMyModal contentMyModal" data-modal="#modal_descuentos" style="background: transparent linear-gradient(90deg, #27F4CA 0%, #BD90FF 62%, #960FEF 100%) 0% 0% no-repeat padding-box;">
 	<div class="decorative_left">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_0.svg" style="transition-delay: 0s;">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/coupon_1.svg" style="transition-delay: 0.2s;">
@@ -267,6 +267,78 @@ get_header();
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-1.svg" style="transition-delay: 1.2s;">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-2.svg" style="transition-delay: 1.4s;">
 		<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/discount-3.svg" style="transition-delay: 1.6s;">
+	</div>
+	<div class="descuentos_modal myModal" id="modal_descuentos">
+		<div class="descuentos_modal__content myModal__content">
+			<div class="descuentos__close myModal__close"></div>
+			<div class="descuentos__content">
+				<div class="descuentos__left" id="listLeft">
+				</div>
+				<div class="descuentos__right" id="listRight">
+				</div>
+				<?php
+					$args = array(
+					  'numberposts' => -1,
+					  'post_type'   => 'descuentos'
+					);
+					$descuentos = get_posts( $args );
+					$a = 0;
+					if ($descuentos) {
+						foreach ($descuentos as $dscto) {
+							$id = $dscto->ID;
+							$tipo = get_field('tipo',$id);
+							if ($tipo == 'regalo') {
+								$adorno = get_template_directory_uri().'/img/cupon_regalo.png';
+							} else {
+								$adorno = get_template_directory_uri().'/img/cupon_simple.png';
+							}
+							if ($a%2 == 0) {
+								$position = 'dscto_left';
+							} else {
+								$position = 'dscto_right';
+							}
+							?>
+							<div class="dscto_inside <?php echo $position.' '.$tipo;?>">
+								<div class="dsct_flex">
+									<div class="left">
+										<div class="top"><?php echo get_field('title_superior',$id); ?></div>
+										<div class="center">
+											<div class="le_center">
+												<?php
+													echo get_the_title($id);
+												?>
+											</div>
+											<div class="ri_center">
+												<img src="<?php echo $adorno; ?>">
+											</div>
+										</div>
+										<div class="bottom"><?php echo get_field('condicion',$id); ?></div>
+									</div>
+									<div class="center">
+										<?php echo get_field('porcentaje',$id); ?>
+									</div>
+									<div class="right">
+										<div class="shortcode_canjear">
+											<?php 
+												if (is_user_logged_in()) {
+													$link_desct = site_url().'my-account?extend=descuentos';
+												} else {
+													$link_desct = site_url().'my-account';
+												}
+											?>
+											<a href="<?php echo $link_desct?>" class="btn">Canjear</a>
+										</div>
+									</div>
+								</div>
+							</div>	
+							<?php
+							$a++;
+						}
+					}
+				?>
+			</div>
+		</div>
+		<div class="myModal__close_full"></div>
 	</div>
 </section>
 <section class="prometemos" id="prometemos">
@@ -309,4 +381,5 @@ get_header();
 	</div>
 </section>
 <?php get_footer();
+
 
