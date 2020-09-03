@@ -1,7 +1,15 @@
 @import "utilities";
 @import "variables";
+.page-template-template-myaccount {
+    background: #f3f3f3;
+}
 .myaccount-page {
 	margin-top: 90px;
+	width: calc(100% - 400px);
+    margin: auto;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0px 5px 9px #868686;
 	.top-background {
 		background-size: cover;
 		height: 220px;
@@ -45,11 +53,11 @@
 		    height: 100%;
 		    position: absolute;
 		    right: 0px;
-		    width: calc(100% - 475px);
+		    width: calc(100% - 275px);
 		    z-index: -1;
     	}
 		.image-people {
-		    width: 475px;
+		    width: 275px;
 		    position: relative;
 		    img {
 			    width: 180px;
@@ -59,7 +67,7 @@
 			    display: block;
 			    position: absolute;
 			    transform: translateY(-50%);
-			    left: 225px;			    
+			    left: 40px;			    
 			    border: solid 3px white;
 			    box-shadow: 0px 3px 3px #000000B3;
 			    background: white;
@@ -125,11 +133,11 @@
 	.flex-account {
 	    display: flex;    
 		.flex-sidebar {
-		    width: 475px;
+		    width: 275px;
 		    background: #4b5afc;
-		    padding-left: 200px;
+		    padding-left: 15px;
 		    box-sizing: border-box;
-		    padding-right: 40px;
+		    padding-right: 15px;
 		    padding-top: 30px;
     		padding-bottom: 40px;
     		flex: none;
