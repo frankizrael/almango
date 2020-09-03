@@ -67,6 +67,13 @@ $extend = $_GET['extend'];
 		<?php echo do_shortcode('[yith_wcwl_wishlist]'); ?>
 		<script type="text/javascript">
 			jQuery('.lists-it').eq(0).find('a').addClass('active');
+			let imgfondo = '<span class="background-esp" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/banner_s_2.png);" ></span>';
+			let imgHearth = '<img class="imgHearth" src="<?php echo get_template_directory_uri(); ?>/img/love.png">';
+			let imgHearthNotify = '<img class="imgHearthNotify" src="<?php echo get_template_directory_uri(); ?>/img/romance.png">';
+			jQuery('.top-background').append(imgfondo);
+			jQuery('.top-background').append(imgHearth);
+			jQuery('.top-background').append(imgHearthNotify);
+			jQuery('.top-background').addClass('favoriteAnimation');
 		</script>
 	</section>
 	<?php
