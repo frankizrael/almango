@@ -119,3 +119,4 @@ function yith_woocompare_constructor() {
     $yith_woocompare = new YITH_Woocompare();
 }
 add_action( 'plugins_loaded', 'yith_woocompare_constructor', 11 );
+?>
