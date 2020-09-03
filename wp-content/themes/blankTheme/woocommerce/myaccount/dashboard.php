@@ -74,7 +74,12 @@ $extend = $_GET['extend'];
 		if ($extend == 'versus') {
 				?>
 		<section class="favorite_section">	
-			
+			<div class="favorite_none">
+				<p class="semiTitle">Aquí puedes ver los versus que realizaste..</p>
+				<div class="sideBarContent">
+					<?php get_sidebar('compare'); ?>
+				</div>
+			</div>	
 			<script type="text/javascript">
 				jQuery('.lists-it').eq(1).find('a').addClass('active');
 			</script>
@@ -84,9 +89,97 @@ $extend = $_GET['extend'];
 		if ($extend == 'descuentos') {
 				?>
 		<section class="favorite_section">	
-			
+			<p class="semiTitle">Aquí puedes ver tus cupones disponibles.</p>
+			<h2 class="badTitle">
+				Mis cupones
+			</h2>
+			<section>
+				<article class="article_top">
+					<?php
+						$descuentos = get_field('descuentos','user_'.$user_id);
+						if ($descuentos) {
+							foreach ($descuentos as $de) {
+								$id = $de['id'];
+								$tipo = get_field('tipo',$id);
+								if ($tipo == 'regalo') {
+									$adorno = get_template_directory_uri().'/img/cupon_regalo.png';
+								} else {
+									$adorno = get_template_directory_uri().'/img/cupon_simple.png';
+								}
+								?>							
+								<div class="dscto_inside <?php echo $tipo;?>">
+									<div class="dsct_flex">
+										<div class="left">
+											<div class="top"><?php echo get_field('title_superior',$id); ?></div>
+											<div class="center">
+												<div class="le_center">
+													<?php
+														echo get_the_title($id);
+													?>
+												</div>
+												<div class="ri_center">
+													<img src="<?php echo $adorno; ?>">
+												</div>
+											</div>
+											<div class="bottom"><?php echo get_field('condicion',$id); ?></div>
+										</div>
+										<div class="center">
+											<?php echo get_field('porcentaje',$id); ?>
+										</div>
+										<div class="right">
+											<div class="shortcode_canjear">
+												<a href="#" class="btn">Canjear</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<?php
+							}
+						} else {
+							echo '<p>No tiene cupones asignados.</p>';
+						}
+					?>
+				</article>
+				<article class="article_bottom">
+					
+				</article>
+			</section>
 			<script type="text/javascript">
-				jQuery('.lists-it').eq(1).find('a').addClass('active');
+				jQuery('.lists-it').eq(2).find('a').addClass('active');
+			</script>
+		</section>
+			<?php 
+		}
+		if ($extend == 'notifiy') {
+				?>
+		<section class="favorite_section">	
+			<div class="notify-send">
+				<p class="semiTitle">Aquí puedes ver los versus que realizaste..</p>
+				<h2 class="badTitle">
+					Mis notificaciones
+				</h2>
+				<div class="notifySe">
+				<?php
+					$notify = get_field('notify','user_'.$user_id);
+					if ($notify) {
+						foreach ($notify as $not) {
+							?>							
+							<div class="tit_notify">
+								<a href="<?php echo $not['link'];?>">
+									<h3><?php echo $not['title'];?></h3>
+									<p><?php echo $not['subtitle'];?></p>
+								</a>
+							</div>
+							<?php
+						}
+					} else {
+						echo '<p>No tiene ninguna Notificación</p>';
+					}
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+				jQuery('.lists-it').eq(3).find('a').addClass('active');
 			</script>
 		</section>
 			<?php 

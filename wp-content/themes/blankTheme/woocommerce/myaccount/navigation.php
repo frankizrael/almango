@@ -108,7 +108,7 @@ do_action( 'woocommerce_before_account_navigation' );
 			<div class="lists-it">
 				<a href="<?php echo site_url(); ?>/my-account?extend=versus">
 					<div class="img">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/heart.png">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/fight.png">
 					</div>
 					<div class="text">
 						Mis versus
@@ -116,7 +116,7 @@ do_action( 'woocommerce_before_account_navigation' );
 				</a>
 			</div>
 			<div class="lists-it">
-				<a>
+				<a href="<?php echo site_url(); ?>/my-account?extend=descuentos">
 					<div class="img">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/commerce.png">
 					</div>
@@ -126,7 +126,7 @@ do_action( 'woocommerce_before_account_navigation' );
 				</a>
 			</div>
 			<div class="lists-it">
-				<a>
+				<a href="<?php echo site_url(); ?>/my-account?extend=notifiy">
 					<div class="img">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/bell.png">
 					</div>
@@ -148,7 +148,7 @@ do_action( 'woocommerce_before_account_navigation' );
 		</div>
 		<div class="closessesion">
 			<a href="<?php echo wp_logout_url( home_url().'/my-account/' ); ?>">
-				Centro de ayuda
+				Cerrar sesión
 			</a>
 		</div>
 	</div>	
