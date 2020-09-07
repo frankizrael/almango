@@ -520,3 +520,24 @@ a.dgwt-wcas-details-post-title, a.dgwt-wcas-details-product-title {
 .wpcf7, .wpcf7-form {
     padding: 5px 20px !important;
 }
+.wpcf7 p label, .wpcf7-form p label {
+    font-weight: 700;
+    font-family: 'raleway';
+    font-size: 12px;
+}
+.wpcf7 p label span, .wpcf7-form p label span {
+    margin-top: 5px;
+    display: block;
+}
+.wpcf7 .contact_flex label {
+    font-weight: 700;
+    font-family: 'raleway';
+    font-size: 12px;
+}
+.wpcf7 .contact_flex label span {
+    margin-top: 5px;
+    display: block;
+}
+.wpcf7 br, .wpcf7-form br {
+    display: none;
+}

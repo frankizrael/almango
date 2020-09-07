@@ -6,11 +6,12 @@
 	    position: relative;
 	    background-image: url(../assets/img/empresa.png);
 	    content: '';
-	    width: 25px;
-	    height: 25px;
+	    width: 22px;
+	    height: 22px;
 	    background-size: contain;
 	    display: inline-block;
-	    top: 2px;
+	    top: 5px;
+    	margin-right: 5px;
 	    left: 0;
 	}
 }
@@ -22,12 +23,13 @@
 	    position: relative;
 	    background-image: url(../assets/img/cargo.png);
 	    content: '';
-	    width: 25px;
-	    height: 25px;
+		width: 22px;
+	    height: 22px;
 	    background-size: contain;
 	    display: inline-block;
-	    top: 2px;
+	    top: 5px;
 	    left: 0;
+	    margin-right: 5px;
 	}
 }		
 .wpcf7, .wpcf7-form{
@@ -52,11 +54,12 @@
 			    position: relative;
 			    background-image: url(../assets/img/empresa.png);
 			    content: '';
-			    width: 25px;
-			    height: 25px;
+			    width: 22px;
+			    height: 22px;
 			    background-size: contain;
 			    display: inline-block;
-			    top: 2px;
+			    top: 5px;
+		    	margin-right: 5px;
 			    left: 0;
 			}
 		}
@@ -84,12 +87,13 @@
 			    position: relative;
 			    background-image: url(../assets/img/celular.png);
 			    content: '';
-			    width: 25px;
-			    height: 25px;
+			    width: 22px;
+			    height: 22px;
 			    background-size: contain;
 			    display: inline-block;
-			    top: 2px;
+			    top: 6px;
 			    left: 0;
+			    margin-right: 5px;
 			}
 		}	
 		#correo {
@@ -112,25 +116,28 @@
 		width: 100%;
 	}
 	p {
-		font-size: 15px;
+		font-size: 11px;
 		font-family: 'ralewaysemibold';
 		text-align: left;
 		text-transform: uppercase;
 		label {
 		    position: relative;
 		    display: block;
+		    font-weight: 700;
+		    font-family: 'raleway';
+		    font-size: 12px;
 		    &#nombre{
 		    	&:before {
-			    position: relative;
+			   		position: relative;
 				    background-image: url(../assets/img/usuario.png);
 				    content: '';
-				    width: 25px;
-				    height: 25px;
+				    width: 22px;
+				    height: 22px;
 				    background-size: contain;
 				    display: inline-block;
-				    top: 2px;
+				    top: 5px;
+			    	margin-right: 5px;
 				    left: 0;
-				    margin-right: 10px;
 				}
 			}
 			&#linkedin{
@@ -138,42 +145,45 @@
 		    	&:before {
 				    position: relative;
 				    background-image: url(../assets/img/linkedin.png);
-				    content: '';
-				    width: 25px;
-				    height: 25px;
+					content: '';
+				    width: 22px;
+				    height: 22px;
 				    background-size: contain;
 				    display: inline-block;
 				    top: 2px;
 				    left: 0;
-				    margin-right: 10px;
+				    margin-right: 3px;
 				}
 			}
 			&#interes{
+				margin-top: 15px;
 		    	&:before {
-			    position: relative;
-			    background-image: url(../assets/img/icon1.png);
-			    content: '';
-			    width: 25px;
-			    height: 25px;
-			    background-size: contain;
-			    display: inline-block;
-			    top: 2px;
-			    left: 0;
-			    margin-right: 10px;
+				    position: relative;
+				    background-image: url(../assets/img/icon1.png);
+				    content: '';
+					width: 22px;
+				    height: 22px;
+				    background-size: contain;
+				    display: inline-block;
+				    top: 6px;
+				    left: 0;
+				    margin-right: 4px;
 				}
 			}
 			&#curriv{
+				margin-top: 15px;
+				margin-bottom: 20px;
 		    	&:before {
-			    position: relative;
-			    background-image: url(../assets/img/icon2.png);
-			    content: '';
-			    width: 25px;
-			    height: 25px;
-			    background-size: contain;
-			    display: inline-block;
-			    top: 2px;
-			    left: 0;
-			    margin-right: 10px;
+				    position: relative;
+				    background-image: url(../assets/img/icon2.png);
+					content: '';
+				    width: 22px;
+				    height: 22px;
+				    background-size: contain;
+				    display: inline-block;
+				    top: 6px;
+				    left: 0;
+				    margin-right: 4px;
 				}
 			}
 		}
@@ -185,32 +195,55 @@
 		width: 100%;
 		background-color: transparent;
 		color: white;
+		padding: 10px 0px;
 	}
 	select.wpcf7-form-control.wpcf7-select {
 		width: 100%;
 		background: transparent;
 		border: unset;
 		border-bottom: 1px solid #4F4D4D;
+		padding: 10px 0px;
+	}
+	span.wpcf7-form-control-wrap.file-cv:before {
+	    content: 'Adjuntar';
+	    position: absolute;
+	    width: 142px;
+	    height: 42px;
+	    background: #425aff;
+	    color: white;
+	    text-align: center;
+	    line-height: 42px;
+	    text-transform: none;
+	    font-size: 16px;
+	    top: 5px;
+	    border-top-left-radius: 8px;
+	    border-bottom-left-radius: 8px;
+	}
+	span.wpcf7-form-control-wrap.file-cv {
+	    position: relative;
 	}
 	input.wpcf7-form-control.wpcf7-file {
-		margin-top: 15px;
-		margin-bottom: 10px;
+	    color: #212322;
+	    background: #FFFFFF 0% 0% no-repeat padding-box;
+	    box-shadow: 0px 3px 6px #0000008C;
+	    border-radius: 8px;
+	    padding: 10px 10px;
+	    box-sizing: border-box;
+	    margin-top: 5px;
+	    margin-bottom: 5px;
 	}
 	input.wpcf7-form-control.wpcf7-submit {
-		background: #FF9F32 !important;
-		display: block;
-		position: absolute;
-		color: white;
-		max-width: 279px;
-		margin: 0 auto;
-		height: 56px;
-		bottom: -28px;
-		left: 50%;
-		transform: translateX(-50%);
+	    background: #FF9F32 !important;
+	    display: block;
+	    color: white;
+	    margin: 0 auto;
+	    height: 56px;
+	    border-radius: 8px;
+	    margin-top: 15px;
+	    margin-bottom: -50px;
 	}
 	.wpcf7 input.wpcf7-form-control.wpcf7-submit, .wpcf7-form input.wpcf7-form-control.wpcf7-submit {
-	    max-width: 80%;
-	    font-size: 18px;
+	    font-size: 14px;
 	    font-family: 'Raleway';
 	    font-weight: 600;
 	}

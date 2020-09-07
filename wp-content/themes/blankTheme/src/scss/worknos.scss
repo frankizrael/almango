@@ -35,6 +35,7 @@ section.trabaja_nosotros{
 				position: relative;
 				height: 332px;
 				margin-top: 150px;
+				max-width: 1000px;
 				.img_girl{
 					width: 30%;
 					position: relative;
@@ -84,6 +85,10 @@ section.trabaja_nosotros{
   				filter: blur(0px);
   				height: auto;
   				margin-right: 100px;
+  				padding-top: 20px;
+  				h2 {
+				    margin-bottom: 10px;
+				}
 			}
 	}
 }
