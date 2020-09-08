@@ -137,11 +137,11 @@ do_action( 'woocommerce_before_account_navigation' );
 			</div>
 		</div>
 		<div class="onlist-s">
-			<a href="javascript:void(0)">
+			<a href="<?php echo site_url(); ?>/preguntas-frecuentes">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/interface.png">
 				Centro de ayuda
 			</a>
-			<a href="javascript:void(0)">
+			<a href="javascript:void(0)" onclick="$crisp.push(['do', 'chat:open'])">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/communications.png">
 				Contactar a Excelencia al cliente
 			</a>
