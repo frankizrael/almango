@@ -37,8 +37,25 @@
                     <div class="flex__table iconsItem">
                         <div class="user_min">
                             <a href="<?php echo site_url(); ?>/my-account/">
+                                <?php
+                                    $userimg = get_template_directory_uri().'/img/user.png';
+                                    if (is_user_logged_in()){
+                                        $user = wp_get_current_user();
+                                        $user_id = get_current_user_id();
+                                        $genero = get_field('user_genero','user_'.$user_id);
+                                        if ($genero == 'masculino') {
+                                            $userimg = get_template_directory_uri().'/img/user_male.png';
+                                        }
+                                        if ($genero == 'femenimo') {
+                                            $userimg = get_template_directory_uri().'/img/user_female.png';
+                                        }
+                                        if ($genero == 'no-especifico') {
+                                            $userimg = get_template_directory_uri().'/img/user_lgtbi.png';
+                                        }
+                                    }
+                                ?>
                                 <i>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/user.png">
+                                    <img src="<?php echo $userimg;?>">
                                 </i>
                             </a>
                         </div>
