@@ -39,7 +39,7 @@ do_action( 'woocommerce_before_account_navigation' );
 			?>
 			<div class="editImage">
 				<input type="file" id="editFile" data="<?php echo $user_id; ?>">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/pen.png">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/lapiz.png">
 			</div>
 		</div>
 		<ul class="flex">
