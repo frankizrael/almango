@@ -67,12 +67,15 @@ $extend = $_GET['extend'];
 		<?php echo do_shortcode('[yith_wcwl_wishlist]'); ?>
 		<script type="text/javascript">
 			jQuery('.lists-it').eq(0).find('a').addClass('active');
-			let imgfondo = '<span class="background-esp" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/banner_s_2.png);" ></span>';
-			let imgHearth = '<img class="imgHearth" src="<?php echo get_template_directory_uri(); ?>/img/love.png">';
-			let imgHearthNotify = '<img class="imgHearthNotify" src="<?php echo get_template_directory_uri(); ?>/img/romance.png">';
-			jQuery('.top-background').append(imgfondo);
-			jQuery('.top-background').append(imgHearth);
-			jQuery('.top-background').append(imgHearthNotify);
+			for (let i=0;i<6;i++) {
+				let imgHearth = '<img src="<?php echo get_template_directory_uri(); ?>/img/love.png" class="imgHearth pos_'+i+'">';
+				jQuery('.top-background').append(imgHearth);
+			}
+
+			for (let i=0;i<7;i++) {
+				let imgHearthNotify = '<img src="<?php echo get_template_directory_uri(); ?>/img/romance.png" class="imgHearthNotify pos_a_'+i+'">';				
+				jQuery('.top-background').append(imgHearthNotify);
+			}				
 			jQuery('.top-background').addClass('favoriteAnimation');
 		</script>
 	</section>
@@ -89,6 +92,16 @@ $extend = $_GET['extend'];
 			</div>	
 			<script type="text/javascript">
 				jQuery('.lists-it').eq(1).find('a').addClass('active');
+				for (let i=0;i<6;i++) {
+					let imgHearth = '<img src="<?php echo get_template_directory_uri(); ?>/img/fight.png" class="imgHearth pos_'+i+'">';
+					jQuery('.top-background').append(imgHearth);
+				}
+
+				for (let i=0;i<7;i++) {
+					let imgHearthNotify = '<img src="<?php echo get_template_directory_uri(); ?>/img/cup.png" class="imgHearthNotify pos_a_'+i+'">';				
+					jQuery('.top-background').append(imgHearthNotify);
+				}				
+				jQuery('.top-background').addClass('versusAnimation');
 			</script>
 		</section>
 			<?php 
@@ -106,8 +119,8 @@ $extend = $_GET['extend'];
 						$descuentos = get_field('descuentos','user_'.$user_id);
 						if ($descuentos) {
 							foreach ($descuentos as $de) {
-								$id = $de['id'];
-								$tipo = get_field('tipo',$id);
+								$myid = $de['id'];
+								$tipo = get_field('tipo',$myid);
 								if ($tipo == 'regalo') {
 									$adorno = get_template_directory_uri().'/img/cupon_regalo.png';
 								} else {
@@ -117,25 +130,25 @@ $extend = $_GET['extend'];
 								<div class="dscto_inside <?php echo $tipo;?>">
 									<div class="dsct_flex">
 										<div class="left">
-											<div class="top"><?php echo get_field('title_superior',$id); ?></div>
+											<div class="top"><?php echo get_field('title_superior',$myid); ?></div>
 											<div class="center">
 												<div class="le_center">
 													<?php
-														echo get_the_title($id);
+														echo get_the_title($myid);
 													?>
 												</div>
 												<div class="ri_center">
 													<img src="<?php echo $adorno; ?>">
 												</div>
 											</div>
-											<div class="bottom"><?php echo get_field('condicion',$id); ?></div>
+											<div class="bottom"><?php echo get_field('condicion',$myid); ?></div>
 										</div>
 										<div class="center">
-											<?php echo get_field('porcentaje',$id); ?>
+											<?php echo get_field('porcentaje',$myid); ?>
 										</div>
 										<div class="right">
-											<div class="shortcode_canjear">
-												<a href="#" class="btn">Canjear</a>
+											<div class="shortcode_canjear jsCanjear">
+												<a href="#" class="btn" data="#cupon_<?php echo $myid;?>">Canjear</a>
 											</div>
 										</div>
 									</div>
@@ -148,11 +161,161 @@ $extend = $_GET['extend'];
 					?>
 				</article>
 				<article class="article_bottom">
-					
+					<div class="article_tab">
+						<ul>
+							<li data="all">Para usuarios</li>
+							<li data="vip">VIP</li>
+						</ul>
+					</div>
+					<div class="article_desc">
+						<div class="article_desc_tab">
+							<ul>
+								<li data="all">Todos los cupones</li>
+								<li data="talleres">Talleres</li>
+								<li data="accesorios">Accesorios</li>
+								<li data="taller-custom">Taller Custom</li>
+								<li data="repuestos">Repuestos</li>
+								<li data="escuelas">Escuelas de manejo</li>								
+							</ul>
+						</div>
+						<div class="article_desc_body">
+							<?php
+								$args = array(
+								  'numberposts' => -1,
+								  'post_type'   => 'descuentos'
+								);
+								$descuentos = get_posts( $args );
+								$a = 0;
+								if ($descuentos) {
+									foreach ($descuentos as $dscto) {
+										$descid = $dscto->ID;
+										$tipo = get_field('tipo',$descid);
+										if ($tipo == 'regalo') {
+											$adorno = get_template_directory_uri().'/img/cupon_regalo.png';
+										} else {
+											$adorno = get_template_directory_uri().'/img/cupon_simple.png';
+										}
+										$categoria = get_field('categoria',$descid);
+										$position = '';
+										if (get_field('vip',$descid)) {
+											$position = 'vip';
+										}										
+										?>
+										<div class="dscto_inside <?php echo $position.' '.$tipo.' '.$categoria;?>">
+											<div class="dsct_flex">
+												<div class="left">
+													<div class="top"><?php echo get_field('title_superior',$descid); ?></div>
+													<div class="center">
+														<div class="le_center">
+															<?php
+																echo get_the_title($descid);
+															?>
+														</div>
+														<div class="ri_center">
+															<img src="<?php echo $adorno; ?>">
+														</div>
+													</div>
+													<div class="bottom"><?php echo get_field('condicion',$descid); ?></div>
+												</div>
+												<div class="center">
+													<?php echo get_field('porcentaje',$descid); ?>
+												</div>
+												<div class="right">
+													<div class="shortcode_canjear">
+														<?php 
+															if (is_user_logged_in()) {
+																$link_desct = site_url().'my-account?extend=descuentos';
+															} else {
+																$link_desct = site_url().'my-account';
+															}
+														?>
+														<a href="<?php echo $link_desct?>" class="btn">Canjear</a>
+													</div>
+												</div>
+											</div>
+										</div>	
+										<?php
+										$a++;
+									}
+								}
+							?>
+						</div>
+					</div>
+				</article>
+				<article class="principal_change">
+					<a href="javascript:void(0)" class="backend">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/back.png">
+						Volver a mis cupones
+					</a>
+					<div class="content_principal">
+						<?php
+							$descuentos = get_field('descuentos','user_'.$user_id);
+							if ($descuentos) {
+								foreach ($descuentos as $de) {
+									$myid = $de['id'];
+									$tipo = get_field('tipo',$myid);
+									if ($tipo == 'regalo') {
+										$adorno = get_template_directory_uri().'/img/cupon_regalo.png';
+									} else {
+										$adorno = get_template_directory_uri().'/img/cupon_simple.png';
+									}
+									?>		
+									<div class="insideDetail" id="cupon_<?php echo $myid;?>">
+										<div class="dscto_inside <?php echo $tipo;?>">
+											<div class="dsct_flex">
+												<div class="left">
+													<div class="top"><?php echo get_field('title_superior',$myid); ?></div>
+													<div class="center">
+														<div class="le_center">
+															<?php
+																echo get_the_title($myid);
+															?>
+														</div>
+														<div class="ri_center">
+															<img src="<?php echo $adorno; ?>">
+														</div>
+													</div>
+													<div class="bottom"><?php echo get_field('condicion',$myid); ?></div>
+												</div>
+												<div class="center">
+													<?php echo get_field('porcentaje',$myid); ?>
+												</div>
+												<div class="right">
+													<div class="shortcode_canjear">
+														<a href="#" class="btn">Canjear</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="desct_tokio">
+											<img src="<?php echo get_field('imagen',$myid); ?>">
+											<div class="content_s">
+												<?php echo get_field('terminosycondiciones',$myid); ?>
+											</div>
+											<div class="change">
+												<a href="#" class="btn">Canjear</a>
+											</div>
+										</div>
+									</div>					
+									<?php
+								}
+							}
+						?>
+					</div>
 				</article>
 			</section>
 			<script type="text/javascript">
 				jQuery('.lists-it').eq(2).find('a').addClass('active');
+				for (let i=0;i<6;i++) {
+					let imgHearth = '<img src="<?php echo get_template_directory_uri(); ?>/img/cupon_regalo.png" class="imgHearth pos_'+i+'">';
+					jQuery('.top-background').append(imgHearth);
+				}
+
+				for (let i=0;i<7;i++) {
+					let imgHearthNotify = '<img src="<?php echo get_template_directory_uri(); ?>/img/cupon_simple.png" class="imgHearthNotify pos_a_'+i+'">';				
+					jQuery('.top-background').append(imgHearthNotify);
+				}				
+				jQuery('.top-background').addClass('descuentosAnimation');
 			</script>
 		</section>
 			<?php 
@@ -187,6 +350,16 @@ $extend = $_GET['extend'];
 			</div>
 			<script type="text/javascript">
 				jQuery('.lists-it').eq(3).find('a').addClass('active');
+				for (let i=0;i<6;i++) {
+					let imgHearth = '<img src="<?php echo get_template_directory_uri(); ?>/img/campana.png" class="imgHearth pos_'+i+'">';
+					jQuery('.top-background').append(imgHearth);
+				}
+
+				for (let i=0;i<7;i++) {
+					let imgHearthNotify = '<img src="<?php echo get_template_directory_uri(); ?>/img/correo.png" class="imgHearthNotify pos_a_'+i+'">';				
+					jQuery('.top-background').append(imgHearthNotify);
+				}				
+				jQuery('.top-background').addClass('notifyAnimation');
 			</script>
 		</section>
 			<?php 

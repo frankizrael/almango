@@ -29,6 +29,57 @@ if ($('#user_birthdate').length > 0) {
   });
 }
 
+$('.article_tab li').on('click',function(){
+	let data = $(this).attr('data');	
+	if (data == 'all') {
+		$('.article_tab li').removeClass('active');
+		$('.article_tab li').eq(0).addClass('active');
+		$('.article_desc .dscto_inside').show();
+		$('.vip').hide();
+	} else {
+		$('.article_tab li').removeClass('active');
+		$('.article_tab li').eq(1).addClass('active');
+		$('.article_desc .dscto_inside').hide();
+		$('.vip').show();
+	}
+});
+$('.article_tab li').eq(0).trigger('click');
+
+$('.article_desc_tab li').on('click',function(){
+	let $this = $(this);
+	let data = $this.attr('data');	
+	$('.article_desc_tab li').removeClass('active');
+	$this.addClass('active');
+	if (data == 'all') {
+		$('.article_desc .dscto_inside').show();
+	} else {
+		$('.article_desc .dscto_inside').hide();
+		$('.'+data).show();
+	}
+});
+$('.article_desc_tab li').eq(0).trigger('click');
+
+$('.jsCanjear a').on('click',function(){
+	let $this = $(this);
+	let data = $this.attr('data');	
+	$('.article_top').hide();
+	$('.article_bottom').hide();
+	$('.principal_change').show();
+
+	$('.insideDetail').hide();
+	$(data).show();
+});
+
+$('.backend').on('click',function(){	
+	$('.article_top').show();
+	$('.article_bottom').show();
+	$('.principal_change').hide();
+
+	$('.insideDetail').hide();
+});
+
+
+
 $('.secret').on('click',function(){
 	let data = $(this).attr('data');
 	if ($(data).hasClass('notsecret')) {
