@@ -35,6 +35,24 @@
                         ?>
                     </div>
                     <div class="flex__table iconsItem">
+                        <?php
+                            if (is_user_logged_in()){
+                                $user_id = get_current_user_id();
+                                $notify = get_field('notify','user_'.$user_id);
+                                if ($notify) {
+                                ?>
+                            <div class="notify">
+                                <a href="<?php echo site_url(); ?>/my-account?extend=notifiy">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/campana_1.png">
+                                </a>
+                                <span>
+                                    <?php echo count($notify); ?>
+                                </span>
+                            </div>
+                                <?php
+                                }
+                            }
+                        ?>
                         <div class="user_min">
                             <a href="<?php echo site_url(); ?>/my-account/">
                                 <?php

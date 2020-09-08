@@ -1628,6 +1628,8 @@ article.article_top {
     transition: 0.3s;
     &.active {
     	transform: none;
+    	pointer-events: all;
+    	opacity: 1;
     }
     .modalContent {
 	    background: white;
