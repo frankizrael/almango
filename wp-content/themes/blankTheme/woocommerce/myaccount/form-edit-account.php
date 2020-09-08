@@ -115,8 +115,8 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 						if ( $terms && !is_wp_error( $terms ) ) :							
 						?>
 				        <?php foreach ( $terms as $term ) { 
-				        	if ($term->parent != 24 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 24) {
-				        	//if ($term->parent != 67) {
+				        	//if ($term->parent != 24 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 24) {
+				        	if ($term->parent != 67 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 67) {
 				        ?>
 				            <option value="<?php echo sanitize_title($term->name); ?>" data="<?php echo $term->name; ?>"><?php echo $term->name; ?></option>
 				        <?php 
