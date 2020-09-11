@@ -27,7 +27,7 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 	<?php wc_get_template( 'myaccount/my-address.php' ); ?>
 <?php else : ?>
 		<p>Aquí puedes editar tus direcciones de envío.</p>
-	<div class="newflex">
+	<div class="newflex" data-id="<?php echo $user_id; ?>">
 		<div class="new_left">
 			<form method="post">
 				<h3><?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title, $load_address ); ?></h3><?php // @codingStandardsIgnoreLine ?>
@@ -38,7 +38,6 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 						<?php
 							if ($load_address === 'shipping') {
 								?>
-
 						<div class="form-row">
 							<label>RUC</label>
 							<input type="number" name="ruc" id="ruc" placeholder="Ingresa tu RUC" <?php if(get_field('ruc','user_'.$user_id)) { ?> value="<?php echo get_field('ruc','user_'.$user_id); ?>" <?php } ?>>
@@ -58,6 +57,7 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 						?>
 					</div>
 					<?php do_action( "woocommerce_after_edit_address_form_{$load_address}" ); ?>
+					<div class="info">Guardar para usar esta Dirección como predeterminada</div>
 					<p>
 						<button type="submit" class="button" name="save_address" value="<?php esc_attr_e( 'Save address', 'woocommerce' ); ?>"><?php esc_html_e( 'Guardar dirección', 'woocommerce' ); ?></button>
 						<?php wp_nonce_field( 'woocommerce-edit_address', 'woocommerce-edit-address-nonce' ); ?>
@@ -68,6 +68,99 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 		</div>
 		<div class="new_right">
 			<h3>Mis Direcciones Guardadas</h3>
+			<div class="new_content">
+				<?php
+					$direccion_casa = get_field('direccion_casa','user_'.$user_id);
+					$direccion_trabajo = get_field('direccion_trabajo','user_'.$user_id);
+					$direccion_almacen = get_field('direccion_almacen','user_'.$user_id);
+					$direccion_otras = get_field('direccion_otras','user_'.$user_id);					
+					if ($direccion_casa) {
+						?>
+						<div class="new_direction">
+							<div class="new_flex">
+								<div class="left_new">
+									<i></i>
+								</div>
+								<div class="right_new">
+									<div class="content_new_a">
+										<div class="close_new_i"></div>
+										<div class="desc_new">
+											<div class="description">
+												<?php echo $direccion_casa; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+					if ($direccion_trabajo) {
+						?>
+						<div class="new_direction">
+							<div class="new_flex">
+								<div class="left_new">
+									<i></i>
+								</div>
+								<div class="right_new">
+									<div class="content_new_a">
+										<div class="close_new_i"></div>
+										<div class="desc_new">
+											<div class="description">
+												<?php echo $direccion_trabajo; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+					if ($direccion_almacen) {
+						?>
+						<div class="new_direction">
+							<div class="new_flex">
+								<div class="left_new">
+									<i></i>
+								</div>
+								<div class="right_new">
+									<div class="content_new_a">
+										<div class="close_new_i"></div>
+										<div class="desc_new">
+											<div class="description">
+												<?php echo $direccion_almacen; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+					if ($direccion_otras) {
+						?>
+						<div class="new_direction">
+							<div class="new_flex">
+								<div class="left_new">
+									<i></i>
+								</div>
+								<div class="right_new">
+									<div class="content_new_a">
+										<div class="close_new_i"></div>
+										<div class="desc_new">
+											<div class="description">
+												<?php echo $direccion_otras; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+				?>
+
+			</div>
 		</div>
 	</div>
 

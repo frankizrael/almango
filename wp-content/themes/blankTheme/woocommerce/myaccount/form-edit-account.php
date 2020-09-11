@@ -105,7 +105,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 			<div class="title_edit">
 				<h2>Preferencias</h2>
 			</div>
-			<div class="woocommerce-form-row col_100">
+			<div class="woocommerce-form-row col_100 selectIdent">
 				<label for="estilos_preferidos"><?php esc_html_e( 'Estilos de motos preferidas', 'woocommerce' ); ?></label>
 				<select id="allstles">
 					<option disabled selected>Elige un estilo</option>
@@ -115,41 +115,77 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 						if ( $terms && !is_wp_error( $terms ) ) :							
 						?>
 				        <?php foreach ( $terms as $term ) { 
-				        	//if ($term->parent != 24 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 24) {
-				        	if ($term->parent != 67 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 67) {
+				        	if ($term->parent != 24 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 24) {
+				        	//if ($term->parent != 67 && $term->term_id != 15 && $term->name != 'addon' && $term->term_id != 67) {
+				        		$idestilo = $term->term_id;
+								$thumbnail_id = wp_get_attachment_url(get_term_meta( $idestilo, 'thumbnail_id', true ));
 				        ?>
-				            <option value="<?php echo sanitize_title($term->name); ?>" data="<?php echo $term->name; ?>"><?php echo $term->name; ?></option>
+				            <option value="<?php echo sanitize_title($term->name); ?>" data="<?php echo $term->name; ?>" data-image="<?php echo $thumbnail_id; ?>"><?php echo $term->name; ?></option>
 				        <?php 
 				        	}
 				    	} ?>
 						<?php endif;
 					?>
 				</select>
+				<div class="selectOpen"></div>
+				<div class="subMidSelect"></div>
 				<div class="select_style">					
 				</div>
 				<input type="hidden" name="estilos_preferidos" id="estilos_preferidos" value="<?php echo get_field('estilos_preferidos','user_'.$user_id);?>" /> 
 			</div>
-			<div class="woocommerce-form-row col_100">
+			<div class="woocommerce-form-row col_100 selectIdent">
 				<label for="tienes_moto"><?php esc_html_e( '¿Tienes moto?', 'woocommerce' ); ?></label>
 				<select name="tienes_moto" id="tienes_moto">
 	                <option value="si">Si</option>
 	                <option value="no">No</option>
 	                <option value="quiero_una">Quiero una</option>
 	            </select>
+				<div class="radioOpen"></div>
+				<div class="radioMidSelect">
+					<div class="radioSelect" data="si">
+						Si <i></i>
+					</div>
+					<div class="radioSelect" data="no">
+						No <i></i>
+					</div>
+					<div class="radioSelect" data="quiero_una">
+						Quiero una <i></i>
+					</div>
+				</div>
 	            <script type="text/javascript">
 	            	jQuery('#tienes_moto').val('<?php echo get_field('tienes_moto','user_'.$user_id);?>');
+	            	let numb = jQuery('#tienes_moto')[0].selectedIndex;
+	            	jQuery('.radioSelect').eq(numb).addClass('active');
 	            </script>
 			</div>
-			<div class="woocommerce-form-row col_100">
-				<label for="redes_sociales"><?php esc_html_e( '¿Cuáles es tu red social favorita?', 'woocommerce' ); ?></label>
-				<select name="redes_sociales" id="redes_sociales">
-	                <option value="facebook">Facebook</option>
-	                <option value="twitter">Twitter</option>
-	                <option value="instagram">Instagram</option>
+			<div class="woocommerce-form-row col_100 selectIdent">
+				<label for="send_redes_sociales"><?php esc_html_e( '¿Cuáles son tus redes sociales favoritas?', 'woocommerce' ); ?></label>
+				<select id="send_redes_sociales">
+					<?php
+						$socialred = get_field('social_red','options');
+						foreach ($socialred as $sr) {
+							?>
+						<option value="<?php echo $sr['code']; ?>"><?php echo $sr['name']; ?></option>
+							<?php
+						}
+					?>	                
 	            </select>
-	            <script type="text/javascript">
-	            	jQuery('#redes_sociales').val('<?php echo get_field('redes_sociales','user_'.$user_id);?>');
-	            </script>
+	            <div class="redesOpen"></div>
+				<div class="redesMidSelect">					
+					<?php
+						$socialred = get_field('social_red','options');
+						foreach ($socialred as $sr) {
+							?>
+						<div class="redesSelect" data="<?php echo $sr['code']; ?>">
+							<?php echo $sr['name']; ?> <img src="<?php echo $sr['img']; ?>">
+						</div>
+							<?php
+						}
+					?>	
+				</div>
+				<div class="select_style_core">					
+				</div>
+				<input type="hidden" name="redes_sociales" id="redes_sociales" value="<?php echo get_field('redes_sociales','user_'.$user_id);?>" />
 			</div>
 			
 		</div>	

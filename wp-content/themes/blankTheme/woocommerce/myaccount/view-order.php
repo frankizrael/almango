@@ -23,89 +23,53 @@ $notes = $order->get_customer_order_notes();
 ?>
 <div class="simpletitle">
 	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', esc_html__( 'Mis pedidos', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
+	
+	<a href="javascript:void(0)" class="backend" onclick="goBack()">
+		<img src="<?php echo get_template_directory_uri(); ?>/img/back.png">
+		Volver
+	</a>
 </div>
 <div class="contentMyPedidos">
 	<div class="itemPedido">
 		<div class="title_pedido">
 			<?php
 				$status = wc_get_order_status_name($order->get_status());
-				if ( $status == 'Pending payment' ) {
-					?>
-					Validando pago
-					<?php
+				$msj = '';
+				$img = get_template_directory_uri().'/img/isotipo-personaje.png';
+				if ( $status == 'En espera (de pago)' ) {
+					$msj = 'Validando pago';
+					$img = get_template_directory_uri().'/img/time-is-money.png';
 				}
-				if ( $status == 'Failed' ) {
-					?>
-					Pedido Fallido
-					<?php
+				if ( $status == 'Fallido (No pagado)' ) {
+					$msj = 'Pedido Fallido';
+					$img = get_template_directory_uri().'/img/isotipo-personaje.png';
 				}
-				if ( $status == 'Processing' ) {
-					?>
-					Pedido por entregar
-					<?php
+				if ( $status == 'En preparación (Pagado)' ) {
+					$msj = 'Pedido por entregar';
+					$img = get_template_directory_uri().'/img/delivery.png';
 				}
-				if ( $status == 'Completed' ) {
-					?>
-					Pedido Entregado
-					<?php
+				if ( $status == 'Completado (Pagado-Enviado)' ) {
+					$msj = 'Pedido Entregado';
+					$img = get_template_directory_uri().'/img/delivery-guy.png';
 				}
-				if ( $status == 'On hold' ) {
-					?>
-					Pedido en Espera
-					<?php
+				if ( $status == 'En espera (de pago)' ) {
+					$msj = 'Pedido en Espera';
+					$img = get_template_directory_uri().'/img/delivery.png';
 				}
-				if ( $status == 'Cancelled' ) {
-					?>
-					Pedido cancelado
-					<?php
+				if ( $status == 'Cancelado' ) {
+					$msj = 'Pedido cancelado';
+					$img = get_template_directory_uri().'/img/cancelado.png';
 				}
-				if ( $status == 'Refunded' ) {
-					?>
-					Pedido reembolzado
-					<?php
+				if ( $status == 'Reembolsado (Devuelto)' ) {
+					$msj = 'Pedido reembolzado';
+					$img = get_template_directory_uri().'/img/isotipo-personaje.png';
 				}
+				echo $msj;
 			?>
 		</div>
 		<div class="body_pedido">
 			<div class="left_img">
-				<?php
-					$status = wc_get_order_status_name($order->get_status());
-					if ( $status == 'Pending payment' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/time-is-money.png">
-						<?php
-					}
-					if ( $status == 'Failed' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-						<?php
-					}
-					if ( $status == 'Processing' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
-						<?php
-					}
-					if ( $status == 'Completed' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery-guy.png">
-						<?php
-					}
-					if ( $status == 'On hold' ) {
-						?>										
-						<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
-						<?php
-					}
-					if ( $status == 'Cancelled' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-						<?php
-					}
-					if ( $status == 'Refunded' ) {
-						?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-						<?php
-					}
-				?>
+				<img src="<?php echo $img; ?>">
 			</div>
 			<div class="right_p">
 				<ul>
@@ -123,6 +87,24 @@ $notes = $order->get_customer_order_notes();
 					</li>
 				</ul>
 			</div>
+		</div>
+	</div>
+	<div class="cruzInfomation">
+		<div class="leftTop item">
+			<h4>Dia de despacho</h4>
+			<p>Jr. Emilio Fernandez 697 Urb Sta Beatriz</p>
+		</div>
+		<div class="rightTop item">
+			<h4>Dirección de despacho</h4>
+			<p>Entrega programada el día 15/08/2020 entre las 09:00 a.m. a 06:00 p.m.</p>
+		</div>
+		<div class="leftBottom item">
+			<h4>Forma de pago</h4>
+			<p>Pago con tarjeta de crédito a 12 cuotas</p>
+		</div>
+		<div class="righttBottom item">
+			<h4>Persona autorizada para entrega</h4>
+			<p>Melissa Calderon Purisaca</p>
 		</div>
 	</div>
 </div>
@@ -152,4 +134,7 @@ $notes = $order->get_customer_order_notes();
 
 <script type="text/javascript">
 	jQuery('.myaccount-navigation .link_list').eq(3).find('a').addClass('active');
+	function goBack() {
+	  window.history.back();
+	}
 </script>

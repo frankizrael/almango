@@ -186,6 +186,7 @@ $extend = $_GET['extend'];
 								);
 								$descuentos = get_posts( $args );
 								$a = 0;
+								$count = count($descuentos);
 								if ($descuentos) {
 									foreach ($descuentos as $dscto) {
 										$descid = $dscto->ID;
@@ -201,7 +202,7 @@ $extend = $_GET['extend'];
 											$position = 'vip';
 										}										
 										?>
-										<div class="dscto_inside <?php echo $position.' '.$tipo.' '.$categoria;?>">
+										<div class="dscto_inside <?php echo $position.' '.$tipo.' '.$categoria;?> <?php if($count <10) {echo 'oneForm';}?>">
 											<div class="dsct_flex">
 												<div class="left">
 													<div class="top"><?php echo get_field('title_superior',$descid); ?></div>

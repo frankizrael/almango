@@ -107,12 +107,27 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					</div>
 
 					<?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
-						<div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput" data="dni">
+						 <!-- especiales e inutiles end -->
+				        <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" id="order">
+				            <label>
+				                <img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">
+				                Tipo documento
+				            </label>
+				            <select name="tipo_documento" id="tipo_documento">
+				                 <option selected disabled>Escoger..</option>
+				                <option value="DNI">DNI</option>
+				                <option value="RUC">RUC</option>
+				                <option value="C.E.">C.E.</option>
+				                <option value="PASAPORTE">Pasaporte</option>
+				            </select>
+				        </div>
+						<div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide flexInput register_5" data="dni">
 							<label>
 								<img src="<?php echo get_template_directory_uri(); ?>/img/dni.png">
 								DOCUMENTO
 							</label>
-							<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="<?php esc_html_e( 'Usuario', 'woocommerce' ); ?>"/>
+							<input type="number" inputmode="numeric" name="document" autocomplete="off"
+                             onKeyPress="if(this.value.length==aux) return false;" pattern="[0-9]*" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="<?php esc_html_e( 'Usuario', 'woocommerce' ); ?>"/>
 							<p class="flexFullInsideR" id="msjReg"></p>
 						</div>
 					<?php endif; ?>
@@ -171,4 +186,22 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 <script type="text/javascript">
 	jQuery('header').addClass('header-notactive');
 	var urlajax = '<?php echo site_url(); ?>/wp-admin/admin-ajax.php';
+	function atr() {
+	    let type = jQuery('#tipo_documento').val();
+	    if (type == 'DNI') {
+	      aux = 8;
+	    }
+	    if (type == 'RUC') {
+	      aux = 11;
+	    }
+	    if (type == 'C.E.') {
+	      aux = 12;
+	    }
+	    if (type == 'PASAPORTE') {
+	      aux = 12;
+	    }
+	}
+	jQuery('#tipo_documento').on('change', function () {
+	    atr();
+	  });
 </script>

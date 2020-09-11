@@ -158,8 +158,14 @@ get_header( 'shop' ); ?>
 					</div>
 					<div class="buttonAdd">
 						<?php
-							$id = get_the_ID();						
-							echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
+							$id = get_the_ID();		
+							if (get_field('reservar',$id)) {
+								?>
+								<a href="javascript:void(0)" class="button">RESERVAR</a>
+								<?php
+							} else {
+								echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
+							}
 						?>
 					</div>
 					<p>TIPO DE CAMBIO DEL DÍA S/. <?php echo get_field('tipo_cambio','options'); ?></p>
@@ -193,6 +199,14 @@ get_header( 'shop' ); ?>
 					</div>
 					<div class="inde-right">
 						<div class="butt">
+							<?php
+								$id = get_the_ID();		
+								if (get_field('reservar',$id)) {
+								?>
+								<a href="javascript:void(0)" class="repet">RESERVAR</a>
+								<?php
+								} else {
+							?>
 							<a href="javascript:void(0)" class="repet">COMPRAR</a>
 							<a href="<?php echo site_url();?>/cart" class="repetAdded" style="display: none;">VER CARRITO</a>
 							<script type="text/javascript">
@@ -212,6 +226,10 @@ get_header( 'shop' ); ?>
 								    },200);
 								} );
 							</script>
+
+							<?php									
+								}
+							?>
 						</div>
 						<p>TIPO DE CAMBIO DEL DÍA S/. <?php echo get_field('tipo_cambio','options'); ?></p>						
 					</div>

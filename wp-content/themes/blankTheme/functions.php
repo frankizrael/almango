@@ -295,6 +295,7 @@ function wooc_extra_register_fields() {?>
             <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_phone'] ); ?>" placeholder="Ingresa tu teléfono"/>
         </div>
 
+        
 
        <?php
  }
@@ -311,6 +312,9 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
     }
     if ( isset( $_POST['user_birthdate'] ) && empty( $_POST['user_birthdate'] ) ) {
         $validation_errors->add( 'user_birthdate_error', __( '<strong>Error</strong>: Increiblemente necesitamos su cumpleaños.', 'woocommerce' ) );
+    }
+     if ( isset( $_POST['tipo_documento'] ) && empty( $_POST['user_birthdate'] ) ) {
+        $validation_errors->add( 'tipo_documento_error', __( '<strong>Error</strong>: Necesitamos tu tipo de documento.', 'woocommerce' ) );
     }
     return $validation_errors;
 }
@@ -337,6 +341,9 @@ function wooc_save_extra_register_fields( $customer_id ) {
     }
     if ( isset( $_POST['user_birthdate'] ) ) {
         update_field( 'user_birthdate', $_POST['user_birthdate'], 'user_'.$customer_id );
+    }
+    if ( isset( $_POST['tipo_documento'] ) ) {
+        update_field( 'tipo_documento', $_POST['tipo_documento'], 'user_'.$customer_id );
     }
 }
 add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
@@ -374,6 +381,46 @@ function action_woocommerce_customer_save_address( $user_id, $load_address ) {
         }
         if( isset( $_POST['razon_social'] ) ) {        
             update_field( 'razon_social', $_POST['razon_social'], 'user_'.$user_id );
+        }
+    }
+    if ($load_address === 'billing') {
+        $tipo = $_POST['billing_tipo_direccion'];
+        $address_1 = $_POST['billing_address_1'];
+        $lote = $_POST['billing_address_lote'];
+        $dpto = $_POST['billing_address_dpto'];
+        $urbanizacion = $_POST['billing_urbanizacion'];
+        $provincia = $_POST['billing_provincia'];
+        $state = $_POST['billing_state'];
+        $city = $_POST['billing_city'];
+        $address_2 = $_POST['billing_address_2'];
+
+        $value = '<h4 
+                data-title="'.$tipo.'" 
+                data-direction="'.$address_1.'" 
+                data-reference="'.$address_2.'" 
+                data-lote="'.$lote.'" 
+                data-dpto="'.$dpto.'" 
+                data-urb="'.$urbanizacion.'" 
+                data-dep="'.$state.'" 
+                data-prov="'.$provincia.'" 
+                data-city="'.$city.'">'.$tipo.'</h4>
+                <ul>
+                <li>Dirección: '.$address_1.' '.$lote.' '.$dpto.' - '.$urbanizacion.'</li>
+                <li>Referencia '.$address_2.'</li>
+                <li>Departamento: '.$state.'</li>
+                <li>Provincia: '.$provincia.'</li><li>Distrito: '.$city.'</li></ul>';
+
+        if ($tipo == 'casa') {
+            update_field( 'direccion_casa', $value, 'user_'.$user_id );
+        } 
+        if ($tipo == 'trabajo') {
+            update_field( 'direccion_trabajo', $value, 'user_'.$user_id );
+        } 
+        if ($tipo == 'almacen') {
+            update_field( 'direccion_almacen', $value, 'user_'.$user_id );
+        } 
+        if ($tipo == 'otros') {
+            update_field( 'direccion_otras', $value, 'user_'.$user_id );
         }
     }
 }; 
@@ -425,6 +472,29 @@ function addfacture() {
 }
 add_action( 'wp_ajax_addfacture', 'addfacture' );
 add_action( 'wp_ajax_nopriv_addfacture', 'addfacture' );
+
+function removedirection() {
+    $tipo = filter_input(INPUT_GET, 'tipo');
+    $id_user = filter_input(INPUT_GET, 'id_user');
+    $value_core = '';
+    if ($tipo == 'casa') {
+        update_field( 'direccion_casa', $value_core, 'user_'.$id_user );
+    } 
+    if ($tipo == 'trabajo') {
+        update_field( 'direccion_trabajo', $value_core, 'user_'.$id_user );
+    } 
+    if ($tipo == 'almacen') {
+        update_field( 'direccion_almacen', $value_core, 'user_'.$id_user );
+    } 
+    if ($tipo == 'otros') {
+        update_field( 'direccion_otras', $value_core, 'user_'.$id_user );
+    }
+    wp_die();
+}
+add_action( 'wp_ajax_removedirection', 'removedirection' );
+add_action( 'wp_ajax_nopriv_removedirection', 'removedirection' );
+
+
 
 
 add_filter('woocommerce_order_button_text','custom_order_button_text',1);

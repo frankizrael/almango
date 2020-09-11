@@ -26,94 +26,72 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', esc_html__( 'Mis pedidos', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
 	</div>
 	<div class="contentMyPedidos">
+		<div class="selectMyPedidos">
+			<p>
+				<i>Filtros:</i>
+				<img src="<?php echo get_template_directory_uri().'/img/filter.png'; ?>">
+			</p>
+			<div class="filterContent">
+				<h5>FILTRAR POR<i class="closeFilter"></i></h5>
+				<ul>
+					<li data=".<?php echo sanitize_title('En espera (de pago)'); ?>">Validando pago</li>
+					<li data=".<?php echo sanitize_title('Fallido (No pagado)'); ?>">Pedido Fallido</li>
+					<li data=".<?php echo sanitize_title('En preparación (Pagado)'); ?>">Pedido por entregar</li>
+					<li data=".<?php echo sanitize_title('Completado (Pagado-Enviado)'); ?>">Pedido Entregado</li>
+					<li data=".<?php echo sanitize_title('En espera (de pago)'); ?>">Pedido en Espera</li>
+					<li data=".<?php echo sanitize_title('Cancelado'); ?>">Pedido cancelado</li>
+					<li data=".<?php echo sanitize_title('Reembolsado (Devuelto)'); ?>">Pedido reembolzado</li>
+				</ul>				
+			</div>
+		</div>
 		<?php
 			foreach ( $customer_orders->orders as $customer_order ) {
 				$order = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
 				$item_count = $order->get_item_count() - $order->get_item_count_refunded();
-				?>
+				$status = wc_get_order_status_name($order->get_status());
 
-				<div class="itemPedido">
+				$msj = '';
+				$img = get_template_directory_uri().'/img/isotipo-personaje.png';
+				if ( $status == 'En espera (de pago)' ) {
+					$msj = 'Validando pago';
+					$img = get_template_directory_uri().'/img/time-is-money.png';
+				}
+				if ( $status == 'Fallido (No pagado)' ) {
+					$msj = 'Pedido Fallido';
+					$img = get_template_directory_uri().'/img/isotipo-personaje.png';
+				}
+				if ( $status == 'En preparación (Pagado)' ) {
+					$msj = 'Pedido por entregar';
+					$img = get_template_directory_uri().'/img/delivery.png';
+				}
+				if ( $status == 'Completado (Pagado-Enviado)' ) {
+					$msj = 'Pedido Entregado';
+					$img = get_template_directory_uri().'/img/delivery-guy.png';
+				}
+				if ( $status == 'En espera (de pago)' ) {
+					$msj = 'Pedido en Espera';
+					$img = get_template_directory_uri().'/img/delivery.png';
+				}
+				if ( $status == 'Cancelado' ) {
+					$msj = 'Pedido cancelado';
+					$img = get_template_directory_uri().'/img/cancelado.png';
+				}
+				if ( $status == 'Reembolsado (Devuelto)' ) {
+					$msj = 'Pedido reembolzado';
+					$img = get_template_directory_uri().'/img/isotipo-personaje.png';
+				}
+
+				?>
+				<div class="itemPedido <?php echo sanitize_title($status); ?>" >
 					<a href="<?php echo esc_url( $order->get_view_order_url() ); ?>">
 						<div class="title_pedido">
 							<?php
-								$status = wc_get_order_status_name($order->get_status());
-								if ( $status == 'Pending payment' ) {
-									?>
-									Validando pago
-									<?php
-								}
-								if ( $status == 'Failed' ) {
-									?>
-									Pedido Fallido
-									<?php
-								}
-								if ( $status == 'Processing' ) {
-									?>
-									Pedido por entregar
-									<?php
-								}
-								if ( $status == 'Completed' ) {
-									?>
-									Pedido Entregado
-									<?php
-								}
-								if ( $status == 'On hold' ) {
-									?>
-									Pedido en Espera
-									<?php
-								}
-								if ( $status == 'Cancelled' ) {
-									?>
-									Pedido cancelado
-									<?php
-								}
-								if ( $status == 'Refunded' ) {
-									?>
-									Pedido reembolzado
-									<?php
-								}
+								echo $msj;
 							?>
 						</div>
 						<div class="body_pedido">
 							<div class="left_img">
-								<?php
-									$status = wc_get_order_status_name($order->get_status());
-									if ( $status == 'Pending payment' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/time-is-money.png">
-										<?php
-									}
-									if ( $status == 'Failed' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-										<?php
-									}
-									if ( $status == 'Processing' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
-										<?php
-									}
-									if ( $status == 'Completed' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/delivery-guy.png">
-										<?php
-									}
-									if ( $status == 'On hold' ) {
-										?>										
-										<img src="<?php echo get_template_directory_uri(); ?>/img/delivery.png">
-										<?php
-									}
-									if ( $status == 'Cancelled' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-										<?php
-									}
-									if ( $status == 'Refunded' ) {
-										?>
-										<img src="<?php echo get_template_directory_uri(); ?>/img/isotipo-personaje.png">
-										<?php
-									}
-								?>
+								<img src="<?php echo $img; ?>">
 							</div>
 							<div class="right_p">
 							<ul>
@@ -134,10 +112,12 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 						</div>
 					</a>
 				</div>
-
 				<?php
 			}
 		?>
+		<div class="addC">
+			<a href="javascript:void(0)" class="link">Eliminar todo</a>
+		</div>
 	</div>
 
 	<?php do_action( 'woocommerce_before_account_orders_pagination' ); ?>
