@@ -1,2 +1,6 @@
 2020-09-03T02:28:42+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\dashboard.php on line 104
 
+2020-09-03T19:42:33+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\almango\wp-includes\pomo\streams.php on line 148
+
+2020-09-03T19:42:43+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\almango\wp-content\plugins\advanced-custom-fields-pro\includes\fields\class-acf-field-true_false.php on line 3
+

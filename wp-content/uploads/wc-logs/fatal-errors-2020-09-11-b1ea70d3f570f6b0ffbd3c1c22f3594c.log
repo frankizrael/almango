@@ -1,0 +1,38 @@
+2020-09-11T01:16:44+00:00 CRITICAL syntax error, unexpected '}', expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\orders.php on line 115
+
+2020-09-11T01:26:27+00:00 CRITICAL Uncaught Error: Call to a member function get_status() on null in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\orders.php:25
+Stack trace:
+#0 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-core-functions.php(249): include()
+#1 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3066): wc_get_template('myaccount/order...', Array)
+#2 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(286): woocommerce_account_orders(1)
+#3 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 C:\xampp\htdocs\almango\wp-includes\plugin.php(465): WP_Hook->do_action(Array)
+#5 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3015): do_action('woocommerce_acc...', '')
+#6 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(286): woocommerce_account_content('')
+#7 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 C in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\orders.php on line 25
+
+2020-09-11T05:08:52+00:00 CRITICAL Uncaught Error: Call to a member function get_checkout_fields() on null in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\form-edit-address.php:53
+Stack trace:
+#0 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-core-functions.php(249): include()
+#1 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-my-account.php(220): wc_get_template('myaccount/form-...', Array)
+#2 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3104): WC_Shortcode_My_Account::edit_address('billing')
+#3 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(286): woocommerce_account_edit_address('billing')
+#4 C:\xampp\htdocs\almango\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 C:\xampp\htdocs\almango\wp-includes\plugin.php(465): WP_Hook->do_action(Array)
+#6 C:\xampp\htdocs\almango\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3015): do_action('woocommerce_acc...', ' in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\woocommerce\myaccount\form-edit-address.php on line 53
+
+2020-09-11T15:31:50+00:00 CRITICAL syntax error, unexpected ''" data-direction="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 389
+
+2020-09-11T15:32:21+00:00 CRITICAL syntax error, unexpected ''" data-direction="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 390
+
+2020-09-11T15:32:49+00:00 CRITICAL syntax error, unexpected ''" data-direction="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 390
+
+2020-09-11T15:33:28+00:00 CRITICAL syntax error, unexpected ''" data-direction="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 390
+
+2020-09-11T15:33:51+00:00 CRITICAL syntax error, unexpected ''" data-direction="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 390
+
+2020-09-11T15:34:48+00:00 CRITICAL syntax error, unexpected ''" ' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 392
+
+2020-09-11T17:01:20+00:00 CRITICAL 'break' not in the 'loop' or 'switch' context in C:\xampp\htdocs\almango\wp-content\themes\blankTheme\functions.php on line 475
+
