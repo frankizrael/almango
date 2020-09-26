@@ -6,30 +6,79 @@ header {
     z-index: 15;
     left: 0px;
     transition: 0.3s;
+    @include maxw(table_max) {
+    	background: white;
+    	.mobileOrder {
+		    justify-content: space-between;
+		}
+    }
     .left_logo {
     	width: 320px;
+    	@include maxw(laptop) {
+			width: 220px; 
+		}
+		@include maxw(table_max) {	
+		    width: calc(50% + 60px);
+    		flex: none;		
+    		display: flex;
+    		padding: 10px 0px;
+    		justify-content: space-between;
+			.logoDesktop { display: none; }
+			.mobileLogo { 
+				display: block !important;
+				width: 120px;
+			    position: relative;
+			    top: 3px;
+			}
+			.mobileItemCorp {
+			    width: 30px;
+			    margin-right: 10px;
+			    height: 43px;
+			    position: relative;
+			    display: block !important; 
+			    img {
+					display: block;
+				    position: relative;
+				    top: 5px;
+			    }
+			}
+		}
     	img {
 		    display: block;
 		    max-width: 220px;
 		    transition: 0.3s;
 		}
-    }
-    &:hover {
-    	.left_logo {
-	    	img {
-			    display: block;
-			    max-width: 320px;
-			    transition: 0.3s;
-			}
-	    }
+    	&:hover {
+    		img { 
+    			max-width: 320px; 
+    			@include maxw(laptop) {
+    				max-width: 220px; 
+    			}
+    		}
+    	}    	
     }
 	.right_content {
 	    flex: 1;
+	    @include maxw(table_max) {
+	    	flex: none;
+	    	width: 125px;
+	    }
 		.searchItem {
 		    flex: 50%;
+		    @include maxw(table_max) {
+		    	position: absolute;
+			    bottom: -40px;
+			    left: 0;
+				width: calc(100% - 20px);
+			    border-top: solid 1px #ececec;
+			    left: 10px;
+		    }
 		}
 		.menuItem {
 		    width: 100%;
+		    @include maxw(table_max) {
+		    	display: none;
+		    }
 		    ul {
 			    display: flex;
 			    align-items: center;
@@ -42,6 +91,10 @@ header {
 					    color: white;
 					    margin: 0px 20px;
 					    font-weight: 700;
+					    @include maxw(laptop) {
+							margin: 0px 10px;
+							font-size: 12px;
+						}
 					}
 				}
 			}
@@ -51,15 +104,34 @@ header {
 		    width: 165px;
     		flex: none;
     		margin-left: 45px;
+    		@include maxw(laptop) {
+				margin-left: 15px;
+			}
+			@include maxw(table_max) {
+				margin-left: 0px;
+		    	width: 125px;
+		    }
     		i {
 			    width: 40px;
 			    display: block;
+			    @include maxw(laptop) {
+					width: 30px;
+					img {
+						width: 30px;
+					}
+				}
 			}
 			.notify {
 			    margin-right: 25px;
 			    position: relative;
+			    @include maxw(laptop) {
+					margin-right: 15px;
+				}
 			    img {
 				    width: 40px;
+				    @include maxw(laptop) {
+						width: 30px;
+					}
 				}
 			    a {
 				    display: block;
@@ -84,17 +156,45 @@ header {
 		}
 		.user_min {
 		    margin-right: 20px;
+		    @include maxw(laptop) {
+		    	margin-right: 10px;
+		    	position: relative;
+		    }
 		    i {
 		    	img {
 		    		width: 40px;
     				height: 40px;
+    				@include maxw(laptop) {
+						width: 30px;
+    					height: 30px;
+					}
 		    	}
 		    }
+		}
+	}
+	@include maxw(table_max) {
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 105px;
+			left: 0px;
+			top: 0px;
+			background: white;
+	    	box-shadow: 0px 2px 3px #00000014;
+	    	transition: 0.3s;
+	    	transform: scaleY(0);
 		}
 	}
     &.active, &.active2 {
     	background: white;
 	    box-shadow: 0px 2px 3px #00000014;
+	    @include maxw(table_max) {
+	    	box-shadow: none;
+	    	&:before {
+	    		transform: none;
+	    	}
+	    }
 	    .right_content {
 	    	.menuItem {
 	    		ul {
@@ -111,6 +211,7 @@ header {
 		position: absolute;
 	}
 }
+body.dgwt-wcas-open header .left_logo img { max-width: 220px !important;}
 .dgwt-wcas-sf-wrapp:before {
     display: block;
     position: absolute;
@@ -136,12 +237,41 @@ header {
     border: none !important;
     border-bottom: solid 1px black !important;
     border-radius: 12px !important;
-    padding-left: 15px !important;
+    padding-left: 15px !important;    
+    @include maxw(table_max) {
+    	border-radius: 0px !important;
+    	padding-left: 0px !important; 
+    	background: transparent !important;  
+    	border-bottom: solid 1px white !important; 
+    }
+}
+.dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input::placeholder {
+	@include maxw(table_max) {
+	    color: white !important; 
+	    font-style: normal !important; 
+	}
 }
 .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input::placeholder {
     font-family: 'ralewayregular';
     font-style: normal;
 }
+header.active .right_content .searchItem  .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input::placeholder {
+	@include maxw(table_max) {
+	    color: black !important; 
+	    font-style: normal !important; 
+    	border-bottom: solid 1px white !important; 
+	}
+}
+header.active2 .right_content .searchItem  .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input::placeholder {
+	@include maxw(table_max) {
+	    color: black !important; 
+	    font-style: normal !important; 
+    	border-bottom: solid 1px white !important; 
+	}
+}
+
+
+
 .back_contactos{
 	width: 390px;
 	background-color: rgba(255,255,255,.3);
@@ -165,4 +295,156 @@ header {
   100% {
     transform: rotate(0deg);
   }
+}
+.dgwt-wcas-suggestion {
+    box-sizing: border-box;
+}
+.dgwt-wcas-has-headings .dgwt-wcas-suggestion-headline .dgwt-wcas-st {
+    margin-top: 0px;
+    background: #eaeaea;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-weight: 700;
+    color: black;
+    display: block;
+    line-height: 100%;
+    padding-top: 10px;
+}
+
+
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background: #0000008a;
+    transform: translateX(120%);
+    transition: 0.3s;
+    &.act {
+    	transform: none;
+    }
+    .closeMobileMenu:after {
+	    content: '';
+	    position: absolute;
+	    width: 15px;
+	    height: 3px;
+	    background: #495cfb;
+	    transform: rotate(-45deg);
+	    top: 11px;
+	    left: 5px;
+	}
+	.closeMobileMenu:before {
+	    content: '';
+	    position: absolute;
+	    width: 15px;
+	    height: 3px;
+	    background: #495cfb;
+	    transform: rotate(45deg);
+	    top: 11px;
+	    left: 5px;
+	}
+	.closeMobileMenu {
+	    position: absolute;
+	    background: white;
+	    width: 25px;
+	    height: 25px;
+	    border-radius: 50%;
+	    top: 10px;
+	    right: 10px;
+	    cursor: pointer;
+	}
+    .mobile-container {
+	    padding: 20px 20px;
+	    .userName {
+	    	i {
+	    		img {
+				    max-width: 80px;
+				}
+	    	}
+	    	h3 {
+			    color: white;
+			    font-size: 18px;
+			}
+			p {
+			    font-size: 15px;
+			    color: white;
+			    margin: 5px 0px;
+			    opacity: 0.8;
+			}
+			.descuento {
+			    white-space: nowrap;
+			    overflow-x: scroll;
+				margin-top: 20px;
+				margin-bottom: 10px;			    
+			    img {
+			    	display: inline-block;
+			    	max-width: 160px;
+			    }
+			}
+			.searchShortCode {
+			    padding: 0px 10px;
+			    border-radius: 7px;
+			    background: #ffffff3b;
+			    padding-bottom: 6px;
+			    margin-top: 15px;
+			}
+	    }
+	    .menuSimple {
+	    	li {
+	    		a {
+					text-transform: lowercase;
+				    color: white;
+				    font-size: 20px;
+				    display: block;
+				    padding: 10px;
+				    border-radius: 5px;
+				    &:before {
+					    content: '';
+					    width: 25px;
+					    height: 25px;
+					    display: inline-block;
+					    background-size: cover !important;
+					    position: relative;
+					    vertical-align: middle;
+					    margin-right: 5px;
+					    top: -5px;
+					}
+				}
+				&.current_page_item {
+					a {
+						background: #ffffff3b;
+					}
+				}
+				&:nth-child(1) {
+					a:before {
+						background: url('../assets/img/home.png');
+					}
+				}
+				&:nth-child(2) {
+					a:before {
+						background: url('../assets/img/shopping-bags.png');
+					}
+				}
+				&:nth-child(3) {
+					a:before {
+						background: url('../assets/img/communications.png');
+					}
+				}
+	    	}
+	    }
+		.closeSesion {
+		    border-top: solid 1px white;
+		    text-align: center;
+		    padding: 20px;
+		    a {
+			    color: white;
+			    border-bottom: solid 1px white;
+			    padding: 10px 0px;
+			    display: inline-block;
+			}
+		}
+	}
 }

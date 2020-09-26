@@ -33,6 +33,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		if ($cat) {				
 			foreach ($cat as $ta) {						
 				if ($ta->parent == 67) {										
+				//if ($ta->parent == 24) {										
 					?>
 				<div class="imagen_cat">
 					<?php $marcaTitle = $ta->name;?>

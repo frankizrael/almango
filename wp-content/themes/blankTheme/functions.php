@@ -442,7 +442,6 @@ function custom_pre_get_posts_query( $q ) {
        'operator' => 'NOT IN'
     );
 
-
     $q->set( 'tax_query', $tax_query );
 
 }

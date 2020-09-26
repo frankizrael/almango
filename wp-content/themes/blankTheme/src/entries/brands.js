@@ -85,7 +85,12 @@ $('.jsCarrusel').on('click',function(){
       loop: true,
 	    autoplay: {
 	        delay: 7500
-	    }
+	    },
+      breakpoints: {
+        1030: {
+          slidesPerView: 'auto',
+        }
+      }
 	});
 	$('.contentModels').removeClass('listaView');
 });

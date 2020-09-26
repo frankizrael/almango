@@ -48,16 +48,13 @@ defined( 'ABSPATH' ) || exit;
 						</div>
 						<div class="color">
 							<div class="colores_tag">
-								<script type="text/javascript">
-									var color_exactly = localStorage.getItem('<?php echo $product_id; ?>_color');
-								</script>
 								<?php
 									$colores = get_field('colores',$product_id);
 									if ($colores) {
 										$a=0;
 										foreach ($colores as $ce) {
 									?>
-									<div class="colors_step" data="#colors_img_<?php echo $a;?>" data="<?php echo $ce['text']; ?>">
+									<div class="colors_step" id="colors_img_<?php echo $a;?>" data="<?php echo $ce['text']; ?>" style="display: none;">
 										<span style="background: <?php echo $ce['color']; ?>"></span>
 										<p><?php echo $ce['text']; ?></p>
 									</div>
@@ -66,6 +63,10 @@ defined( 'ABSPATH' ) || exit;
 										}
 									}
 								?>
+								<script type="text/javascript">
+									var color_exactly = localStorage.getItem('<?php echo $product_id; ?>_color');
+									jQuery(color_exactly).show();
+								</script>
 							</div>
 						</div>
 						<p>Cantidad: <?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>

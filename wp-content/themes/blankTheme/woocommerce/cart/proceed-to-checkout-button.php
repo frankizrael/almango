@@ -28,4 +28,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php
 	$porcentaje = get_field('porcentaje_conversion','options');
 ?>
-<p class="addcomend">*Precio con tarjeta de crédito tiene un cargo de <?php echo $porcentaje; ?>% adicional.</p>

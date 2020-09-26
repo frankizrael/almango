@@ -24,14 +24,21 @@ get_header( 'shop' );
 ?>
 <section id="core" class="section-core">
 	<div class="mycontainer">
-		<div class="bredcrumpb">
-			<div class="x-container">
-				<div class="overBread">
-					
+		<?php
+			$publicity = get_field('publicity','options');
+			if ($publicity) {
+				?>
+			<div class="bredcrumpb">
+				<div class="x-container">
+					<div class="overBread">
+						<a href="<?php echo $publicity; ?>"><?php echo get_field('publicity_text','options'); ?></a>
+					</div>
 				</div>
-			</div>
-		</div>
-		</div>
+			</div>	
+				<?php
+			}
+		?>
+	</div>
 		<div class="frontCore">
 			<div class="x-container">	
 				<div class="flex-r">
@@ -40,6 +47,14 @@ get_header( 'shop' );
 							<?php
 								get_sidebar('sidebar');
 							?>
+							<?php
+								echo do_shortcode('[searchandfilter id="488"]');
+							?>
+							<!-- trall and-->
+							<div class="colorFilters">
+								<h4>COLORES</h4>
+								<ul id="colorsN"></ul>
+							</div>
 						</aside>
 					</div>
 					<div class="right">
@@ -71,15 +86,15 @@ get_header( 'shop' );
 
 											wc_get_template_part( 'content', 'product' );
 
-											if ($search_product == 5) {
+											if ($search_product == 15) {
 												$aux = 1;
 												?>
 												<li class="flex-banner-prod" style="background-image: url('<?php echo $banners_pub[0]["img"]; ?>');">													
 												</li>
 												<?php
 											} else {
-												if ($search_product > 5) {
-													$valor_aux = 3*$aux+5;
+												if ($search_product > 15) {
+													$valor_aux = 4*$aux+15;
 													if ($search_product == $valor_aux) {
 														?>
 														<li class="flex-banner-prod" style="background-image: url('<?php echo $banners_pub[$aux]["img"]; ?>');">
@@ -149,20 +164,87 @@ get_header( 'shop' );
     ?>	
 
     <?php				
-		$pa_posicion = get_terms('pa_posicion');
-		if ($pa_posicion) {
-			$a = 0;
-			foreach ($pa_posicion as $c) {
-				$img = get_field('imagen','pa_posicion_'.$c->term_id);				
-				?>
-				jQuery('#woocommerce_layered_nav-3 li').eq(<?php echo $a;?>).find('a').prepend('<span><img src="<?php echo $img; ?>"></span>');
-				<?php		
-				$a++;
+		$pa_posicion = get_field('pa_posicion_img','options');
+	?>
+	let arrayPosition = <?php echo json_encode($pa_posicion); ?>;
+	for (let t=0; t<arrayPosition.length; t++){
+		let jLabel = jQuery('.sf-field-post-meta-position_moto_desc li');
+		for (let i=0;i<jLabel.length;i++){
+			if (arrayPosition[t].text == jLabel.eq(i).find('label').text() ) {
+				jLabel.eq(i).find('label').prepend('<span><img src="'+arrayPosition[t].img+'"></span>');
 			}
-		}
-		?>
-    jQuery('.cat-item-15').find('a').eq(0).addClass('titleLink');
+		} 		
+	}
+
+	<?php				
+		$pa_aros = get_field('pa_aros','options');
+	?>
+	let arrayAros = <?php echo json_encode($pa_aros); ?>;
+	for (let t=0; t<arrayAros.length; t++){
+		let jLabel = jQuery('.sf-field-post-meta-fren_2_list_2_number li');
+		for (let i=0;i<jLabel.length;i++){
+			if (arrayAros[t].text == jLabel.eq(i).find('label').text() ) {
+				jLabel.eq(i).find('label').prepend('<span><img src="'+arrayAros[t].img+'"></span>');
+			}
+		} 		
+	}
+
+	<?php				
+		$pa_alimentacion = get_field('pa_alimentacion','options');
+	?>
+	let arrayAlimentacion = <?php echo json_encode($pa_alimentacion); ?>;
+	for (let t=0; t<arrayAlimentacion.length; t++){
+		let jLabel = jQuery('.sf-field-post-meta-pdf_sistema_de_combustible li');
+		for (let i=0;i<jLabel.length;i++){
+			if (arrayAlimentacion[t].text == jLabel.eq(i).find('label').text() ) {
+				jLabel.eq(i).find('label').prepend('<span><img src="'+arrayAlimentacion[t].img+'"></span>');
+			}
+		} 		
+	}
+	
+	<?php				
+		$pa_refrigeracion = get_field('pa_refrigeracion','options');
+	?>
+	let arrayRefrigeracion = <?php echo json_encode($pa_refrigeracion); ?>;
+	for (let t=0; t<arrayRefrigeracion.length; t++){
+		let jLabel = jQuery('.sf-field-post-meta-pdf_refrigeracion li');
+		for (let i=0;i<jLabel.length;i++){
+			if (arrayRefrigeracion[t].text == jLabel.eq(i).find('label').text() ) {
+				jLabel.eq(i).find('label').prepend('<span><img src="'+arrayRefrigeracion[t].img+'"></span>');
+			}
+		} 		
+	}
+
+
+	jQuery('.sf-range-min').closest('label').addClass('inputMin');
+	jQuery('.sf-range-max').closest('label').addClass('inputMax');
+
+	jQuery('.cat-item-15').find('a').eq(0).addClass('titleLink');
     jQuery('.cat-item-67').find('a').eq(0).addClass('titleLink');
+
+    //chose fun colors
+    let jLi = jQuery('.searchandfilter ul li');
+	for (let i=0;i<jLi.length;i++) {
+	  let fieldName = jLi.eq(i).attr('data-sf-field-name');
+	  if (fieldName != undefined) {
+	  	if (fieldName.split('sfm_colores').length > 1) {
+		  	jLi.eq(i).addClass('opaaa');
+		  	let Linput = jLi.eq(i).find('input');
+		  	for (let i=0;i<Linput.length;i++) {	  		
+		  		let id = Linput.eq(i).attr('id');
+		  		let value = Linput.eq(i).attr('value');
+		  		let template = '<li data="#'+id+'"><div style="background:'+value+';"></div></li>';
+	    		jQuery('#colorsN').append(template);
+		  	}
+		  }
+	  }
+	}
+
+	jQuery('#colorsN li').on('click',function(){
+		let id = jQuery(this).attr('data');
+		jQuery(id).click();
+	});
+
 </script>
 
 

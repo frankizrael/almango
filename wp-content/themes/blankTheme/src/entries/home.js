@@ -92,7 +92,14 @@ for (let i=0;i<$right_dcts.length;i++){
   function newcarouselleft(){
     var interval = 3000;
     let leng = $('#listLeft').find('.dscto_inside').length;
-    if (leng > 5) {
+    let withA = $(window).width();
+    let value = 5;
+    if (withA < 1301) {
+      value = 4;
+    }
+
+
+    if (leng > value) {
       setInterval(function() {
         var first_height = $('#listLeft').find('.dscto_inside:first').height();
         var paddings = parseInt($('#listLeft').find('.dscto_inside:first').css('padding-top')) + parseInt($('#listLeft').find('.dscto_inside:first').css('padding-bottom'));
@@ -110,7 +117,12 @@ for (let i=0;i<$right_dcts.length;i++){
   function newcarouselright(){
     var interval = 3000;
     let leng = $('#listRight').find('.dscto_inside').length;
-    if (leng > 5) {
+    let withA = $(window).width();
+    let value = 5;
+    if (withA < 1301) {
+      value = 4;
+    }
+    if (leng > value) {
       setInterval(function() {
         var first_height = $('#listRight').find('.dscto_inside:first').height();
         var paddings = parseInt($('#listRight').find('.dscto_inside:first').css('padding-top')) + parseInt($('#listRight').find('.dscto_inside:first').css('padding-bottom'));
@@ -152,6 +164,11 @@ var swiperNews = new Swiper(".style_motos .swiper-container", {
   slidesPerView: 8,
   autoplay: {
     delay: 6000
+  },
+  breakpoints: {
+    1300: {
+      slidesPerView: 4
+    }
   }
 });
 
@@ -176,6 +193,11 @@ var swipermarcas_list = new Swiper(".marcas_list .swiper-container", {
   },
   autoplay: {
     delay: 6000
+  },
+  breakpoints: {
+    1300: {
+      slidesPerView: 4
+    }
   }
 });
 
@@ -185,10 +207,12 @@ var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-con
   pagination: {
     el: ".my_products_featureds .swiper-pagination",
     clickable: true,
-  }/*,
-  autoplay: {
-    delay: 6000
-  }*/
+  },
+  breakpoints: {
+    1300: {
+      slidesPerView: 2
+    }
+  }
 });
 
 var swipermy_bannerMoonM = new Swiper(".bannerMoonM .swiper-container", {

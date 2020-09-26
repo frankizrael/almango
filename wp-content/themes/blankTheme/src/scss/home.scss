@@ -58,6 +58,10 @@ section {
 	    font-style: italic;
 	    font-weight: 700;
 	    margin: auto;	
+	    @include maxw(table_max) {
+		    -webkit-text-stroke: 1px white;
+		    font-size: 35px;
+	    }
 	    .content_text {
 	    	width: 100%;
 	    	display: none;
@@ -84,6 +88,9 @@ section {
 	    font-family: 'heebo';
 	    font-style: italic;
 	    text-align: center;
+	    @include maxw(table_max) {
+		    font-size: 25px;
+	    }
 	}
 	.initButtons {
 	    bottom: 80px;
@@ -92,6 +99,9 @@ section {
 	    transform: translateX(-50%);
 	    a {
 		    margin: 0px 40px;
+		}
+		@include maxw(laptop) {
+			width: 280px;
 		}
 	}
 }
@@ -105,6 +115,10 @@ section {
 	    bottom: 50px;
 	    right: 200px;
 	    z-index: 2;
+	    @include maxw(table_max) {
+			max-width: 100% !important;
+    		right: 20px;
+		}
 		.swiper-pagination {
 		    margin-top: 0px !important;
 		    .swiper-pagination-bullet {
@@ -138,8 +152,14 @@ section {
 }
 .sectionpadd {
 	padding: 40px 0px;
+	@include maxw(table_max) {
+    	padding: 20px 0px;
+    }
 	.style_motos {
 	    margin-top: 40px;
+	    @include maxw(table_max) {
+	    	margin-top: 10px;
+	    }
 	}
 }
 .style_motos__moto {
@@ -165,6 +185,11 @@ section {
 		    	height: 130px;
 		    	margin-left: -65px;
 			}
+			@include maxw(table_max) {
+				width: 70px;
+			    height: 70px;
+			    margin-left: -35px;
+			}
 		}
 	}
 	img {
@@ -182,11 +207,22 @@ section {
 		    margin-top: 45px;
 		    margin-bottom: 45px;
 	    }
+	    @include maxw(table_max) {
+		    height: 30px;
+		    width: auto;
+		    background: white;
+		    margin: 18px;
+		    margin-top: 20px;
+		    margin-bottom: 20px;
+		}
 	}
 	p {
 	    font-size: 12px;
 	    color: #082630;
-	    text-transform: uppercase;
+	    text-transform: uppercase;	    
+	    @include maxw(table_max) {
+	    	display: none;
+	    }
 	}
 }
 .descuentos {
@@ -195,16 +231,41 @@ section {
     	justify-content: space-around;
     	width: 1200px;
     	height: 650px;
+    	@include maxw(laptop) {
+    		width: 1000px;
+    		height: 450px;
+    	}    	
+	    @include maxw(table_max) {
+			width: 100%;
+		    height: 400px;
+		    justify-content: center;
+	    }
 	}
 	&__left {
 		width: calc(50% - 10px);
     	flex: none;
     	overflow: hidden;
+    	@include maxw(table_max) {
+    		width: 100%;
+    		flex: none;
+    	}
 	}
 	&__right {
 		width: calc(50% - 10px);
     	flex: none;
     	overflow: hidden;
+    	@include maxw(table_max) {
+    		display: none;
+    	}
+	}
+	&__close  {
+		@include maxw(table_max) {
+			position: relative !important;
+		    top: 0px !important;
+		    float: right;
+		    right: 0px !important;
+		    margin-bottom: 5px;
+		}
 	}
 	.dscto_inside {
 	    padding: 10px 20px;
@@ -214,6 +275,12 @@ section {
 	    margin-bottom: 20px;
 	    box-sizing: border-box;
 	    height: 113px;
+	    @include maxw(laptop) {
+    		height: 95px;
+    	}    	
+    	@include maxw(table_max) {
+    		height: 80px;
+    	}
 	    &:before {
 		    content: '';
 		    position: absolute;
@@ -260,13 +327,28 @@ section {
 			    font-size: 63px;
 			    font-family: 'heebo';
 			    padding: 0px 15px;
+			    @include maxw(laptop) {
+		    		font-size: 45px;
+		    	}
 			}
 		    .left {
 			    width: 340px;
 			    flex: none;
+			    @include maxw(laptop) {
+			    	width: 250px;
+			    }
+			    @include maxw(table_max) {
+		    		width: 150px;
+		    	}
 			    .top {
 				    font-size: 18px;
 				    font-weight: 700;
+				    @include maxw(laptop) {
+			    		font-size: 14px;
+			    	}
+				    @include maxw(table_max) {
+			    		font-size: 9px;
+			    	}
 				}
 				.center {
 				    display: flex;
@@ -278,10 +360,16 @@ section {
 				    .le_center {
 					    font-size: 26px;
 					    font-weight: 700;
+					    @include maxw(laptop) {
+				    		font-size: 18px;
+				    	}
 					}
 					.ri_center {
 						img {
 						    height: 40px;
+						    @include maxw(laptop) {
+					    		height: 30px;
+					    	}
 						}
 					}
 				}
@@ -289,6 +377,12 @@ section {
 				    font-size: 16px;
 				    font-weight: 400;
 				    opacity: 0.8;
+				    @include maxw(laptop) {
+			    		font-size: 12px;
+			    	}
+				    @include maxw(table_max) {
+			    		font-size: 9px;
+			    	}
 				}
 			}
 			.right {
@@ -304,7 +398,11 @@ section {
 				    color: #000000;
 				    font-size: 18px;
 				    cursor: pointer;
-				    outline: none;
+				    outline: none;				    
+				    @include maxw(table_max) {
+			    		padding: 5px 8px;
+    					font-size: 14px;
+			    	}
 				}
 			}
 		}
@@ -365,6 +463,10 @@ section {
 			width: 130px;
 	    	height: 130px;
 		}
+		@include maxw(table_max) {
+			width: 70px;
+		    height: 70px;
+	    }
 	    img {
 		    height: auto;
 		    position: relative;
@@ -374,6 +476,9 @@ section {
 		    width: 90px;
 		    @include maxw(mylaptop) {
 		    	width: 80px;
+		    }
+		    @include maxw(table_max) {
+				width: 45px;
 		    }
 		}
 	}
@@ -424,6 +529,13 @@ section {
 		    transition: 0.3s;
 		    perspective: 500px;
   			position: relative;
+  			@include maxw(table_max) {
+			    margin-right: 5px;
+			    margin-top: 10px;
+			    position: relative;
+			    margin-bottom: 20px;
+			    margin-left: 0px;
+  			}
 			.ident {
 				transform-style: preserve-3d;
 		    	box-shadow: 0px 4px 12px #0000003b;
@@ -437,6 +549,9 @@ section {
 			    display: block;
 			    .imagen {
 				    margin-bottom: -30px;
+				    @include maxw(table_max) {
+				    	margin-bottom: 0px;
+				    }
 				    .destacada {
 					    position: absolute;
 					    font-weight: 700;
@@ -448,12 +563,23 @@ section {
 					    padding: 10px;
 					    text-transform: uppercase;
 					    border-radius: 5px;
+					    @include maxw(table_max) {
+					     	font-size: 10px;
+						    top: -10px;
+						    left: 5px;
+						    padding: 5px;
+					    }
 					}
 					img {
 					    width: calc(100% + 60px);
 					    display: block;
 					    position: relative;
 					    top: -40px;
+					    @include maxw(table_max) {
+							width: 100%;
+						    top: -10px;
+						    margin-bottom: -10px;
+					    }
 					}
 				}
 				.text {
@@ -463,23 +589,36 @@ section {
 					    color: #001A23;
 					    font-weight: 700;
 					    font-family: 'heebo';
+					     @include maxw(table_max) {
+					     	font-size: 16px;
+					     }
 					}
 					p {
 					    font-size: 20px;
 					    font-weight: 700;
 					    -webkit-text-stroke: 1px #959595;
 					    color: #959595;
+					     @include maxw(table_max) {
+					     	font-size: 14px;
+					     }
 					}
 				}
 				.myprice {
 				    padding: 15px;
 				    margin-top: 20px;
+				    @include maxw(table_max) {
+					    padding: 0px 15px;
+					    margin-top: 0px;
+				    }
 				    del {
 					    display: block;
 					    color: $orange;
 					    opacity: 0.8;
 					    font-size: 20px;
 					    font-family: 'heebo';
+					    @include maxw(table_max) {
+						    font-size: 14px;
+					    }
 					    span {
 						    color: $orange;
 						}
@@ -490,6 +629,9 @@ section {
 					    font-family: 'heebo';
 					    font-weight: 700;
 					    color: white;
+					    @include maxw(table_max) {
+						    font-size: 18px;
+					    }
 					}
 				}
 			}
@@ -497,6 +639,9 @@ section {
 				a {
 					display: block;
 	    			height: 410px;
+	    			@include maxw(table_max) {
+				     	height: 170px;
+				     }
 	    			img {
 					    width: 100%;
 					    height: 100%;
@@ -533,19 +678,34 @@ section {
 .bannerMoonM {
 	background: white;
     padding: 50px 0px;
+    @include maxw(table_max) {
+    	padding: 20px 0px;
+	}
+    img {
+	    width: 100%;
+	}
 }
 .descuentos {
     position: relative;
     padding: 50px 0px;
     z-index: 1;
+   	@include maxw(table_max) {
+    	padding: 20px 0px;
+	}
     h2 {
 	    text-align: center;
 	    font-size: 45px;
+	    @include maxw(table_max) {
+	    	font-size: 12px;
+	    }
 	}
 	p {
 	    text-align: center;
 	    font-size: 30px;
 	    color: white;
+	    @include maxw(table_max) {
+	    	font-size: 10px;
+	    }
 	}
 	.decorative_left {
 	    position: absolute;
@@ -571,6 +731,11 @@ section {
 				@include maxw(laptop) {
 			    	left: 50px;
 				}
+				@include maxw(table_max) {
+					left: 5px;
+				    width: 60px;
+				    top: 17px;
+				}
 			}
 			&:nth-child(2) {
 				right: -120px;
@@ -583,7 +748,12 @@ section {
 			    	right: -40px;
 				}
 				@include maxw(laptop) {
-			    	right: -20px;
+			    	right: auto;
+			    	left: 245px;
+				}
+				@include maxw(table_max) {
+				    left: 50px;
+    				width: 40px;
 				}
 			}
 			&:nth-child(3) {
@@ -597,7 +767,12 @@ section {
 			    	left: 25%;
 				}
 				@include maxw(laptop) {
-			    	left: 15%;
+			    	left: 20%;
+				}
+				@include maxw(table_max) {
+					left: 30%;
+				    width: 60px;
+				    top: -27px;
 				}
 			}
 			&:nth-child(4) {
@@ -611,7 +786,7 @@ section {
 			    	right: 100px;
 				}
 				@include maxw(laptop) {
-			    	right: 40px;
+			    	display: none;
 				}
 			}
 			&:nth-child(5) {
@@ -625,7 +800,7 @@ section {
 			    	left: 22%;
 				}
 				@include maxw(laptop) {
-			    	left: 12%;
+			    	display: none;
 				}
 			}
 	    }
@@ -652,7 +827,13 @@ section {
 			    	left: 180px;
 				}
 				@include maxw(laptop) {
-			    	left: 70px;
+			    	left: auto;
+    				right: 200px;
+				}
+				@include maxw(table_max) {
+				    right: 20px;
+				    width: 65px;
+				    top: 20px;
 				}
 			}
 			&:nth-child(2) {
@@ -668,6 +849,10 @@ section {
 				@include maxw(laptop) {
 			    	right: 10px;
 				}
+				@include maxw(table_max) {
+				    width: 40px;
+    				top: -20px;
+				}
 			}
 			&:nth-child(3) {
 				left: 45%;
@@ -680,7 +865,14 @@ section {
 			    	left: 25%;
 				}
 				@include maxw(laptop) {
-			    	left: 15%;
+			    	left: auto;
+    				right: 200px;
+				}
+				@include maxw(table_max) {
+					left: auto;
+				    right: 60px;
+				    width: 40px;
+				    top: -8px;
 				}
 			}
 			&:nth-child(4) {
@@ -694,7 +886,7 @@ section {
 			    	right: -80px;
 				}
 				@include maxw(laptop) {
-			    	right: -30px;
+			    	display: none;
 				}
 			}
 			&:nth-child(5) {
@@ -708,7 +900,7 @@ section {
 			    	left: 22%;
 				}
 				@include maxw(laptop) {
-			    	left: 12%;
+			    	display: none;
 				}
 			}
 	    }
@@ -726,9 +918,16 @@ section {
 .prometemos {
     padding-bottom: 80px;
     padding-top: 40px;
+    @include maxw(table_max) {
+    	padding-bottom: 40px;
+    	padding-top: 20px;
+    }
     h2 {
 	    text-align: center;
 	    margin-bottom: 50px;
+	    @include maxw(table_max) {
+	    	margin-bottom: 20px;
+	    }
 	}
 	.promesas_list {
 	    display: flex;
@@ -743,17 +942,29 @@ section {
 				max-width: 100px;
 			    margin: auto;
 			    display: block;
+			    @include maxw(table_max) {
+			    	max-width: 50px;
+			    }
 		    }
 		    h3 {
 			    font-size: 20px;
 			    font-weight: 700;
 			    margin-top: 10px;
 			    margin-bottom: 5px;
+			    @include maxw(table_max) {
+			    	font-size: 9px;
+				    margin-top: 5px;
+				    margin-bottom: 2px;
+				    min-height: 20px;
+			    }
 			}
 			div {
 			    font-size: 12px;
 			    max-width: 180px;
 			    margin: auto;
+			    @include maxw(table_max) { 
+			    	font-size: 8px;
+			    }
 			}
 		}
 	}
@@ -772,6 +983,9 @@ section {
     h2 {
 	    text-transform: uppercase;
 	    margin-bottom: 20px;
+	    @include maxw(table_max) {
+	    	font-size: 18px;
+	    }
 	}
 	img {
 	    max-width: 500px;
@@ -785,6 +999,9 @@ section {
 		    transform: translateY(-3px);
 		    opacity: 0;
 		    transition: 0.3s;
+		    @include maxw(table_max) {
+		    	max-width: 50px;
+		    }
 		}
 	}
 	&.animation {

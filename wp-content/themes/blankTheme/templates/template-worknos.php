@@ -28,5 +28,28 @@ get_header();
 		</div>
 	</div>
 </section>
+<style>
+
+#correo:before {
+    position: relative;
+    background-image: url('https://digitalcook.info/almango/wp-content/uploads/2020/09/mensaje.png');
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    display: inline-block;
+    top: 2px;
+    left: 0;
+}
+.wpcf7 span.wpcf7-form-control-wrap.file-cv:before, .wpcf7-form span.wpcf7-form-control-wrap.file-cv:before{
+	width: 107px !important;
+}
+section.trabaja_nosotros .contenedor .columnas .columna_center h1 {
+    font-size: 30px;
+    margin-bottom: 32px;
+    font-family: 'Raleway';
+    font-weight: 700 !important;
+}
+</style>
 <?php get_footer();
 

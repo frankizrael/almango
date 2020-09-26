@@ -56,34 +56,47 @@ function countNumbers($id) {
 	}
 }
 
+$('.preventaJsModal').on('click',function(){
+	$('.preventaCore').addClass('active');
+});
+$('.preventaClose').on('click',function(){
+	$('.preventaCore').removeClass('active');
+});
+
+
 if ($('body').hasClass('single-product')) {
-
-	
-
-
 
 	let controller = new ScrollMagic.Controller();
 	let i1 = 0; 
 	let i2 = 0; 
+	$(window).scroll(function(){ 
+    	if ($(window).scrollTop() < $('.init').height()) { 
+    		$('#header_2').removeClass('active'); 
+    	} else {
+    		$('#header_2').addClass('active'); 
+    	}
+    });
+
+
 	//
 	let scene_1 = new ScrollMagic.Scene({
 	triggerElement: "#presures"
 	})
 	.addTo(controller)
 	.on("update", function() {
-	    let x1 = controller.info("scrollDirection");
+	    /*let x1 = controller.info("scrollDirection");
 	    let x2 = $(window).scrollTop();
 	    let x3 = 400;
         if ( x1 == "REVERSE" && x2 >= x3 && i1 == 0) {
-            $('#header_2').removeClass('active');
             i1++;
             i2 = 0;
+
         }
         if ( x1 == "FORWARD" && x2 > x3 && i2 == 0) {
         	$('#header_2').addClass('active');
             i2++;
             i1 = 0;
-        }       
+        }*/
 	});
 	//
 	let scene_2 = new ScrollMagic.Scene({
@@ -167,6 +180,8 @@ if ($('body').hasClass('single-product')) {
 if ($('body').hasClass('page-template-template-printpdf')) {
 	window.onload = function() { window.print(); }
 }
+
+
 
 
 
@@ -335,6 +350,25 @@ setTimeout(function(){
 	$('.item_presnts').addClass('active');
 },1650);
 
+var counter = 0;
+var i = setInterval(function(){
+    // do your thing
+    counter++;
+    $('.presents__ident').removeClass('active');
+    $('.item_presnts').removeClass('active');
+    $('.presents__content').removeClass('active');
+    setTimeout(function(){
+		$('.presents__ident').addClass('active');
+	},1000);
+	setTimeout(function(){
+		$('.presents__content').addClass('active');
+	},1350);
+	setTimeout(function(){
+		$('.item_presnts').addClass('active');
+	},1650);
+	
+}, 4500);
+
 $('.iframe-modal').on('click',function(){
 	let iframe = $(this).attr('data-iframe');
 	$('#iframeCore').attr('src',iframe);
@@ -343,3 +377,10 @@ $('.iframe-modal').on('click',function(){
 $('.modal-iframe__close').on('click',function(){
 	$('.modal-iframe').hide();
 });
+
+$('.downloadJsPDF').on('click',function(){
+	$('.iframe-modal').trigger('click');
+});
+
+
+//filters

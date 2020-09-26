@@ -24,5 +24,44 @@ get_header();
 		</div>
 	</div>
 </section>
+<style>
+	section.anuncia .x-container .columnas .columna_der .back_contactos {
+	    background: #282828;
+	}
+	#correo:before {
+	    position: relative;
+	    background-image: url('<?php echo site_url(); ?>/wp-content/uploads/2020/09/mensaje.png');
+	    content: '';
+	    width: 22px;
+	    height: 22px;
+	    background-size: contain;
+	    display: inline-block;
+	    top: 6px;
+	    left: 0;
+	}
+	input {
+	    text-align: center;
+	    padding: 10px 0px;
+	}
+	label:before {
+	    width: 22px !important;
+	    height: 22px !important;
+	    margin-right: 5px !important;
+	}
+	label {
+	    width: 100% !important;
+	}
+	section.anuncia .x-container .columnas .columna_der p {
+	    margin-top: 20px;
+	    margin-bottom: 10px;
+	    font-size: 14px;
+	}
+	section.anuncia .x-container .columnas .columna_der .back_contactos p {
+	    font-size: 10px;
+	}
+	section.anuncia .x-container .columnas .columna_der .back_contactos {
+	    margin-top: 30px;
+	}
+</style>
 <?php get_footer();
 

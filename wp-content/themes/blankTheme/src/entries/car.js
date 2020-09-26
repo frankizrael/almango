@@ -162,10 +162,14 @@ animateCards($('.my_prod'));
 
 var swipermy_products_featureds = new Swiper(".my_products_featureds .swiper-container", {
   slidesPerView: 4,
-  navigation: {
-      nextEl: '.my_products_featureds .swiper-button-next',
-      prevEl: '.my_products_featureds .swiper-button-prev',
-    },
+  loop: true,
+  pagination: {
+    el: ".my_products_featureds .swiper-pagination",
+    clickable: true,
+  }/*,
+  autoplay: {
+    delay: 6000
+  }*/
 });
 
 //checkout

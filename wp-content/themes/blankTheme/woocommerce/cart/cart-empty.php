@@ -90,8 +90,9 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 						?>
 					</div>	
 		    	</div>	    	
-				<div class="swiper-button-prev"></div>
-	    		<div class="swiper-button-next"></div>
+				<div class="swiperHome">
+					<div class="swiper-pagination"></div>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -109,7 +109,18 @@ $user = wp_get_current_user();
 					<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
 				</div>
 			</div>
+			<div class="thanks-footer">
+				<p class="first"><strong>Recuerda</strong> que puedes ver el estado y detalle de tu pedido ingresando a Mis Pedidos dentro de tu cuenta.</p>
+				<p class="second"><strong>IMPORTANTE</strong></p>
+				<p class="second">Todos los pedidos están sujetos a disponibilidad de stock. De haber alguna observación en la disponibilidad de tu pedido serás notificado via correo o celular con el detalle del mismo.</p>
+				<p class="second">El cumplimiento de la fecha de entrega de tu pedido esta sujeto a la confirmación de tu compra pudiendo tomar hasta 5 días útiles según el entidad bancaria que elegiste (Tarjeta de Crédito, Debito y Pago Efectivo).</p>
+			</div>
 
+			<script type="text/javascript">
+				jQuery('#despacho').removeClass('active');
+				jQuery('#confirmation').addClass('active');
+				jQuery('.divisor').removeClass('active');
+			</script>
 
 		<?php endif; ?>
 

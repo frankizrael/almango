@@ -18,14 +18,34 @@
 		    transform-origin: 50% 50%;
 		}
 	}
+	.subscription_left {
+		@include maxw(table_max) {
+			position: absolute;
+		    width: 100%;
+		    z-index: 0;
+		    left: 0px;
+		    height: 133px;
+		}
+	}
+	.subscription_right {
+		@include maxw(table_max) { display: none; }
+	}
 	.x-mid-container {
 	    width: 585px;
 	    text-align: center;
 	    padding: 20px 0px;
+	    @include maxw(table_max) {
+	    	width: 100%;
+    		position: relative;
+	    }
 	    h2 {
 		    color: white;
 		    font-size: 25px;
 		    margin-bottom: 15px;
+		    @include maxw(table_max) {
+			    font-size: 18px;
+			    margin-bottom: 0px;	
+    	    }
 		}
 		.ref {
 		    box-shadow: 0px 3px 6px #0000008C;
@@ -35,6 +55,9 @@
 		    z-index: 1;
 		    position: relative;
 		    margin-bottom: 20px;
+		    @include maxw(table_max) {			    
+			    margin-bottom: 0px;	
+    	    }
 		    span {
 			    display: block;
 			    width: 100%;
@@ -47,6 +70,10 @@
 				    border-radius: 13px;
 				    background: white;
 				    color: black;
+				    @include maxw(table_max) {			    
+					    padding: 10px 20px;
+    					border-radius: 7px;
+		    	    }
 				}
 			}
 			button {
@@ -56,6 +83,12 @@
 			    pointer-events: none;
 			    background: #7c87ff;
 			    outline: none;
+			    @include maxw(table_max) {			    
+				    width: 100px;
+				    font-size: 14px;
+				    padding: 0px;
+				    border-radius: 7px;	 
+				}
 			    &.active {
 			    	background: #4B5AFC;
 			    	pointer-events: all;
@@ -70,6 +103,14 @@
 		    font-size: 14px;
 		    padding-left: 60px;
 		    position: relative;
+		    @include maxw(table_max) {			    
+			    font-size: 10px;
+			    width: 300px;
+			    display: block;
+			    box-sizing: border-box;
+			    margin: auto;
+			    padding-left: 35px;
+			}
 		    a {
 			    color: white;
 			    font-weight: 700;
@@ -83,6 +124,10 @@
 			    background: white;
 			    border: 1px solid #4B5AFC;
 			    left: 0px;
+			    @include maxw(table_max) {			    
+				    height: 20px;
+   					width: 30px;
+				}
 			}
 			&:after {
 			    content: '';
@@ -95,6 +140,12 @@
 			    left: 22px;
 			    top: 2px;
 			    opacity: 0;
+			    @include maxw(table_max) {
+			    	left: 12px;
+				    top: 1px;
+				    height: 14px;
+				    width: 5px;
+			    }
 			}
 			&.active {
 				&:after {
@@ -109,6 +160,108 @@ footer {
 	background: white;
     padding: 50px 0px;
     padding-bottom: 30px;
+    @include maxw(table_max) {
+    	padding: 10px 0px;
+    	.topAlmango {
+    		img {
+			    max-width: 250px;
+			    margin: auto;
+			    display: block;
+			}
+    	}
+    	.accordeon_item {
+    		h2 {
+			    color: white;
+			    background: #4B5AFC;
+			    font-size: 15px;
+			    border-radius: 6px;
+			    padding: 11px 10px;
+			    position: relative;
+			    cursor: pointer;
+			    &:before {
+				    content: '';
+				    width: 20px;
+				    height: 20px;
+				    border-radius: 50%;
+				    background: white;
+				    position: absolute;
+				    right: 10px;
+				    top: 10px;
+				}
+				&:after {
+				    content: '';
+				    position: absolute;
+				    width: 7px;
+				    height: 7px;
+				    border-bottom: solid 2px #4b5afc;
+				    border-left: solid 2px #4b5afc;
+				    transform: rotate(-45deg);
+				    right: 15px;
+				    top: 14px;
+				}
+			}
+			ul {
+			    margin: 10px 0px;
+			    overflow: hidden;
+			    max-height: 0px;
+			    transition: .3s;
+			    li {
+				    font-size: 14px;
+				    margin: 10px 0px;
+				    color: #8c8c8c;
+				}
+			}
+			&.open {
+				ul {
+					max-height: 1000px;
+				}
+			}
+		}
+		.mediosPago {
+		    text-align: center;
+		    .metodos-s {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    img {
+				    max-width: 55px;
+				    margin: 0px 5px;
+				}
+			}
+		}
+		.followme {
+		    text-align: center;
+		    margin: 20px 0px;
+		    .list-social ul {
+			    display: flex;
+			    justify-content: center;
+			    margin: 10px;
+			    img {
+				    height: 40px;
+				    margin: 0px 5px;
+				}
+			}
+		}
+		.bookReclamtion {
+		    text-align: center;
+		    a {
+			    color: black;
+			    font-weight: 700;
+			    margin: 5px;
+			    font-size: 12px;
+			}
+			img {
+			    max-width: 80px;
+			    display: block;
+			    margin: auto;
+			}
+			.extraff {
+			    margin: 20px;
+			    font-size: 12px;
+			    font-family: 'heebo';
+			}
+		}
+    }
     .group {
 	    flex: 1;
 	    margin-right: 20px;
@@ -187,6 +340,19 @@ footer {
 		color: $orange;
 	}
 }
+
+.onlydesktop {
+	@include maxw(table_max) {
+		display: none !important;
+	}
+}
+.onlyMobile {
+	@include maxw(table_max) {
+		display: block !important;
+	}	
+}
+
+
 @keyframes suscriptionanimate{
   0% {
     background-position: 105px 105px;

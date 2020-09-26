@@ -37,6 +37,18 @@ import TweenLite from "gsap/TweenLite";
       	event.preventDefault();
       	$('html, body').stop().animate({scrollTop: $('#header').offset().top}, 1500);
  	});
+ 	$('footer .accordeon_item h2').on('click', function(event){
+      	let $this = $(this);
+		let $content = $this.closest('.accordeon_item');
+		$content.toggleClass('open');
+ 	});
+ 	$('.mobileItemCorp').on('click', function(event){
+      	$('.mobileMenu').addClass('act');
+ 	});
+ 	$('.closeMobileMenu').on('click', function(event){
+      	$('.mobileMenu').removeClass('act');
+ 	});
+ 	
 //buttons
 	$('.openMenu').on('click', function(event){
       	$('body').toggleClass('menuOpen');

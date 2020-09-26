@@ -118,7 +118,7 @@ get_header( 'shop' ); ?>
 					<div href="javascript:void(0)" class="whislistButtonAdd">
 						<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
 					</div>
-					<a href="<?php the_field('descargar_ficha'); ?>" class="download" download>
+					<a href="javascript:void(0)" class="download downloadJsPDF">
 						<img src="<?php echo get_template_directory_uri(); ?>/src/assets/img/pdf.png">
 						<p>Descargas</p>
 					</a>
@@ -142,6 +142,16 @@ get_header( 'shop' ); ?>
 								$product = wc_get_product( get_the_ID() );
 								echo $product->get_price_html();
 							?>
+							<?php
+								$id_r = get_the_ID();		
+								if (get_field('ocultar_antes',$id_r)) {
+									?>
+								<script type="text/javascript">
+									jQuery('.prices_html del').attr('style','opacity:0;pointer-events:none');
+								</script>	
+									<?php
+								}
+							?>
 						</div>
 						<div class="prices_html__mPrice">
 							<span class="pp">Otro medio de pago</span>
@@ -161,7 +171,7 @@ get_header( 'shop' ); ?>
 							$id = get_the_ID();		
 							if (get_field('reservar',$id)) {
 								?>
-								<a href="javascript:void(0)" class="button">RESERVAR</a>
+								<a href="javascript:void(0)" class="button preventaJsModal">PRE VENTA</a>
 								<?php
 							} else {
 								echo do_shortcode("[ajax_add_to_cart id='$id' text='Comprar']");
@@ -182,6 +192,22 @@ get_header( 'shop' ); ?>
 		}
 	?>
 </section>
+<?php
+	$id = get_the_ID();		
+	if (get_field('reservar',$id)) {
+		?>
+	<div class="preventaCore">
+		<div class="preventaCoreContent">
+			<div class="preventaClose"></div>
+			<div class="preventaDesc">
+				<h2>Reservar</h2>
+				<?php echo do_shortcode('[contact-form-7 id="509" title="reservar"]'); ?>
+			</div>
+		</div>
+	</div>
+<?php
+	}
+?>
 <div class="header_fixed" id="header_2">
 	<div class="x-container">
 		<div class="flex-head flex">
@@ -203,7 +229,7 @@ get_header( 'shop' ); ?>
 								$id = get_the_ID();		
 								if (get_field('reservar',$id)) {
 								?>
-								<a href="javascript:void(0)" class="repet">RESERVAR</a>
+								<a href="javascript:void(0)" class="repet preventaJsModal">PREVENTA</a>
 								<?php
 								} else {
 							?>
@@ -249,7 +275,7 @@ get_header( 'shop' ); ?>
 		}
 	?>
 </section>
-<section class="presures_b" id="presures">
+<section class="presures_b" id="presures" style="display: none;">
 	<div class="left_title">
 		<h2 data="Ventajas">Ventajas</h2>
 	</div>

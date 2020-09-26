@@ -196,10 +196,7 @@ get_header();
 				                    		<img src="<?php echo get_the_post_thumbnail_url($fe['id']); ?>">
 				                    	</div>
 				                    	<div class="text">
-				                    		<h3><?php echo get_the_title($fe['id']); ?></h3>
-				                    		<p class="brand">
-				                    			Susuki
-				                    		</p>			                    		
+				                    		<h3><?php echo get_the_title($fe['id']); ?></h3>			                    		
 				                    	</div>
 				                    	<div class="myprice">
 				                    		<?php

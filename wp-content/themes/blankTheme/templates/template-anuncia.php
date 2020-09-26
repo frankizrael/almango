@@ -101,9 +101,54 @@ get_header();
 		</div>
 		<div class="form_empresa back_contactos">
 			
-			<?php echo do_shortcode('[contact-form-7 id="747" title="Envio de Solicitud"]'); ?>
+			<?php echo do_shortcode('[contact-form-7 id="1367" title="anunciar"]'); ?>
 		</div>
 	</div>
 </section>
 <?php get_footer();
-
+?>
+<style type="text/css">
+	.titleA p {
+	    font-size: 9px;
+	    font-weight: 700;
+	    margin-bottom: 18px;
+	    color: #737373;
+	}
+	.titleA h2 {
+	    font-size: 20px;
+	    margin: 10px;
+	}
+	input {
+	    text-align: center;
+	    padding: 10px 0px;
+	}
+	label:before {
+	    width: 22px !important;
+	    height: 22px !important;
+	    margin-right: 5px !important;
+	}
+	label {
+	    width: 100% !important;
+	}
+	#correo:before {
+	    position: relative;
+	    background-image: url('<?php echo site_url(); ?>/wp-content/uploads/2020/09/mensaje.png');
+	    content: '';
+	    width: 22px;
+	    height: 22px;
+	    background-size: contain;
+	    display: inline-block;
+	    top: 4px;
+	    left: 0;
+	    margin-right: 5px;
+	}
+	p.opas {
+	    margin: 20px 0px;
+	    font-size: 11px;
+	}
+	input.wpcf7-form-control.wpcf7-submit {
+	    border-radius: 10px;
+	    border-bottom: none;
+	    cursor: pointer;
+	}
+</style>

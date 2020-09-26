@@ -977,12 +977,32 @@
 	    background-position: center;
 	    position: relative;
 	    overflow: hidden;
-	    min-height: calc(100vh - 90px);
+	    height: calc(100vh - 90px);
+	    min-height: 820px;
+	    @include maxw(table_max) {
+		    background-size: 100% 300px;
+		    background-position: 0px 0px;
+		    height: auto !important;
+	    }
 	    .closLum {
 		    position: absolute;
 		    right: 200px;
 		    top: 50px;
 		    width: 370px;
+		    @include maxw(laptop) {
+		    	right: 40px;
+		    }
+		    @include maxw(table_max) {
+			    right: 0px;
+			    left: 0px;
+			    width: 100%;
+			    bottom: 0px;
+			    top: auto;
+			    border-bottom-left-radius: 0px !important;
+			    border-bottom-right-radius: 0px !important;
+			    position: relative;
+			    margin-top: 150px;
+		    }
 			&__content {
 			    display: none;
 			    background: white;
@@ -2063,4 +2083,57 @@ select#allstles {
 	}
 }
 
-
+.changePassReview a {
+    max-width: 40px;
+    margin: auto;
+}
+.changePassReview p {
+    text-align: center;
+    max-width: 200px;
+    margin: auto;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.modalContent .semaforo svg {
+    width: 25px;
+    height: 111px;
+}
+.modalContent .motitoT svg {
+    width: 100px;
+    height: 66px;
+}
+.modalContent .semaforo {
+}
+.modalContent .decoration {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: solid 2px black;
+    margin-top: 15px;
+}
+#closeSesion.myModal .modalContent h3 {
+    text-align: right;
+    padding-right: 35px;
+    font-size: 25px;
+    margin-bottom: -25px;
+}
+#closeSesion.myModal .modalContent .close_modal:after {
+    background: #fbf645;
+    top: 11px;
+    left: 5px;
+    width: 15px;
+}
+#closeSesion.myModal .modalContent .close_modal:before {
+    background: #fbf645;
+    top: 11px;
+    left: 5px;
+    width: 15px;
+}
+#closeSesion.myModal .modalContent .close_modal {
+    background: black;
+    border-radius: 50%;
+}
+#closeSesion.myModal .modalContent {
+    background: #FBF645;
+    border-radius: 24px;
+}

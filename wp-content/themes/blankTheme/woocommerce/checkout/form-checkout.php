@@ -131,7 +131,7 @@ $user_correo = get_user_meta( $user_id, 'billing_email', true );
 									</h3>
 									<div class="calendarJs">
 										<label>Ingresa una fecha</label>
-										<input type="text" name="calendarDomicilio" id="calendarDomicilio" placeholder="Fecha ...">
+										<input type="text" name="calendarDomicilio" id="calendarDomicilio" placeholder="Fecha ..." autocomplete="calendardomicilio">
 									</div>
 								</div>	
 								<div class="checkoutTitle horarioDiv">
@@ -209,7 +209,7 @@ $user_correo = get_user_meta( $user_id, 'billing_email', true );
 										<img src="<?php echo get_template_directory_uri(); ?>/img/check.png">Lo quiero el
 									</h3>
 									<div class="calendarJs">
-										<input type="text" name="calendarDomicilio" id="calendarDomicilio2" placeholder="Fecha ...">
+										<input type="text" name="calendarDomicilio" id="calendarDomicilio2" placeholder="Fecha ..." autocomplete="calendardomicilio" >
 									</div>
 								</div>
 								<div class="checkoutTitle">

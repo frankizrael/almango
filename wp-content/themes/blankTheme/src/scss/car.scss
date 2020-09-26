@@ -5,6 +5,9 @@
 		display: none;
 	}
 }
+.page-template-template-cart .woocommerce-message {
+    display: none !important;
+}
 .emptyCart {
     text-align: center;
     padding-bottom: 60px;
@@ -22,8 +25,24 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.18);
 }
 .thanks-order-s {
-	max-width: 1100px;
+	max-width: 800px;
 	margin: auto;
+}
+.thanks-order-s {
+	ul.order_details li {
+	    font-size: 10px !important;
+	    line-height: 12px !important;
+	    font-family: 'heebo';
+	    padding-right: 10px !important;
+	    margin-right: 10px !important;
+	    max-width: 350px !important;
+	}
+	.thanks-col .bloxflex .title h2 {
+	    font-size: 16px;
+	}
+	.thanks-col .bloxflex .title img {
+	    width: 20px;
+	}	
 }
 .thanks-section {
     text-align: center;
@@ -41,7 +60,7 @@
 	    margin-top: 20px;
 	}
 	.thanks-section-rel {
-		font-size: 20px;
+		font-size: 16px;
     	text-align: left;
 		strong {
 			font-family: 'Heebo';
@@ -158,6 +177,40 @@
 			    }
 			}
 	    }
+	}
+}
+.thanks-footer {
+    margin-bottom: 40px;
+}
+.thanks-footer .second {
+    margin-bottom: 10px;
+}
+.thanks-footer .first {
+    margin-bottom: 40px;
+}
+.swiperHome {
+	.swiper-pagination {
+	    margin-top: 0px !important;
+	    .swiper-pagination-bullet {
+		    margin-left: 10px;
+		    &.swiper-pagination-bullet-active {
+		    	background: $morado;
+		    	border: solid 2px $morado;
+		    }
+		    i {
+			    position: absolute;
+			    font-family: 'heebo';
+			    color: white;
+			    font-style: normal;
+			    top: -37px;
+			    left: 0px;
+			    font-size: 25px;
+			    font-weight: 700;
+			}
+		    &:before {
+		    	display: none;
+		    }
+		}
 	}
 }
 .f-container {
@@ -368,6 +421,7 @@
 			    font-size: 10px;
 			    width: 75px;
 			    margin-right: 5px;
+			    line-height: 12px;
 			}
 		}
 	}
@@ -719,6 +773,7 @@ p.addcomend {
 }
 .checkout-page {
 	margin-top: 120px;
+	.woocommerce-info { display: none !important; }
 	.core-page {
 	    margin: 20px 0px;
 	}
@@ -896,10 +951,9 @@ p.addcomend {
 	    border-radius: 5px;
 	    border: solid 1px gainsboro;
 	    appearance: none;
-	    height: 80px !important;
-	    background: #EDF2EE 0% 0% no-repeat padding-box !important;
-		box-shadow: 0px 3px 6px #00000066 !important;
-		border-radius: 5px !important;
+	    height: 120px !important;
+	    box-shadow: 0px 3px 6px #00000066 !important;
+	    border-radius: 5px !important;
 	}
 	.woocommerce-billing-fields, .woocommerce-shipping-fields  {
 	    border-top: solid 1px #d4d4d4;
