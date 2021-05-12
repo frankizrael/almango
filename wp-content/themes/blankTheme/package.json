@@ -41,7 +41,7 @@
     "imports-loader": "^0.8.0",
     "js-datepicker": "^5.16.0",
     "scrollmagic": "^2.0.7",
-    "swiper": "^4.5.0",
+    "swiper": "^6.5.1",
     "typed.js": "^2.0.11"
   }
 }
